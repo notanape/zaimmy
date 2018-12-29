@@ -14,7 +14,7 @@ function dragOptions(move, level) {
     let _opt = {
         axis: 'x',
         containment: findBound(move, level),
-        stop:()=>{
+        stop: () => {
             calibrateOffers()
         }
     }
@@ -77,130 +77,138 @@ function labelMove(move) {
 function aboutUs(e) {
     e.stopImmediatePropagation();
     if ($aboutW.css('display') == "none") {
-        $aboutW.slideDown(300, () => {
-            $aboutW.css('display', 'inline-block');
+        $aboutW.slideDown({
+                duration: 300,
+                step: calibrate,
+                complete: () => {
+                    $aboutW.css('display', 'inline-block');
+                    $aboutT.animate({
+                        opacity: 1
+                    }, 150)}
+                });
+            return false
+        }
+        else {
             $aboutT.animate({
-                opacity: 1
-            }, 150)
-        });
-        return false
-    } else {
-        $aboutT.animate({
-            opacity: 0
-        }, 150, () => {
-            $aboutW.css('display', 'block');
-            $aboutW.slideUp(300);
-        })
-        return false
+                opacity: 0
+            }, 150, () => {
+                $aboutW.css('display', 'block');
+                $aboutW.slideUp({
+                    duration: 300,
+                    step: calibrate,
+                    complete: calibrate
+                });
+            })
+            return false
+        }
+
     }
 
-}
-
-function calibrate() {
-    let _moves = $moveM.add($moveT);
-    _moves.each(function() {
-        let _move = $(this);
-        let _level = _move.prev();
-        let _slider = _move.is($moveM) ? _money_slider : _time_slider;
-        _move.position({
-            my: 'center',
-            at: 'left center',
-            of: _level
+    function calibrate() {
+        let _moves = $moveM.add($moveT);
+        _moves.each(function() {
+            let _move = $(this);
+            let _level = _move.prev();
+            let _slider = _move.is($moveM) ? _money_slider : _time_slider;
+            _move.position({
+                my: 'center',
+                at: 'left center',
+                of: _level
+            });
+            _move.draggable(dragOptions(_move, _level));
+            sliderValue(_move, _slider.value, labelMove);
         });
-        _move.draggable(dragOptions(_move, _level));
-        sliderValue(_move, _slider.value, labelMove);
-    });
-    calibrateFlags($flag)
-}
+        calibrateFlags($flag)
+    }
 
-function calibrateFlags(flags) {
-    flags.each(function() {
-        let _flag = $(this);
-        adjustFlag(_flag);
-        _flag.position({
-            my: 'left top',
-            at: 'right top',
-            of: _flag.parent().find('.right .label .title')
+    function calibrateFlags(flags) {
+        flags.each(function() {
+            let _flag = $(this);
+            adjustFlag(_flag);
+            _flag.position({
+                my: 'left top',
+                at: 'right top',
+                of: _flag.parent().find('.right .label .title')
+            })
         })
-    })
-}
+    }
 
-function adjustFlag(flag) {
-    let _fW = flag.width() / 2;
-    let _leftCorner = flag.find('.leftCorner');
-    let _rightCorner = flag.find('.rightCorner');
-    _leftCorner.add(_rightCorner).each(function() {
-        let _corner = $(this);
-        _corner.css(`border-${_corner.is(_leftCorner)?'right':'left'}-width`, `${_fW}px`);
-    })
-}
+    function adjustFlag(flag) {
+        let _fW = flag.width() / 2;
+        let _leftCorner = flag.find('.leftCorner');
+        let _rightCorner = flag.find('.rightCorner');
+        _leftCorner.add(_rightCorner).each(function() {
+            let _corner = $(this);
+            _corner.css(`border-${_corner.is(_leftCorner)?'right':'left'}-width`, `${_fW}px`);
+        })
+    }
 
-function addOffers() {
-    _conditions.forEach((v, k) => {
-        let _offerD = $(_offer(k, v));
-        $offers.append(_offerD);
-        $flag = $offers.find('.flag');
-        _offerD.find('img').on('load', e => {
+    function addOffers() {
+        _conditions.forEach((v, k) => {
+            let _offerD = $(_offer(k, v));
+            $offers.append(_offerD);
             $flag = $offers.find('.flag');
-            calibrateFlags($flag);
-        });
-    })
-}
-
-
-function calibrateOffers() {
-    let _map = {};
-    let _mV = _money_slider.value;
-    let _tV = _time_slider.value;
-    _conditions.forEach((v, k) => {
-        if (!_map.hasOwnProperty(k))
-            _map[k] = [];
-        for (let i in v) {
-            let _o = v[i];
-            if ((_mV >= _o.minAmount && _mV <= _o.maxAmount) && (_tV >= _o.minTime && _tV <= _o.maxTime)) {
-                _map[k].push(i)
-            }
-        }
-    });
-    for (let _off in _map) {
-        let _con = _map[_off];
-
-        let _company = $(`[id="${_off}"]`);
-        _company.find('.condition').each(function() {
-            let _conN = $(this).attr('id');
-            let _amm = $(this).find('.total');
-            _amm.text(Math.floor(_mV + _mV / 100 * _conditions.get(_off)[_conN].percentage).toString());
-
+            _offerD.find('img').on('load', e => {
+                $flag = $offers.find('.flag');
+                calibrateFlags($flag);
+            });
         })
-        if (_con.length == 0) {
-            if (_company.css('display') != "none")
-                _company.slideUp({
-                    duration: 200,
-                    step: () => {
-                        calibrateFlags($flag)
+    }
+
+
+    function calibrateOffers() {
+        let _map = {};
+        let _mV = _money_slider.value;
+        let _tV = _time_slider.value;
+        _conditions.forEach((v, k) => {
+            if (!_map.hasOwnProperty(k))
+                _map[k] = [];
+            for (let i in v) {
+                let _o = v[i];
+                if ((_mV >= _o.minAmount && _mV <= _o.maxAmount) && (_tV >= _o.minTime && _tV <= _o.maxTime)) {
+                    _map[k].push(i)
+                }
+            }
+        });
+        for (let _off in _map) {
+            let _con = _map[_off];
+
+            let _company = $(`[id="${_off}"]`);
+            _company.find('.condition').each(function() {
+                let _conN = $(this).attr('id');
+                let _amm = $(this).find('.total');
+                _amm.text(Math.floor(_mV + _mV / 100 * _conditions.get(_off)[_conN].percentage).toString());
+
+            })
+            if (_con.length == 0) {
+                if (_company.css('display') != "none")
+                    _company.slideUp({
+                        duration: 200,
+                        step: () => {
+                            calibrateFlags($flag)
+                        }
+                    })
+            } else {
+                if (_company.css('display') == "none")
+                    _company.slideDown({
+                        duration: 200,
+                        step: () => {
+                            calibrateFlags($flag)
+                        }
+                    })
+                let _c = _company.find('.condition')
+                for (let i of _c) {
+                    let _elem = $(i);
+                    let _id = _elem.attr('id');
+                    if (_con.includes(_id)) {
+                        if (_elem.css('display') == "none")
+                            _elem.slideDown(200)
+                    } else
+                    if (_elem.css('display') != "none") {
+                        _elem.find('.total').text('');
+                        _elem.slideUp(200)
                     }
-                })
-        } else {
-            if (_company.css('display') == "none")
-                _company.slideDown({
-                    duration: 200,
-                    step: () => {
-                        calibrateFlags($flag)
-                    }
-                })
-            let _c = _company.find('.condition')
-            for (let i of _c) {
-                let _elem = $(i);
-                let _id = _elem.attr('id');
-                if (_con.includes(_id)) {
-                    if (_elem.css('display') == "none")
-                        _elem.slideDown(200)
-                } else
-                if (_elem.css('display') != "none") {
-                    _elem.find('.total').text('');
-                    _elem.slideUp(200)
                 }
             }
         }
     }
-}
