@@ -9,14 +9,20 @@ $(() => {
     $moveM = $sliderM.find('.move');
     $levelT = $sliderT.find('.level');
     $moveT = $sliderT.find('.move');
-    $offers = $('.offers');    
+    $offers = $('.offers');
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
 
     addOffers();
 
-    calibrate();
+    $('img').each(function() {
+        $(this).on('load', () => {
+            calibrate()
+        })
+    })
+
+    //calibrate();
 
     calibrateOffers();
 
