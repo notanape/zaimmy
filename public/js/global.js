@@ -26,7 +26,7 @@ let _time_slider = {
 }
 
 let _conditions = new Map([
-    ['Demo partner#1', {
+    ['Demo partnerN1', {
         ordinary: {
             minAmount: 300,
             maxAmount: 10000,
@@ -35,7 +35,7 @@ let _conditions = new Map([
             percentage: 1.9
         }
     }],
-    ['Demo partner#2', {
+    ['Demo partnerN2', {
         first: {
             minAmount: 100,
             maxAmount: 4000,
@@ -97,7 +97,7 @@ let _offer = (title, info) => {
             <div class="soul d-flex">
           <div class="left">
             <div class="offerLogo">
-              <img src="pic/logoP.png" alt="">
+              <img src="pic/partners/${title.replace(/\s/g,'_')}.png" alt="${title}">
             </div>
           </div>
           <div class="right d-flex flex-column">
