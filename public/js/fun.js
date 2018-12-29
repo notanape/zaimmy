@@ -67,7 +67,7 @@ function labelMove(move) {
     }
     _label.position({
         my: 'center bottom',
-        at: `center top+${move.parent().position().top - move.position().top}`,
+        at: `center top`,
         of: move,
         collision: 'fit',
         within: _label.parent()

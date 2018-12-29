@@ -29,6 +29,11 @@
       display: inline-block;
       background: burlywood;
       margin-bottom: 5px; }
+    .calculator .body .sliderCalc .labelBox .pointer {
+      position: absolute;
+      background: burlywood;
+      width: 20px;
+      height: 20px; }
     .calculator .body .sliderCalc .handler {
       background: bisque;
       padding: 10px; }
