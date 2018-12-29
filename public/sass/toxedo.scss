@@ -2,6 +2,11 @@
     user-select: none;
 }
 
+h1 {
+    margin: 0 !important;
+    font-size: 1em !important;
+}
+
 .button {
     cursor: pointer;
 }
@@ -153,3 +158,5 @@
         }
     }
 }
+
+.links {}

@@ -79,7 +79,7 @@ function aboutUs(e) {
     if ($aboutW.css('display') == "none") {
         $aboutW.slideDown({
                 duration: 300,
-                step: calibrate,
+                step: calibrateElements,
                 complete: () => {
                     $aboutW.css('display', 'inline-block');
                     $aboutT.animate({
@@ -95,8 +95,8 @@ function aboutUs(e) {
                 $aboutW.css('display', 'block');
                 $aboutW.slideUp({
                     duration: 300,
-                    step: calibrate,
-                    complete: calibrate
+                    step: calibrateElements,
+                    complete: calibrateElements
                 });
             })
             return false
@@ -116,6 +116,22 @@ function aboutUs(e) {
                 of: _level
             });
             _move.draggable(dragOptions(_move, _level));
+            sliderValue(_move, _slider.value, labelMove);
+        });
+        calibrateFlags($flag)
+    }
+
+    function calibrateElements(){
+        let _moves = $moveM.add($moveT);
+        _moves.each(function() {
+            let _move = $(this);
+            let _level = _move.prev();
+            let _slider = _move.is($moveM) ? _money_slider : _time_slider;
+            _move.position({
+                my: 'center',
+                at: 'left center',
+                of: _level
+            });
             sliderValue(_move, _slider.value, labelMove);
         });
         calibrateFlags($flag)
