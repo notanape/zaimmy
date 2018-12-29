@@ -1,0 +1,155 @@
+* {
+    user-select: none;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.head {
+    .right {
+        width: 40%;
+
+        .stars {
+            img {
+                width: 15px;
+            }
+        }
+
+        .buttonCont {
+            .button {
+                background: #ff877a;
+                color: white;
+                padding: 5px 15px;
+                border-radius: 17px 0 0;
+            }
+        }
+    }
+}
+
+.about {
+    display: none;
+    background: #ff877a;
+    color: white;
+
+    .aboutUs {
+        opacity: 0;
+    }
+}
+
+.calculator {
+    background: aliceblue;
+
+    .body {
+        width: 100%;
+
+        .sliderCalc {
+            .labelBox {
+                .label {
+                    display: inline-block;
+                    background: burlywood;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .handler {
+                background: bisque;
+                padding: 10px;
+
+                .level {
+                    background-color: orange;
+                    height: 5px;
+                }
+
+                .move {
+                    position: absolute;
+                    background: pink;
+                    height: 15px;
+                    width: 15px;
+                }
+            }
+        }
+    }
+}
+
+.offers {
+    background: aliceblue;
+
+    .offer {
+        width: 100%;
+        background: #bdf5db;
+        margin-top: 10px;
+
+        .right {
+            width: 100%;
+
+            .info {
+                .condition {
+                    width: 100%;
+                }
+
+                .condition#first {
+                    border-right: 1px dotted #ffc5c5;
+                }
+            }
+
+            .forButton {
+                .button {
+                    background: grey;
+                }
+            }
+        }
+
+        .flag {
+            position: absolute;
+        }
+
+        .flag {
+            .label {
+                background: pink;
+
+                .rightCorner, .leftCorner {
+                    border-color: transparent;
+                    position: absolute;
+                    border-style: solid;
+                    border-bottom-width: 4px;
+                    border-top-width: 0;
+                }
+
+                .rightCorner {
+                    left: 0;
+                    border-left-color: pink;
+                }
+
+                .leftCorner {
+                    right: 0;
+                    border-right-color: pink;
+                }
+            }
+        }
+
+        .flag::after {
+            position: absolute;
+            content: '';
+            width: calc(100% + 2px);
+            height: 4px;
+            top: -4px;
+            left: -2px;
+            z-index: 1;
+            background: pink;
+            border-radius: 0 2px 0 0;
+        }
+
+        .flag::before {
+            position: absolute;
+            content: '';
+            width: 4px;
+            height: 4px;
+            top: -4px;
+            left: -4px;
+            z-index: 2;
+            background: orange;
+            border-radius: 2px 2px 0 0;
+        }
+    }
+}

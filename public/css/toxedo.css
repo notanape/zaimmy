@@ -1,3 +1,95 @@
+* {
+  user-select: none; }
 
+.button {
+  cursor: pointer; }
+
+.head .right {
+  width: 40%; }
+  .head .right .stars img {
+    width: 15px; }
+  .head .right .buttonCont .button {
+    background: #ff877a;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 17px 0 0; }
+
+.about {
+  display: none;
+  background: #ff877a;
+  color: white; }
+  .about .aboutUs {
+    opacity: 0; }
+
+.calculator {
+  background: aliceblue; }
+  .calculator .body {
+    width: 100%; }
+    .calculator .body .sliderCalc .labelBox .label {
+      display: inline-block;
+      background: burlywood;
+      margin-bottom: 5px; }
+    .calculator .body .sliderCalc .handler {
+      background: bisque;
+      padding: 10px; }
+      .calculator .body .sliderCalc .handler .level {
+        background-color: orange;
+        height: 5px; }
+      .calculator .body .sliderCalc .handler .move {
+        position: absolute;
+        background: pink;
+        height: 15px;
+        width: 15px; }
+
+.offers {
+  background: aliceblue; }
+  .offers .offer {
+    width: 100%;
+    background: #bdf5db;
+    margin-top: 10px; }
+    .offers .offer .right {
+      width: 100%; }
+      .offers .offer .right .info .condition {
+        width: 100%; }
+      .offers .offer .right .info .condition#first {
+        border-right: 1px dotted #ffc5c5; }
+      .offers .offer .right .forButton .button {
+        background: grey; }
+    .offers .offer .flag {
+      position: absolute; }
+    .offers .offer .flag .label {
+      background: pink; }
+      .offers .offer .flag .label .rightCorner, .offers .offer .flag .label .leftCorner {
+        border-color: transparent;
+        position: absolute;
+        border-style: solid;
+        border-bottom-width: 4px;
+        border-top-width: 0; }
+      .offers .offer .flag .label .rightCorner {
+        left: 0;
+        border-left-color: pink; }
+      .offers .offer .flag .label .leftCorner {
+        right: 0;
+        border-right-color: pink; }
+    .offers .offer .flag::after {
+      position: absolute;
+      content: '';
+      width: calc(100% + 2px);
+      height: 4px;
+      top: -4px;
+      left: -2px;
+      z-index: 1;
+      background: pink;
+      border-radius: 0 2px 0 0; }
+    .offers .offer .flag::before {
+      position: absolute;
+      content: '';
+      width: 4px;
+      height: 4px;
+      top: -4px;
+      left: -4px;
+      z-index: 2;
+      background: orange;
+      border-radius: 2px 2px 0 0; }
 
 /*# sourceMappingURL=toxedo.css.map */
