@@ -3,9 +3,15 @@ function findBound(move, level) {
     let _mW = move.width() / 2;
     let _lW = level.width();
     let _lL = level.position().left;
-    _a[0] = _money_slider.left = _time_slider.left = _lL - _mW;
+    let _lM = parseInt(level.css('margin-left').replace('px',''));
+    let _p1 = level.closest('.handler').position().left;
+    let _p1M = parseInt(level.closest('.handler').css('margin-left').replace('px',''));
+    let _p2 = level.closest('.sliderCalc').position().left;
+    let _p2M = parseInt(level.closest('.sliderCalc').css('margin-left').replace('px',''));
+    let _p3M = parseInt($('.container-fluid').css('margin-left').replace('px',''));
+    _a[0] = _money_slider.left = _time_slider.left = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) - _mW;
     _a[1] = 0;
-    _a[2] = _lL + _lW - _mW;
+    _a[2] = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) + _lW - _mW;
     _a[3] = 0;
     return _a;
 }
@@ -13,9 +19,9 @@ function findBound(move, level) {
 function dragOptions(move, level) {
     let _opt = {
         axis: 'x',
-        containment: findBound(move, level),
+        containment: /*findBound(move, level)*/level.closest('.handler'),
         stop: () => {
-            calibrateOffers()
+            calibrateOffers();
         }
     }
     return _opt
@@ -27,12 +33,13 @@ function sliderValue() {
     let _level = _move.is($moveM) ? $levelM : $levelT;
     let _slider = _move.is($moveM) ? _money_slider : _time_slider;
     let _info = _move.is($moveM) ? _money_info : _time_info;
+    let _levelL = _level.position().left + parseInt(_level.css('margin-left').replace('px',''));
     if (arguments.length == 2) {
         _slider.left = _move.position().left;
         let _grid = _info.max / _info.min;
         let _oneStep = _level.width() / _grid;
-        let _posLevel = Math.floor((_slider.left + (_move.width() / 2) - _level.position().left) / _oneStep);
-        _slider.value = _info.min + (_info.step * (_posLevel - (_posLevel == 0 ? 0 : 1)));
+        let _posLevel = Math.floor((_slider.left + (_move.width() / 2) - _levelL) / _oneStep);
+        _slider.value = _info.min + (_info.step * (_posLevel));
         _call(_move);
     } else {
         _slider.value = arguments[1];
@@ -40,7 +47,7 @@ function sliderValue() {
         let _oneStep = _level.width() / _grid;
         let _needSteps = _slider.value / _info.step;
         let _posLevel = _oneStep * _needSteps;
-        _slider.left = _posLevel - (_posLevel == 1 ? 1 : 0) + (_level.position().left - _move.width() / 2);
+        _slider.left = _posLevel + (_levelL - _move.width() / 2);
         _move.css('left', `${_slider.left}px`);
         _call(_move);
     }

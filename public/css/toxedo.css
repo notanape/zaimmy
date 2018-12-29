@@ -1,6 +1,10 @@
 * {
   user-select: none; }
 
+@media (min-width: 576px) {
+  .container-fluid {
+    width: 670px !important; } }
+
 h1 {
   margin: 0 !important;
   font-size: 1em !important; }
@@ -35,15 +39,19 @@ h1 {
       margin-bottom: 5px; }
     .calculator .body .sliderCalc .handler {
       background: bisque;
-      padding: 10px; }
+      padding: 10px 0px;
+      margin: 0 3px; }
       .calculator .body .sliderCalc .handler .level {
         background-color: orange;
-        height: 5px; }
+        height: 5px;
+        margin: 0 7px;
+        cursor: pointer; }
       .calculator .body .sliderCalc .handler .move {
         position: absolute;
         background: pink;
         height: 15px;
-        width: 15px; }
+        width: 15px;
+        cursor: pointer; }
 
 .offers {
   background: aliceblue; }
