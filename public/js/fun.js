@@ -3,12 +3,12 @@ function findBound(move, level) {
     let _mW = move.width() / 2;
     let _lW = level.width();
     let _lL = level.position().left;
-    let _lM = parseInt(level.css('margin-left').replace('px',''));
+    let _lM = parseInt(level.css('margin-left').replace('px', ''));
     let _p1 = level.closest('.handler').position().left;
-    let _p1M = parseInt(level.closest('.handler').css('margin-left').replace('px',''));
+    let _p1M = parseInt(level.closest('.handler').css('margin-left').replace('px', ''));
     let _p2 = level.closest('.sliderCalc').position().left;
-    let _p2M = parseInt(level.closest('.sliderCalc').css('margin-left').replace('px',''));
-    let _p3M = parseInt($('.container-fluid').css('margin-left').replace('px',''));
+    let _p2M = parseInt(level.closest('.sliderCalc').css('margin-left').replace('px', ''));
+    let _p3M = parseInt($('.container-fluid').css('margin-left').replace('px', ''));
     _a[0] = _money_slider.left = _time_slider.left = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) - _mW;
     _a[1] = 0;
     _a[2] = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) + _lW - _mW;
@@ -19,9 +19,12 @@ function findBound(move, level) {
 function dragOptions(move, level) {
     let _opt = {
         axis: 'x',
-        containment: /*findBound(move, level)*/level.closest('.handler'),
+        containment: /*findBound(move, level)*/ level.closest('.handler'),
         stop: () => {
             calibrateOffers();
+            $flag.each(function() {
+                recountFlag($(this))
+            })
         }
     }
     return _opt
@@ -33,7 +36,7 @@ function sliderValue() {
     let _level = _move.is($moveM) ? $levelM : $levelT;
     let _slider = _move.is($moveM) ? _money_slider : _time_slider;
     let _info = _move.is($moveM) ? _money_info : _time_info;
-    let _levelL = _level.position().left + parseInt(_level.css('margin-left').replace('px',''));
+    let _levelL = _level.position().left + parseInt(_level.css('margin-left').replace('px', ''));
     if (arguments.length == 2) {
         _slider.left = _move.position().left;
         let _grid = _info.max / _info.min;
@@ -142,12 +145,13 @@ function calibrate() {
 function calibrateFlags(flags) {
     flags.each(function() {
         let _flag = $(this);
+        recountFlag(_flag)
         adjustFlag(_flag);
         _flag.position({
             my: 'left top',
             at: 'right top',
             of: _flag.parent().find('.right .label .title')
-        })
+        });
     })
 }
 
@@ -159,6 +163,24 @@ function adjustFlag(flag) {
         let _corner = $(this);
         _corner.css(`border-${_corner.is(_leftCorner)?'right':'left'}-width`, `${_fW}px`);
     })
+}
+
+function recountFlag(flag) {
+    let _label = flag.find('.label').find('span');
+    let _off = flag.closest('.offer').attr('id');
+    let _perc = 0;
+    if (_conditions.get(_off).hasOwnProperty('first')) {
+        if (_conditions.get(_off).first.hasOwnProperty('multiplier'))
+            _perc = ((_time_slider.value * _conditions.get(_off).first.multiplier).toFixed(2)).toString()
+        else
+            _perc = _conditions.get(_off).first.percentage
+    } else if (_conditions.get(_off).hasOwnProperty('ordinary')) {
+        if (_conditions.get(_off).ordinary.hasOwnProperty('multiplier'))
+            _perc = ((_time_slider.value * _conditions.get(_off).ordinary.multiplier).toFixed(2)).toString()
+        else
+            _perc = _conditions.get(_off).ordinary.percentage
+    }
+    _label.text(`${_perc}%`)
 }
 
 function addOffers() {
@@ -195,7 +217,15 @@ function calibrateOffers() {
         _company.find('.condition').each(function() {
             let _conN = $(this).attr('id');
             let _amm = $(this).find('.total');
-            _amm.text(Math.floor(_mV + _mV / 100 * _conditions.get(_off)[_conN].percentage).toString());
+            let _per = $(this).find('.percentage');
+            let _perc = 0;
+            if (_conditions.get(_off)[_conN].hasOwnProperty('multiplier')) {
+                _perc = ((_tV * _conditions.get(_off)[_conN].multiplier).toFixed(2)).toString();
+            } else
+                _perc = _conditions.get(_off)[_conN].percentage;
+            _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
+            _per.text(_perc);
+
 
         })
         if (_con.length == 0) {

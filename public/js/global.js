@@ -38,7 +38,8 @@ let _conditions = new Map([
             maxAmount: 10000,
             minTime: 7,
             maxTime: 14,
-            percentage: 1.9
+            percentage: 1.9,
+            multiplier: 0.28
         }
     }],
     ['Demo partnerN2', {
@@ -64,15 +65,28 @@ let _offer = (title, info) => {
         let _c = '';
         let _pat = (type, perc) => {
             let _title;
+            let _perc = 0;
             switch (type) {
                 case "ordinary":
                     _title = "Постійні умови"
+                    if (_conditions.get(title)[type].hasOwnProperty('multiplier'))
+                        _perc = ((_time_slider.value * _conditions.get(title)[type].multiplier).toFixed(2)).toString();
+                    else
+                        _perc = perc
                     break;
                 case "first":
                     _title = "Вперше"
+                    if (_conditions.get(title)[type].hasOwnProperty('multiplier'))
+                        _perc = ((_time_slider.value * _conditions.get(title)[type].multiplier).toFixed(2)).toString();
+                    else
+                        _perc = perc
                     break;
                 case "second":
                     _title = "Повторно"
+                    if (_conditions.get(title)[type].hasOwnProperty('multiplier'))
+                        _perc = ((_time_slider.value * _conditions.get(title)[type].multiplier).toFixed(2)).toString();
+                    else
+                        _perc = perc
                     break;
             }
             return `<div class="condition" id="${type}">
@@ -82,7 +96,7 @@ let _offer = (title, info) => {
                 </div>
                 <div class="labelPerc d-flex justify-content-center">
                   <div class="inLabel">
-                  <span class="percentage">${perc}</span> %
+                  <span class="percentage">${_perc}</span> %
                   </div>
                 </div>
                 <div class="labelAmount d-flex justify-content-center">
@@ -98,7 +112,18 @@ let _offer = (title, info) => {
             _c += _pat(k, info[k].percentage)
         return _c
     }
-    let _flag = info.hasOwnProperty('first') ? info.first.percentage : info.ordinary.percentage;
+    let _flag = '';
+    if (info.hasOwnProperty('first')) {
+        if (info.first.hasOwnProperty('multiplier'))
+            _flag = ((_time_slider.value * info.first.multiplier).toFixed(2)).toString()
+        else
+            _flag = info.first.percentage
+    } else if (info.hasOwnProperty('ordinary')) {
+        if (info.ordinary.hasOwnProperty('multiplier'))
+            _flag = ((_time_slider.value * info.ordinary.multiplier).toFixed(2)).toString()
+        else
+            _flag = info.ordinary.percentage
+    }
     return `<div class="offer" id="${title}">
             <div class="soul d-flex">
           <div class="left">
