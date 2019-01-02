@@ -2,6 +2,12 @@ let $aboutB, $aboutW, $aboutT;
 let $sliderM, $sliderT;
 let $levelM, $moveM, $levelT, $moveT;
 let $offers, $flag, $changeTimeout;
+let $links;
+
+let _links_font = {
+    min: 0.6,
+    max: 1
+}
 
 let _money_info = {
     min: 100,

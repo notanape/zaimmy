@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var shop = require('./module/shops.js');
 
 var app = express();
 
@@ -16,6 +17,8 @@ app.set('port', '8765');
 app.get("/", (req, res) => {
     res.sendFile(app.get('public') + '/index.html')
 })
+
+app.get("/shop/:shop", shop.list(app.get('public')));
 
 app.get("/*", (req, res) => {
     let param = req.params[0];
@@ -37,5 +40,3 @@ app.get("/*", (req, res) => {
 app.listen(app.get('port'), () => {
     console.log(`Port ${app.get('port')} is running...`)
 });
-
-///.well-known/acme-challenge/06I9v1vWDVTRNdFFad8o3Fke92gfl37fQjUkCvYzXqs

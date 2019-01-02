@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LIST</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <link rel="icon" href="">
+    <style>
+    	*{
+    		margin: 0;
+    		padding: 0;
+    		cursor: default;
+    	}
+    	input{
+    		width: 100%;
+    		position: fixed;
+    		height: 30px;
+    	}
+    	.list{
+    		width: 100%;
+    		position: absolute;
+    		top: 50px;
+    		left: 0px
+    	}
+    </style>
+   	<script>
+   		let _list = {"moneyveo":{"18":"","nakartu":"","plohoy":"","nalichnimi":"","zp":"","spravka":"","bistro":"","online":"","dengi":"","micro":"","bezrab":"","zalog":""}};
+   		let _html = '';
+   		window.onload = ()=>{
+   			for(let l in _list){
+   			   				_html+=`<b>${l}</b><br>`;
+   			   				let _i = '';
+   			   				for(let i in _list[l]){
+   			   					_i+=`--<b data-shop="${l}">${i}</b><br>`
+   			   				}
+   			   				_html+=_i;}
+   			 document.querySelector('.list').innerHTML = _html;
+   			 let _b = document.querySelectorAll('b[data-shop]');
+   			 let _in = document.querySelector('input');
+   			 for(let i=0; i<_b.length; i++){
+   			 	_b[i].onclick = ()=>{
+   			 		_in.value = `${_in.value}/shop/${_list[_b[i].getAttribute('data-shop')][_b[i].innerText]}`;
+   			 		_in.select();
+   			 		document.execCommand('copy');
+   			 	}
+   			 }
+   			 _in.onclick = ()=>{
+   			 	_in.select();
+   			 	document.execCommand('copy');
+   			 }
+   		}
+   	</script>
+</head>
+<body>
+	<input type="text" value="https://zaimmy.online">
+	<div class="list">
+	</div>
+</body>
+</html>

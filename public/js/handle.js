@@ -10,6 +10,7 @@ $(() => {
     $levelT = $sliderT.find('.level');
     $moveT = $sliderT.find('.move');
     $offers = $('.offers');
+    $links = $('.links a');
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
@@ -43,7 +44,8 @@ $(() => {
             let _move = _level.next();
             let _left = _level.position().left + e.offsetX - _move.width() / 2;
             _move.css('left', `${_left}px`);
-            sliderValue(_move, labelMove)
+            sliderValue(_move, labelMove);
+            calibrateOffers();
         })
     })
 
