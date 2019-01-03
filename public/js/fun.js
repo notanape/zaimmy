@@ -19,12 +19,9 @@ function findBound(move, level) {
 function dragOptions(move, level) {
     let _opt = {
         axis: 'x',
-        containment: /*findBound(move, level)*/ level.closest('.handler'),
+        containment: level.closest('.handler'),
         stop: () => {
             calibrateOffers();
-            $flag.each(function() {
-                recountFlag($(this))
-            })
         }
     }
     return _opt
@@ -145,7 +142,7 @@ function calibrate() {
 function calibrateFlags(flags) {
     flags.each(function() {
         let _flag = $(this);
-        recountFlag(_flag)
+        //recountFlag(_flag)
         adjustFlag(_flag);
         _flag.position({
             my: 'left top',
@@ -218,13 +215,24 @@ function calibrateOffers() {
             let _conN = $(this).attr('id');
             let _amm = $(this).find('.total');
             let _per = $(this).find('.percentage');
+            let _keys = _conditions.get(_off)[_conN];
             let _perc = 0;
-            if (_conditions.get(_off)[_conN].hasOwnProperty('multiplier')) {
-                _perc = ((_tV * _conditions.get(_off)[_conN].multiplier).toFixed(2)).toString();
-            } else
-                _perc = _conditions.get(_off)[_conN].percentage;
-            _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
-            _per.text(_perc);
+            _amm.parent().css('opacity', '0');
+            _per.parent().css('opacity', '0');
+
+            setTimeout(() => {
+                if (_keys.hasOwnProperty('time_multiplier')) {
+                    _perc = _tV * _keys['time_multiplier'];
+                }
+                if (_keys.hasOwnProperty('amount_multiplier')) {
+                    _perc += _tV * _keys['amount_multiplier'];
+                } else if (!_keys.hasOwnProperty('time_multiplier') && !_keys.hasOwnProperty('amount_multiplier'))
+                    _perc = _keys.percentage;
+                _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
+                _per.text(_perc.toFixed(2));
+                _amm.parent().css('opacity', '1');
+                _per.parent().css('opacity', '1');
+            }, 200)
 
 
         })

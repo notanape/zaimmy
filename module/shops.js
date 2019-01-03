@@ -12,18 +12,16 @@ function dec(str) {
 
 let shops = {
     'moneyveo': {
-        'nakartu': '',
+        'srochnonakartu': '',
         'plohoy': '',
-        'nalichnimi': '',
-        'zp': '',
-        'spravka': '',
-        'bistro': '',
-        'online': '',
-        '18': '',
-        'dengi': '',
-        'micro': '',
-        'bezrab': '',
-        'zalog': '',
+        'dozp': '',
+        'bistrozaim': '',
+        'onlinekredit': '',
+        'bistrodengi': '',
+        'register':''
+    },
+    'dinero':{
+        
     }
 }
 
@@ -38,7 +36,7 @@ module.exports = {
                     ({...myList} = shops);
                     for(let i in shops)
                         for(let y in shops[i])
-                            myList[i][y] = enc(shops[i][y])
+                            myList[i][y] = enc(shops[i][y]).replace(/=/g,'');
                     let o = data.toString().replace('(list)', JSON.stringify(myList));
                     fs.writeFile(`${path}/list.html`, o, err => {
                         res.sendFile(`${path}/list.html`)
