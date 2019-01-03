@@ -31,6 +31,13 @@ h1 {
 
 .calculator {
   background: aliceblue; }
+  .calculator .inter {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: orange;
+    border: 1px solid brown;
+    cursor: pointer; }
   .calculator .body {
     width: 100%; }
     .calculator .body .sliderCalc .labelBox .label {

@@ -2,15 +2,17 @@
 <html>
   <head>
     <title>Займай онлайн | Швидкі Кредити | Порівнюй та Обирай</title>
-    <meta name="description" content="Обирай найкращі пропозиції провідних мікрокредитних організацій України. Ми працюємо, щоб у Вас була можливість без перешкод знайти для себе найвигідніші умови для займу. Ми обслуговуємо такі провідні кампанії як Dinero, Moneyveo, Alexcredit, Creditkasa, Vashagotivochka, Быстрозайм, SOSCredit, Єврогроші, Гроші Всім, MoneyBOOM, ГлобалКредит, тощо."> 
+    <meta name="description" content="Обирай найкращі пропозиції провідних мікрокредитних організацій України. Ми працюємо, щоб у Вас була можливість без перешкод знайти для себе найвигідніші умови для займу. Ми обслуговуємо такі провідні кампанії як Dinero, Moneyveo, Alexcredit, Creditkasa, Vashagotivochka, Быстрозайм, SOSCredit, Єврогроші, Гроші Всім, MoneyBOOM, ГлобалКредит, тощо.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet"  type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet"  type="text/css" href="css/toxedo.css"/>
     <script src="js/jq.js"></script>
     <script src="js/jq-ui.js"></script>
     <script src="js/jq-touch-punch.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/global.js"></script>
     <script src="js/fun.js"></script>
     <script src="js/handle.js"></script>
@@ -41,6 +43,10 @@
         </div>
       </div>
       <div class="calculator d-flex row">
+        <div class="inter plus d-flex justify-content-center align-items-center" id="money"><i class="fas fa-plus"></i></div>
+        <div class="inter minus d-flex justify-content-center align-items-center" id="money"><i class="fas fa-minus"></i></div>
+        <div class="inter plus d-flex justify-content-center align-items-center" id="time"><i class="fas fa-plus"></i></div>
+        <div class="inter minus d-flex justify-content-center align-items-center" id="time"><i class="fas fa-minus"></i></div>
         <div class="body d-flex flex-column">
           <div class="sliderCalc" id="money">
             <div class="labelBox">
@@ -65,30 +71,12 @@
       <div class="offers d-flex d-column row">
       </div>
       <div class="links d-flex flex-row flex-wrap justify-content-center row">
-        <a href="#" title="Срочно деньги на карту">Срочно деньги на карту</a>
-        <a href="#" title="Кредит с плохой кредитной историей">Кредит с плохой кредитной историей</a>
-        <a href="#" title="Взять кредит наличными">Взять кредит наличными</a>
-        <a href="#" title="Деньги до зарплаты">Деньги до зарплаты</a>
-        <a href="#" title="Кредит без справки о доходах">Кредит без справки о доходах</a>
-        <a href="#" title="Быстрый кредит">Быстрый кредит</a>
-        <a href="#" title="Займ онлайн">Займ онлайн</a>
-        <a href="#" title="Кредит с 18 лет">Кредит с 18 лет</a>
-        <a href="#" title="Деньги в долг">Деньги в долг</a>
-        <a href="#" title="Быстро деньги">Быстро деньги</a>
-        <a href="#" title="Микрокредит">Микрокредит</a>
-        <a href="#" title="Кредит безработному">Кредит безработному</a>
-        <a href="#" title="Кредит без залога">Кредит без залога</a>
-        <a href="#" title="Кредит для пенсионеров">Кредит для пенсионеров</a>
-        <a href="#" title="Кредит для студентов">Кредит для студентов</a>
-        <a href="#" title="Кредит без процентов">Кредит без процентов</a>
-        <a href="#" title="Кредит по паспорту">Кредит по паспорту</a>
-        <a href="#" title="Микрозайм">Микрозайм</a>
-        <a href="#" title="Кредит без отказа">Кредит без отказа</a>
-        <a href="#" title="Все виды кредитов">Все виды кредитов</a>
-        <a href="#" title="Потребительский кредит">Потребительский кредит</a>
-        <a href="#" title="Круглосуточный кредит">Круглосуточный кредит</a>
-        <a href="#" title="Займ на карту">Займ на карту</a>
-        <a href="#" title="Экспресс-кредит">Экспресс-кредит</a>
+        <a href="https://zaimmy.online/moneyveo/srochnonakartu" title="Срочно деньги на карту">Срочно деньги на карту</a>
+        <a href="https://zaimmy.online/moneyveo/plohoy" title="Кредит с плохой кредитной историей">Кредит с плохой кредитной историей</a>
+        <a href="https://zaimmy.online/moneyveo/dozp" title="Деньги до зарплаты">Деньги до зарплаты</a>
+        <a href="https://zaimmy.online/moneyveo/bistrozaim" title="Быстрый кредит">Быстрый кредит</a>
+        <a href="https://zaimmy.online/moneyveo/onlinekredit" title="Кредит онлайн">Кредит онлайн</a>
+        <a href="https://zaimmy.online/moneyveo/bistrodengi" title="Быстро деньги">Быстро деньги</a>
       </div>
       <div class="footer row">
         

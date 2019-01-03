@@ -1,27 +1,18 @@
-let b64 = require('base-64');
-let u8 = require('utf8');
 let fs = require('fs');
-
-function enc(str) {
-    return b64.encode(u8.encode(str))
-}
-
-function dec(str) {
-    return u8.decode(b64.decode(str))
-}
 
 let shops = {
     'moneyveo': {
-        'srochnonakartu': '',
-        'plohoy': '',
-        'dozp': '',
-        'bistrozaim': '',
-        'onlinekredit': '',
-        'bistrodengi': '',
-        'register':''
+        'srochnonakartu': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--dengi-srochno',
+        'plohoy': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bad-credit-history',
+        'dozp': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--dengi-do-zarplaty',
+        'bistrozaim': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bustryj-credit',
+        'onlinekredit': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--zaim-online',
+        'bistrodengi': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bistro-dengi',
+        'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Fregisternew',
+        'loan-cash': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Flogin'
     },
-    'dinero':{
-        
+    'dinero': {
+        'loan-cash': ''
     }
 }
 
@@ -29,19 +20,32 @@ module.exports = {
 
     list(path) {
         return (req, res) => {
-            let _param = req.params.shop;
-            if (_param == 'show') {
+            let param = req.params[0];
+            let _s = param.split('/');
+            if (_s.includes('show')) {
                 fs.readFile(`${path}/list.html`, (err, data) => {
-                    let myList = {};
-                    ({...myList} = shops);
-                    for(let i in shops)
-                        for(let y in shops[i])
-                            myList[i][y] = enc(shops[i][y]).replace(/=/g,'');
-                    let o = data.toString().replace('(list)', JSON.stringify(myList));
-                    fs.writeFile(`${path}/list.html`, o, err => {
-                        res.sendFile(`${path}/list.html`)
+                    let o = data.toString().replace('(list)', JSON.stringify(shops));
+                    fs.writeFile(`${path}/l.html`, o, err => {
+                        res.sendFile(`${path}/l.html`)
                     })
                 })
+            } else if (!shops.hasOwnProperty(_s[0])) {
+                let param = req.params[0];
+                fs.stat(`${path}/${param}`, (err, st) => {
+                    if (err) {
+                        res.status(404).end()
+                    }
+                    if (param.includes('.well-known')) {
+                        res.sendFile(`${path}/${param}`, {
+                            headers: {
+                                'Content-Type': 'text/plain'
+                            }
+                        })
+                    } else
+                        res.sendFile(`${path}/${param}`)
+                })
+            } else if (shops.hasOwnProperty(_s[0])) {
+                res.redirect(shops[_s[0]][_s[1]])
             }
         }
     }

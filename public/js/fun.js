@@ -81,14 +81,31 @@ function labelMove(move) {
     })
 }
 
+function plusMinus(e) {
+    e.stopImmediatePropagation();
+    let _b = $(e.target).closest('.inter');
+    let _move = _b.parent().find(`.sliderCalc#${_b.attr('id')}`).find('.move');
+    let _info = _b.attr('id') == 'money' ? _money_info : _time_info;
+    let _slider = _b.attr('id') == 'money' ? _money_slider : _time_slider;
+    if (_b.hasClass('plus')) {
+        if (_slider.value < _info.max)
+            _slider.value += _info.step;
+    } else if (_b.hasClass('minus')) {
+        if (_slider.value > _info.min)
+            _slider.value -= _info.step;
+    }
+    sliderValue(_move, _slider.value, labelMove);
+    calibrateOffers();
+}
+
 function opac() {
-    $moveM.add($moveT).add($flag).each(function() {
+    $moveM.add($moveT).add($flag).add($plus).add($minus).each(function() {
         $(this).css('opacity', 0);
     })
 }
 
 function disopac() {
-    $moveM.add($moveT).add($flag).each(function() {
+    $moveM.add($moveT).add($flag).add($plus).add($minus).each(function() {
         $(this).css('opacity', 1);
     })
 }
@@ -128,15 +145,38 @@ function calibrate() {
         let _move = $(this);
         let _level = _move.prev();
         let _slider = _move.is($moveM) ? _money_slider : _time_slider;
+        let _plus = $(`.inter.plus#${_move.closest('.sliderCalc').attr('id')}`);
+        let _minus = $(`.inter.minus#${_move.closest('.sliderCalc').attr('id')}`);
+        let _hand = _move.parent();
         _move.position({
             my: 'center',
             at: 'left center',
             of: _level
         });
+        _hand.css({
+            marginLeft: `${_plus.width() + (_plus.css('border-left-width').replace('px','')) * 2 }px`,
+            marginRight: `${_plus.width() + (_plus.css('border-left-width').replace('px','')) * 2 }px`
+        })
+        _plus.position({
+            my: 'left center',
+            at: 'right center',
+            of: _hand
+        })
+        _minus.position({
+            my: 'right center',
+            at: 'left center',
+            of: _hand
+        })
         _move.draggable(dragOptions(_move, _level));
         sliderValue(_move, _slider.value, labelMove);
+
     });
-    calibrateFlags($flag)
+    calibrateFlags($flag);
+    let _off = $offers.find('.offer');
+    _off.each(function() {
+        let _this = $(this);
+        _this.find('.left').css('width', `${_this.height()}px`)
+    })
 }
 
 function calibrateFlags(flags) {
@@ -185,8 +225,14 @@ function addOffers() {
         let _offerD = $(_offer(k, v));
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
+        $checkout = $('.forButton>#checkout');
+        $checkout.bind('click', checkout);
+        let _off = $offers.find('.offer');
+        _off.each(function() {
+            let _this = $(this);
+            _this.find('.left').css('width', `${_this.height()}px`)
+        })
         _offerD.find('img').on('load', e => {
-            $flag = $offers.find('.flag');
             calibrateFlags($flag);
         });
     })
@@ -225,7 +271,7 @@ function calibrateOffers() {
                     _perc = _tV * _keys['time_multiplier'];
                 }
                 if (_keys.hasOwnProperty('amount_multiplier')) {
-                    _perc += _tV * _keys['amount_multiplier'];
+                    _perc += _mV / 100 * _keys['amount_multiplier'];
                 } else if (!_keys.hasOwnProperty('time_multiplier') && !_keys.hasOwnProperty('amount_multiplier'))
                     _perc = _keys.percentage;
                 _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
@@ -266,5 +312,21 @@ function calibrateOffers() {
                 }
             }
         }
+    }
+}
+
+function checkout(e) {
+    let _target = $(event.target);
+    let _info = _target.closest('.forButton').prev();
+    let _con = _info.find('.condition');
+    let _offer = _target.closest('.offer').attr('id').toLowerCase();
+    let _loan = "loan-cash";
+    if (_con.filter('#ordinary').length != 0)
+        window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
+    else {
+        if (_con.filter('#first').css('display') == 'none')
+            window.open(`${location.origin}/${_offer}/${_loan}`, '_blank')
+        else if (_con.filter('#first').css('display') != 'none')
+            window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
     }
 }

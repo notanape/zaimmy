@@ -2,8 +2,8 @@
     user-select: none;
 }
 
-.container-fluid{
-    @media (min-width: 576px){
+.container-fluid {
+    @media (min-width: 576px) {
         width: 670px !important;
     }
 }
@@ -51,6 +51,15 @@ h1 {
 .calculator {
     background: aliceblue;
 
+    .inter {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: orange;
+        border: 1px solid brown;
+        cursor: pointer;
+    }
+
     .body {
         width: 100%;
 
@@ -66,8 +75,7 @@ h1 {
             .handler {
                 background: bisque;
                 padding: 10px 0px;
-                margin:0 3px;
-                
+                margin: 0 3px;
 
                 .level {
                     background-color: orange;

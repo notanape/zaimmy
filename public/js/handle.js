@@ -11,41 +11,27 @@ $(() => {
     $moveT = $sliderT.find('.move');
     $offers = $('.offers');
     $links = $('.links a');
+    $plus = $('.plus');
+    $minus = $('.minus')
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
 
     addOffers();
 
-    $('img').each(function() {
-        $(this).on('load', () => {
-            calibrate()
-        })
-    })
-
-    //calibrate();
+    $('img').bind('load', calibrate)
 
     calibrateOffers();
 
     $aboutB.bind('click', aboutUs);
+
+    $plus.add($minus).bind('click', plusMinus)
 
     _moves.each(function() {
         let _move = $(this);
         _move.bind('drag', (e) => {
             let _move = $(e.target).closest('.move');
             sliderValue(_move, labelMove)
-        })
-    })
-
-    _levels.each(function() {
-        let _level = $(this);
-        _level.bind('click', (e) => {
-            e.stopImmediatePropagation();
-            let _move = _level.next();
-            let _left = _level.position().left + e.offsetX - _move.width() / 2;
-            _move.css('left', `${_left}px`);
-            sliderValue(_move, labelMove);
-            calibrateOffers();
         })
     })
 
