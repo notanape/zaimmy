@@ -140,7 +140,7 @@ function aboutUs(e) {
 }
 
 function calibrate() {
-    let _moves = $moveM.add($moveT);
+    let _moves = $moveM.add($moveT);    
     _moves.each(function() {
         let _move = $(this);
         let _level = _move.prev();
@@ -175,7 +175,7 @@ function calibrate() {
     let _off = $offers.find('.offer');
     _off.each(function() {
         let _this = $(this);
-        _this.find('.left').css('width', `${_this.height()}px`)
+        _this.find('.offerLogo').css('width', `${_this.height()}px`)
     })
 }
 

@@ -15,9 +15,13 @@ h1 {
 
 .button {
     cursor: pointer;
+    font-family: 'Rubik';
 }
 
 .head {
+    background-image: url("/pic/headerOp.png");
+    background-size: cover;
+
     .right {
         width: 40%;
 
@@ -45,6 +49,7 @@ h1 {
 
     .aboutUs {
         opacity: 0;
+        font-family: 'Spectral';
     }
 }
 
@@ -53,8 +58,8 @@ h1 {
 
     .inter {
         position: absolute;
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
         background: orange;
         border: 1px solid brown;
         cursor: pointer;
@@ -63,12 +68,28 @@ h1 {
     .body {
         width: 100%;
 
+        .sliderCalc#money {
+            .move {
+                background-image: url("/pic/hryvna40.png");
+            }
+        }
+
+        .sliderCalc#time {
+            .move {
+                background-image: url("/pic/hryvna40.png");
+            }
+        }
+
         .sliderCalc {
+            margin-top: 15px;
+
             .labelBox {
                 .label {
                     display: inline-block;
                     background: burlywood;
-                    margin-bottom: 5px;
+                    margin-bottom: 12px;
+                    font-family: 'Exo 2';
+                    font-size: 1.5em;
                 }
             }
 
@@ -78,17 +99,31 @@ h1 {
                 margin: 0 3px;
 
                 .level {
-                    background-color: orange;
-                    height: 5px;
-                    margin: 0 7px;
+                    background-color: #009bbb;
+                    border: 1px solid #94ecff;
+                    height: 9px;
+                    border-radius: 5px;
+                    margin: 0 20px;
                     cursor: pointer;
+                    box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.45), inset 1px -1px 5px 0px rgba(0, 0, 0, 1);
+                }
+
+                .level:before {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    right: 0;
+                    background-color: black;
+
+                    //width: calc(100% + 1px);
+                    //height: calc(100% + 1px);
+               
                 }
 
                 .move {
                     position: absolute;
-                    background: pink;
-                    height: 15px;
-                    width: 15px;
+                    height: 40px;
+                    width: 40px;
                     cursor: pointer;
                 }
             }
@@ -98,6 +133,7 @@ h1 {
 
 .offers {
     background: aliceblue;
+    margin-top: 20px;
 
     .offer {
         width: 100%;
@@ -107,9 +143,29 @@ h1 {
         .right {
             width: 100%;
 
+            .label {
+                .title {
+                    font-family: 'Sawarabi Gothic';
+                }
+            }
+
             .info {
                 .condition {
                     width: 100%;
+
+                    .soul {
+                        .labelStatus {
+                            font-family: 'Spectral';
+                        }
+
+                        .labelPerc {
+                            font-family: 'Exo 2';
+                        }
+
+                        .labelAmount {
+                            font-family: 'Exo 2';
+                        }
+                    }
                 }
 
                 .condition#first {
@@ -131,6 +187,7 @@ h1 {
         .flag {
             .label {
                 background: pink;
+                font-family: 'Exo 2';
 
                 .rightCorner, .leftCorner {
                     border-color: transparent;
@@ -178,4 +235,11 @@ h1 {
     }
 }
 
-.links {}
+.links {
+    font-family: 'PT Sans';
+}
+
+.footer {
+    text-align: center;
+    font-family: "Rubik";
+}

@@ -74,7 +74,7 @@ let _offer = (title, info) => {
             </div>
             <div class="forButton d-flex justify-content-end">
               <div class="button" id="checkout">
-                Checkout
+                Оформити
               </div>
             </div>
           </div>

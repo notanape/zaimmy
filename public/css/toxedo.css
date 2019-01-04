@@ -10,66 +10,96 @@ h1 {
   font-size: 1em !important; }
 
 .button {
-  cursor: pointer; }
+  cursor: pointer;
+  font-family: 'Rubik'; }
 
-.head .right {
-  width: 40%; }
-  .head .right .stars img {
-    width: 15px; }
-  .head .right .buttonCont .button {
-    background: #ff877a;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 17px 0 0; }
+.head {
+  background-image: url("/pic/headerOp.png");
+  background-size: cover; }
+  .head .right {
+    width: 40%; }
+    .head .right .stars img {
+      width: 15px; }
+    .head .right .buttonCont .button {
+      background: #ff877a;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 17px 0 0; }
 
 .about {
   display: none;
   background: #ff877a;
   color: white; }
   .about .aboutUs {
-    opacity: 0; }
+    opacity: 0;
+    font-family: 'Spectral'; }
 
 .calculator {
   background: aliceblue; }
   .calculator .inter {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     background: orange;
     border: 1px solid brown;
     cursor: pointer; }
   .calculator .body {
     width: 100%; }
-    .calculator .body .sliderCalc .labelBox .label {
-      display: inline-block;
-      background: burlywood;
-      margin-bottom: 5px; }
-    .calculator .body .sliderCalc .handler {
-      background: bisque;
-      padding: 10px 0px;
-      margin: 0 3px; }
-      .calculator .body .sliderCalc .handler .level {
-        background-color: orange;
-        height: 5px;
-        margin: 0 7px;
-        cursor: pointer; }
-      .calculator .body .sliderCalc .handler .move {
-        position: absolute;
-        background: pink;
-        height: 15px;
-        width: 15px;
-        cursor: pointer; }
+    .calculator .body .sliderCalc#money .move {
+      background-image: url("/pic/hryvna40.png"); }
+    .calculator .body .sliderCalc#time .move {
+      background-image: url("/pic/hryvna40.png"); }
+    .calculator .body .sliderCalc {
+      margin-top: 15px; }
+      .calculator .body .sliderCalc .labelBox .label {
+        display: inline-block;
+        background: burlywood;
+        margin-bottom: 12px;
+        font-family: 'Exo 2';
+        font-size: 1.5em; }
+      .calculator .body .sliderCalc .handler {
+        background: bisque;
+        padding: 10px 0px;
+        margin: 0 3px; }
+        .calculator .body .sliderCalc .handler .level {
+          background-color: #009bbb;
+          border: 1px solid #94ecff;
+          height: 9px;
+          border-radius: 5px;
+          margin: 0 20px;
+          cursor: pointer;
+          box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.45), inset 1px -1px 5px 0px black; }
+        .calculator .body .sliderCalc .handler .level:before {
+          position: absolute;
+          content: '';
+          left: 0;
+          right: 0;
+          background-color: black; }
+        .calculator .body .sliderCalc .handler .move {
+          position: absolute;
+          height: 40px;
+          width: 40px;
+          cursor: pointer; }
 
 .offers {
-  background: aliceblue; }
+  background: aliceblue;
+  margin-top: 20px; }
   .offers .offer {
     width: 100%;
     background: #bdf5db;
     margin-top: 10px; }
     .offers .offer .right {
       width: 100%; }
+      .offers .offer .right .label .title {
+        font-family: 'Sawarabi Gothic'; }
       .offers .offer .right .info .condition {
         width: 100%; }
+        .offers .offer .right .info .condition .soul .labelStatus {
+          font-family: 'Spectral'; }
+        .offers .offer .right .info .condition .soul .labelPerc {
+          font-family: 'Exo 2'; }
+        .offers .offer .right .info .condition .soul .labelAmount {
+          font-family: 'Exo 2'; }
       .offers .offer .right .info .condition#first {
         border-right: 1px dotted #ffc5c5; }
       .offers .offer .right .forButton .button {
@@ -77,7 +107,8 @@ h1 {
     .offers .offer .flag {
       position: absolute; }
     .offers .offer .flag .label {
-      background: pink; }
+      background: pink;
+      font-family: 'Exo 2'; }
       .offers .offer .flag .label .rightCorner, .offers .offer .flag .label .leftCorner {
         border-color: transparent;
         position: absolute;
@@ -110,5 +141,12 @@ h1 {
       z-index: 2;
       background: orange;
       border-radius: 2px 2px 0 0; }
+
+.links {
+  font-family: 'PT Sans'; }
+
+.footer {
+  text-align: center;
+  font-family: "Rubik"; }
 
 /*# sourceMappingURL=toxedo.css.map */
