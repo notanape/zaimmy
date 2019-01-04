@@ -1,6 +1,6 @@
 let $aboutB, $aboutW, $aboutT;
 let $sliderM, $sliderT, $plus, $minus;
-let $levelM, $moveM, $levelT, $moveT;
+let $levelM, $moveM, $levelT, $moveT, $backM, $backT;
 let $offers, $flag, $changeTimeout;
 let $links;
 let $checkout;
@@ -20,7 +20,7 @@ let _offer = (title, info) => {
                 case "second":
                     _title = "Повторно"
                     break;
-            }           
+            }
 
             return `<div class="condition" id="${type}">
                     <div class="soul d-flex flex-column">

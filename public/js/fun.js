@@ -34,13 +34,13 @@ function sliderValue() {
     let _slider = _move.is($moveM) ? _money_slider : _time_slider;
     let _info = _move.is($moveM) ? _money_info : _time_info;
     let _levelL = _level.position().left + parseInt(_level.css('margin-left').replace('px', ''));
+    let _back = _move.is($moveM) ? $backM : $backT;
     if (arguments.length == 2) {
         _slider.left = _move.position().left;
         let _grid = _info.max / _info.min;
         let _oneStep = _level.width() / _grid;
         let _posLevel = Math.floor((_slider.left + (_move.width() / 2) - _levelL) / _oneStep);
         _slider.value = _info.min + (_info.step * (_posLevel));
-        _call(_move);
     } else {
         _slider.value = arguments[1];
         let _grid = _info.max / _info.min;
@@ -49,8 +49,9 @@ function sliderValue() {
         let _posLevel = _oneStep * _needSteps;
         _slider.left = _posLevel + (_levelL - _move.width() / 2);
         _move.css('left', `${_slider.left}px`);
-        _call(_move);
     }
+    _back.css('width',`${_move.position().left - _levelL + 2}px`)
+    _call(_move);
 }
 
 function labelMove(move) {
@@ -140,7 +141,7 @@ function aboutUs(e) {
 }
 
 function calibrate() {
-    let _moves = $moveM.add($moveT);    
+    let _moves = $moveM.add($moveT);
     _moves.each(function() {
         let _move = $(this);
         let _level = _move.prev();

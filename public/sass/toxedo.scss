@@ -55,14 +55,24 @@ h1 {
 
 .calculator {
     background: aliceblue;
+    padding: 0 5px;
 
     .inter {
         position: absolute;
         width: 35px;
         height: 35px;
         background: orange;
-        border: 1px solid brown;
+        border: 1px solid #afafaf;
         cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .inter.plus {
+        background: #28fba1;
+    }
+
+    .inter.minus {
+        background: #48dcb5;
     }
 
     .body {
@@ -81,12 +91,16 @@ h1 {
         }
 
         .sliderCalc {
-            margin-top: 15px;
+            margin-top: 18px;
 
             .labelBox {
                 .label {
                     display: inline-block;
-                    background: burlywood;
+                    background: white;
+                    border: 1px dashed #43b500;
+                    border-radius: 8px;
+                    color: #19585f;
+                    padding: 0px 6px;
                     margin-bottom: 12px;
                     font-family: 'Exo 2';
                     font-size: 1.5em;
@@ -94,18 +108,24 @@ h1 {
             }
 
             .handler {
-                background: bisque;
                 padding: 10px 0px;
                 margin: 0 3px;
 
                 .level {
-                    background-color: #009bbb;
+                    background-color: #b5b5b5;
                     border: 1px solid #94ecff;
                     height: 9px;
                     border-radius: 5px;
-                    margin: 0 20px;
+                    margin: 0 17px 0 20px;
                     cursor: pointer;
-                    box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.45), inset 1px -1px 5px 0px rgba(0, 0, 0, 1);
+
+                    //box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.45), inset 1px -1px 5px 0px rgba(0, 0, 0, 1);
+                    .background {
+                        height: 100%;
+                        width: 0%;
+                        background: linear-gradient(to right, rgba(72, 220, 180, 1) 0%, rgba(40, 251, 160, 1) 100%);
+                        border-radius: 5px 0 0 5px;
+                    }
                 }
 
                 .level:before {

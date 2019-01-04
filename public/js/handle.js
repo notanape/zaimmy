@@ -9,6 +9,9 @@ $(() => {
     $moveM = $sliderM.find('.move');
     $levelT = $sliderT.find('.level');
     $moveT = $sliderT.find('.move');
+    $backM = $levelM.find('.background');
+    $backT = $levelT.find('.background');
+
     $offers = $('.offers');
     $links = $('.links a');
     $plus = $('.plus');

@@ -35,14 +35,20 @@ h1 {
     font-family: 'Spectral'; }
 
 .calculator {
-  background: aliceblue; }
+  background: aliceblue;
+  padding: 0 5px; }
   .calculator .inter {
     position: absolute;
     width: 35px;
     height: 35px;
     background: orange;
-    border: 1px solid brown;
-    cursor: pointer; }
+    border: 1px solid #afafaf;
+    cursor: pointer;
+    border-radius: 3px; }
+  .calculator .inter.plus {
+    background: #28fba1; }
+  .calculator .inter.minus {
+    background: #48dcb5; }
   .calculator .body {
     width: 100%; }
     .calculator .body .sliderCalc#money .move {
@@ -50,25 +56,32 @@ h1 {
     .calculator .body .sliderCalc#time .move {
       background-image: url("/pic/hryvna40.png"); }
     .calculator .body .sliderCalc {
-      margin-top: 15px; }
+      margin-top: 18px; }
       .calculator .body .sliderCalc .labelBox .label {
         display: inline-block;
-        background: burlywood;
+        background: white;
+        border: 1px dashed #43b500;
+        border-radius: 8px;
+        color: #19585f;
+        padding: 0px 6px;
         margin-bottom: 12px;
         font-family: 'Exo 2';
         font-size: 1.5em; }
       .calculator .body .sliderCalc .handler {
-        background: bisque;
         padding: 10px 0px;
         margin: 0 3px; }
         .calculator .body .sliderCalc .handler .level {
-          background-color: #009bbb;
+          background-color: #b5b5b5;
           border: 1px solid #94ecff;
           height: 9px;
           border-radius: 5px;
-          margin: 0 20px;
-          cursor: pointer;
-          box-shadow: 1px -1px 5px 0px rgba(255, 255, 255, 0.45), inset 1px -1px 5px 0px black; }
+          margin: 0 17px 0 20px;
+          cursor: pointer; }
+          .calculator .body .sliderCalc .handler .level .background {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #48dcb4 0%, #28fba0 100%);
+            border-radius: 5px 0 0 5px; }
         .calculator .body .sliderCalc .handler .level:before {
           position: absolute;
           content: '';
