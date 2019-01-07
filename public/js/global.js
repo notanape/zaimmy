@@ -5,6 +5,8 @@ let $offers, $flag, $changeTimeout;
 let $links;
 let $checkout;
 
+let $m_b = '20px';
+
 let _offer = (title, info) => {
     let _condition = info => {
         let _c = '';

@@ -1,3 +1,6 @@
+$m-b: 20px;
+$b-col: #7b8e77;
+
 * {
     user-select: none;
 }
@@ -24,6 +27,8 @@ h1 {
 
 .head {
     background: white;
+    border-radius: 0 0 17px 17px;
+
     .left{
         .logo{
             margin-left: 15px;
@@ -40,10 +45,10 @@ h1 {
 
         .buttonCont {
             .button {
-                background: #426141;
+                background: $b-col;
                 color: white;
                 padding: 5px 15px;
-                border-radius: 17px 0 0;
+                border-radius: 17px 0 17px 0;
             }
         }
     }
@@ -51,8 +56,9 @@ h1 {
 
 .about {
     display: none;
-    background: #426141;
+    background: $b-col;
     color: white;
+    border-radius: 0 0 17px 17px;
 
     .aboutUs {
         opacity: 0;
@@ -62,8 +68,18 @@ h1 {
 
 .calculator {
    
+   margin-top:$m-b;
    background: white;
-    padding: 0 5px;
+   padding: 0 15px 20px;
+   border-radius: 17px;
+    
+   .desc{
+        background: $b-col;
+        color: white;
+        padding: 5px 15px;
+        margin-left: -15px;
+        border-radius: 17px 0 17px 0;
+   } 
 
     .inter {
         position: absolute;

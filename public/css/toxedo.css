@@ -17,7 +17,8 @@ h1 {
   font-family: 'Rubik'; }
 
 .head {
-  background: white; }
+  background: white;
+  border-radius: 0 0 17px 17px; }
   .head .left .logo {
     margin-left: 15px; }
   .head .right {
@@ -25,22 +26,31 @@ h1 {
     .head .right .stars img {
       width: 15px; }
     .head .right .buttonCont .button {
-      background: #426141;
+      background: #7b8e77;
       color: white;
       padding: 5px 15px;
-      border-radius: 17px 0 0; }
+      border-radius: 17px 0 17px 0; }
 
 .about {
   display: none;
-  background: #426141;
-  color: white; }
+  background: #7b8e77;
+  color: white;
+  border-radius: 0 0 17px 17px; }
   .about .aboutUs {
     opacity: 0;
     font-family: 'Spectral'; }
 
 .calculator {
+  margin-top: 20px;
   background: white;
-  padding: 0 5px; }
+  padding: 0 15px 20px;
+  border-radius: 17px; }
+  .calculator .desc {
+    background: #7b8e77;
+    color: white;
+    padding: 5px 15px;
+    margin-left: -15px;
+    border-radius: 17px 0 17px 0; }
   .calculator .inter {
     position: absolute;
     width: 35px;

@@ -115,13 +115,24 @@ function aboutUs(e) {
     e.stopImmediatePropagation();
     if ($aboutW.css('display') == "none") {
         opac()
-        $aboutW.slideDown(300, () => {
-            $aboutW.css('display', 'inline-block');
-            calibrate();
-            disopac();
-            $aboutT.animate({
-                opacity: 1
-            }, 150)
+        $aboutW.slideDown({
+            start: () => {
+                $('.head').css({
+                    borderRadius: '0'
+                });
+                $('.head .button').css({
+                    borderRadius: '17px 0 0 0'
+                })
+            },
+            duration: 300,
+            complete: () => {
+                $aboutW.css('display', 'inline-block');
+                calibrate();
+                disopac();
+                $aboutT.animate({
+                    opacity: 1
+                }, 150)
+            }
         });
         return false
     } else {
@@ -131,6 +142,12 @@ function aboutUs(e) {
             $aboutW.css('display', 'block');
             opac()
             $aboutW.slideUp(300, () => {
+                $('.head').css({
+                    borderRadius: '0 0 17px 17px'
+                });
+                $('.head .button').css({
+                    borderRadius: '17px 0 17px 0'
+                })
                 calibrate();
                 disopac()
             });
@@ -171,7 +188,7 @@ function calibrate() {
         _move.draggable(dragOptions(_move, _level));
         sliderValue(_move, _slider.value, labelMove);
 
-    });    
+    });
     calibrateFlags($flag);
     let _off = $offers.find('.offer');
     _off.each(function() {
@@ -180,7 +197,7 @@ function calibrate() {
     })
 }
 
-function calibrateLogo(){
+function calibrateLogo() {
     let _w = $(window).width();
     if (_w >= 576)
         $('.logo>img').attr('style', 'height:auto !important');
