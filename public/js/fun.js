@@ -50,7 +50,7 @@ function sliderValue() {
         _slider.left = _posLevel + (_levelL - _move.width() / 2);
         _move.css('left', `${_slider.left}px`);
     }
-    _back.css('width',`${_move.position().left - _levelL + 2}px`)
+    _back.css('width', `${_move.position().left - _levelL + 2}px`)
     _call(_move);
 }
 
@@ -171,13 +171,21 @@ function calibrate() {
         _move.draggable(dragOptions(_move, _level));
         sliderValue(_move, _slider.value, labelMove);
 
-    });
+    });    
     calibrateFlags($flag);
     let _off = $offers.find('.offer');
     _off.each(function() {
         let _this = $(this);
         _this.find('.offerLogo').css('width', `${_this.height()}px`)
     })
+}
+
+function calibrateLogo(){
+    let _w = $(window).width();
+    if (_w >= 576)
+        $('.logo>img').attr('style', 'height:auto !important');
+    else
+        $('.logo>img').attr('style', 'height:106px !important');
 }
 
 function calibrateFlags(flags) {

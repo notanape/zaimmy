@@ -1,6 +1,9 @@
 * {
   user-select: none; }
 
+body {
+  background-image: url("/pic/back.png"); }
+
 @media (min-width: 576px) {
   .container-fluid {
     width: 670px !important; } }
@@ -14,28 +17,29 @@ h1 {
   font-family: 'Rubik'; }
 
 .head {
-  background-image: url("/pic/headerOp.png");
-  background-size: cover; }
+  background: white; }
+  .head .left .logo {
+    margin-left: 15px; }
   .head .right {
     width: 40%; }
     .head .right .stars img {
       width: 15px; }
     .head .right .buttonCont .button {
-      background: #ff877a;
+      background: #426141;
       color: white;
       padding: 5px 15px;
       border-radius: 17px 0 0; }
 
 .about {
   display: none;
-  background: #ff877a;
+  background: #426141;
   color: white; }
   .about .aboutUs {
     opacity: 0;
     font-family: 'Spectral'; }
 
 .calculator {
-  background: aliceblue;
+  background: white;
   padding: 0 5px; }
   .calculator .inter {
     position: absolute;
@@ -46,15 +50,15 @@ h1 {
     cursor: pointer;
     border-radius: 3px; }
   .calculator .inter.plus {
-    background: #28fba1; }
+    background: #b58b99; }
   .calculator .inter.minus {
-    background: #48dcb5; }
+    background: #b58b99; }
   .calculator .body {
     width: 100%; }
     .calculator .body .sliderCalc#money .move {
-      background-image: url("/pic/hryvna40.png"); }
+      background-image: url("/pic/hryvna401.png"); }
     .calculator .body .sliderCalc#time .move {
-      background-image: url("/pic/hryvna40.png"); }
+      background-image: url("/pic/hryvna401.png"); }
     .calculator .body .sliderCalc {
       margin-top: 18px; }
       .calculator .body .sliderCalc .labelBox .label {
@@ -71,8 +75,8 @@ h1 {
         padding: 10px 0px;
         margin: 0 3px; }
         .calculator .body .sliderCalc .handler .level {
-          background-color: #b5b5b5;
-          border: 1px solid #94ecff;
+          background-color: #e8e8e8;
+          border: 1px solid #bfbfbf;
           height: 9px;
           border-radius: 5px;
           margin: 0 17px 0 20px;
@@ -80,7 +84,7 @@ h1 {
           .calculator .body .sliderCalc .handler .level .background {
             height: 100%;
             width: 0%;
-            background: linear-gradient(to right, #48dcb4 0%, #28fba0 100%);
+            background: linear-gradient(to right, #b58b99 0%, #e2c9b3 100%);
             border-radius: 5px 0 0 5px; }
         .calculator .body .sliderCalc .handler .level:before {
           position: absolute;

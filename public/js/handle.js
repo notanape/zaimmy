@@ -22,7 +22,9 @@ $(() => {
 
     addOffers();
 
-    $('img').bind('load', calibrate)
+    $('img').bind('load', () => {
+        calibrate(), calibrateLogo()
+    })
 
     calibrateOffers();
 
@@ -40,11 +42,7 @@ $(() => {
 
     $(window).bind('resize', () => {
         calibrate();
-        let _w = $(window).width();
-        if (_w >= 576)
-            $('.logo>img').attr('src', 'pic/logoB.png');
-        else
-            $('.logo>img').attr('src', 'pic/logo.png');
+        calibrateLogo()
     });
 
 })

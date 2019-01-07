@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon'); 
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var shop = require('./module/shops.js');
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 //app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'pic', 'icon.png')));
 app.set('public', path.join(__dirname, 'public'));
 app.set('port', '8765');
 

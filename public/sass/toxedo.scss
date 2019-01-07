@@ -2,6 +2,10 @@
     user-select: none;
 }
 
+body{
+    background-image: url('/pic/back.png');
+}
+
 .container-fluid {
     @media (min-width: 576px) {
         width: 670px !important;
@@ -19,9 +23,12 @@ h1 {
 }
 
 .head {
-    background-image: url("/pic/headerOp.png");
-    background-size: cover;
-
+    background: white;
+    .left{
+        .logo{
+            margin-left: 15px;
+        }
+    }
     .right {
         width: 40%;
 
@@ -33,7 +40,7 @@ h1 {
 
         .buttonCont {
             .button {
-                background: #ff877a;
+                background: #426141;
                 color: white;
                 padding: 5px 15px;
                 border-radius: 17px 0 0;
@@ -44,7 +51,7 @@ h1 {
 
 .about {
     display: none;
-    background: #ff877a;
+    background: #426141;
     color: white;
 
     .aboutUs {
@@ -54,7 +61,8 @@ h1 {
 }
 
 .calculator {
-    background: aliceblue;
+   
+   background: white;
     padding: 0 5px;
 
     .inter {
@@ -68,11 +76,11 @@ h1 {
     }
 
     .inter.plus {
-        background: #28fba1;
+        background: #b58b99;
     }
 
     .inter.minus {
-        background: #48dcb5;
+        background: #b58b99;
     }
 
     .body {
@@ -80,13 +88,13 @@ h1 {
 
         .sliderCalc#money {
             .move {
-                background-image: url("/pic/hryvna40.png");
+                background-image: url("/pic/hryvna401.png");
             }
         }
 
         .sliderCalc#time {
             .move {
-                background-image: url("/pic/hryvna40.png");
+                background-image: url("/pic/hryvna401.png");
             }
         }
 
@@ -112,8 +120,8 @@ h1 {
                 margin: 0 3px;
 
                 .level {
-                    background-color: #b5b5b5;
-                    border: 1px solid #94ecff;
+                    background-color: #e8e8e8;
+                    border: 1px solid #bfbfbf;
                     height: 9px;
                     border-radius: 5px;
                     margin: 0 17px 0 20px;
@@ -123,7 +131,9 @@ h1 {
                     .background {
                         height: 100%;
                         width: 0%;
-                        background: linear-gradient(to right, rgba(72, 220, 180, 1) 0%, rgba(40, 251, 160, 1) 100%);
+                        //background: linear-gradient(to right, rgba(72, 220, 180, 1) 0%, rgba(40, 251, 160, 1) 100%);
+                        //500 hryvna background: linear-gradient(to right, #86c1e3 0%, #ffe753 100%);
+                        background: linear-gradient(to right, #b58b99 0%, #e2c9b3 100%);
                         border-radius: 5px 0 0 5px;
                     }
                 }
