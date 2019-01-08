@@ -178,12 +178,14 @@ function calibrate() {
         _plus.position({
             my: 'left center',
             at: 'right center',
-            of: _hand
+            of: _hand,
+            collision: 'none'
         })
         _minus.position({
             my: 'right center',
             at: 'left center',
-            of: _hand
+            of: _hand,
+            collision: 'none'
         })
         _move.draggable(dragOptions(_move, _level));
         sliderValue(_move, _slider.value, labelMove);
@@ -197,12 +199,27 @@ function calibrate() {
     })
 }
 
+
+
 function calibrateLogo() {
     let _w = $(window).width();
-    if (_w >= 576)
+    let _t = $('.take');
+    if (_w >= 576) {
         $('.logo>img').attr('style', 'height:auto !important');
-    else
+        if (!_im_changed) {
+            _t.find('img').remove();
+            _t.append(_im);
+            _im_changed = true
+        }
+
+    } else {
         $('.logo>img').attr('style', 'height:106px !important');
+        if (_im_changed) {
+            _t.find('img').remove();
+            _t.append(_im_mob);
+            _im_changed = false
+        }
+    }
 }
 
 function calibrateFlags(flags) {
@@ -213,7 +230,8 @@ function calibrateFlags(flags) {
         _flag.position({
             my: 'right top',
             at: 'left top',
-            of: _flag.parent().find('.right')
+            of: _flag.parent().find('.right'),
+            collision: 'none'
         });
     })
 }
@@ -264,6 +282,42 @@ function addOffers() {
     })
 }
 
+function onShow() {
+    $prop.removeClass('d-none');
+}
+
+function onHide() {
+    $prop.addClass('d-none');
+}
+
+function isEmpty() {
+    let _empty = true;
+    let _offers = $('.offers .offer');
+    for (let i = 0; i < _offers.length; i++) {
+        let _d = $(_offers[i]).css('display');
+        if (_d != 'none') {
+            _empty = false;
+            break;
+        }
+    }
+    if (_empty)
+        onShow();
+    else
+        onHide();
+}
+
+function proposals() {
+    let _prop = $offers.find('.desc').find('b');
+    let _tot = 0;
+    let _offers = $('.offers .offer');
+    for (let i = 0; i < _offers.length; i++) {
+        let _d = $(_offers[i]).css('display');
+        if (_d != 'none') {
+            ++_tot
+        }
+    }
+    _prop.text(_tot)
+}
 
 function calibrateOffers() {
     let _map = {};
@@ -281,7 +335,6 @@ function calibrateOffers() {
     });
     for (let _off in _map) {
         let _con = _map[_off];
-
         let _company = $(`[id="${_off}"]`);
         _company.find('.condition').each(function() {
             let _conN = $(this).attr('id');
@@ -314,6 +367,10 @@ function calibrateOffers() {
                     duration: 200,
                     step: () => {
                         calibrateFlags($flag)
+                    },
+                    complete: () => {
+                        isEmpty();
+                        proposals()
                     }
                 })
         } else {
@@ -322,6 +379,10 @@ function calibrateOffers() {
                     duration: 200,
                     step: () => {
                         calibrateFlags($flag)
+                    },
+                    start: () => {
+                        isEmpty();
+                        proposals()
                     }
                 })
             let _c = _company.find('.condition')
@@ -330,11 +391,20 @@ function calibrateOffers() {
                 let _id = _elem.attr('id');
                 if (_con.includes(_id)) {
                     if (_elem.css('display') == "none")
-                        _elem.slideDown(200)
+                        _elem.slideDown({
+                            duration: 200,
+                            start: () => {
+                                isEmpty();
+                                proposals()
+                            }
+                        })
                 } else
                 if (_elem.css('display') != "none") {
                     _elem.find('.total').text('');
-                    _elem.slideUp(200)
+                    _elem.slideUp(200, () => {
+                        isEmpty();
+                        proposals()
+                    })
                 }
             }
         }
@@ -355,4 +425,45 @@ function checkout(e) {
         else if (_con.filter('#first').css('display') != 'none')
             window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
     }
+}
+
+function unVeil() {
+    $veil.animate({
+        opacity: 0
+    }, {
+        duration: 100,
+        complete: () => {
+            $veil.addClass('d-none');
+        }
+    })
+}
+
+function showUp() {
+    if ($up.hasClass('d-none')) {
+        $up.removeClass('d-none');
+        $up.animate({
+            opacity: 1
+        }, {
+            duration: 100
+        })
+    }
+}
+
+function hideUp() {
+    if (!$up.hasClass('d-none')) {
+        $up.animate({
+            opacity: 0
+        }, {
+            duration: 100,
+            complete: () => {
+                $up.addClass('d-none');
+            }
+        })
+    }
+}
+
+function scrollToCalc() {
+    $('html,body').animate({
+        scrollTop: $('.calculator').find('.desc').position().top
+    }, 150)
 }

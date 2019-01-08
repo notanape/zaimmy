@@ -1,3 +1,6 @@
+let _im = new Image();
+let _im_mob = new Image();
+
 let _links_font = {
     min: 0.6,
     max: 1

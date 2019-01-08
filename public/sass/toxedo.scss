@@ -2,6 +2,11 @@ $m-b: 20px;
 $m-b-mob: 16px;
 $b-col: #7b8e77;
 $i-col: #613544;
+$fl-col: #ffd842;
+$fl-f-col: #ff9242;
+$or-col: #c3af47;
+$fi-col: #30c530;
+$se-col: #d87c5a;
 
 * {
     user-select: none;
@@ -9,9 +14,36 @@ $i-col: #613544;
 
 body {
     background-image: url("/pic/back-mob.png");
+    overflow-y: overlay;
 
     @media (min-width: 670px) {
         background-image: url("/pic/back.png");
+    }
+
+    .veil {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 20;
+    }
+
+    .up {
+        position: fixed;
+        width: 90px;
+        height: 90px;
+        border-radius: 80px;
+        z-index: 19;
+        background: #f97541;
+        left: -45px;
+        bottom: -45px;
+
+        i {
+            position: absolute;
+            right: 25%;
+            top: 23%;
+            color: white;
+        }
     }
 }
 
@@ -24,6 +56,15 @@ body {
 h1 {
     margin: 0 !important;
     font-size: 1em !important;
+}
+
+.desc {
+    background: $b-col;
+    color: white;
+    padding: 5px 15px;
+    margin-left: -15px;
+    border-radius: 17px 0 17px 0;
+    font-size: 1.2em;
 }
 
 .button {
@@ -52,9 +93,12 @@ h1 {
             img {
                 position: absolute;
                 height: 106px;
+                right: 0px;
+                left: auto;
 
                 @media (min-width: 576px) {
                     height: 130px;
+                    right: auto;
                 }
             }
         }
@@ -67,6 +111,8 @@ h1 {
                 color: white;
                 padding: 5px 15px;
                 border-radius: 17px 0 17px 0;
+                border-top: 1px solid white;
+                border-left: 1px solid white;
             }
         }
     }
@@ -94,14 +140,6 @@ h1 {
     background: white;
     padding: 0 15px 20px;
     border-radius: 17px;
-
-    .desc {
-        background: $b-col;
-        color: white;
-        padding: 5px 15px;
-        margin-left: -15px;
-        border-radius: 17px 0 17px 0;
-    }
 
     .inter {
         position: absolute;
@@ -202,24 +240,65 @@ h1 {
 }
 
 .offers {
-    background: aliceblue;
+    background: white;
     margin-top: $m-b-mob;
+    border-radius: 17px;
+    padding-bottom: 35px;
 
     @media (min-width: 576px) {
         margin-top: $m-b;
     }
 
+    .desc {
+        margin-left: 0;
+    }
+
+    .no-prop {
+        margin-top: 10px;
+
+        .text {
+            text-align: center;
+            font-size: 1.3em;
+            letter-spacing: 2px;
+            line-height: 26px;
+            font-weight: 300;
+            color: #bf1127;
+        }
+    }
+
     .offer {
         width: 100%;
-        background: #bdf5db;
-        margin-top: 10px;
+        background: #f9f9f9;
+        margin: 23px 10px 0 6px;
+
+        @media (min-width: 576px) {
+            margin: 30px 22px 0 18px;
+        }
+
+        border: 1px solid #ddc2b0;
+        border-radius: 17px 0;
+        box-shadow: 4px 4px #dfc6b1;
+
+        .left {
+            border-radius: 17px 0;
+            background: white;
+
+            .offerLogo {
+                text-align: center;
+            }
+        }
 
         .right {
             width: 100%;
+            padding-left: 8px;
 
             .label {
                 .title {
                     font-family: 'Sawarabi Gothic';
+                    color: #e2906f;
+                    font-weight: 600;
+                    font-size: 1.4em;
+                    letter-spacing: 1px;
                 }
             }
 
@@ -228,8 +307,12 @@ h1 {
                     width: 100%;
 
                     .soul {
+                        margin-top: 8px;
+
                         .labelStatus {
                             font-family: 'Spectral';
+                            font-weight: 600;
+                            font-size: 1.1em;
                         }
 
                         .labelPerc {
@@ -238,16 +321,40 @@ h1 {
 
                         .labelAmount {
                             font-family: 'Exo 2';
+                            font-weight: 600;
+                            font-size: 1.1em;
+
+                            @media (min-width: 576px) {
+                                font-size: 1.3em;
+                            }
                         }
                     }
                 }
 
                 .condition#first {
                     border-right: 1px dotted #ffc5c5;
+
+                    .inLabel {
+                        color: $fi-col;
+                    }
+                }
+
+                .condition#second {
+                    .inLabel {
+                        color: $se-col;
+                    }
+                }
+
+                .condition#ordinary {
+                    .inLabel {
+                        color: $or-col;
+                    }
                 }
             }
 
             .forButton {
+                margin-top: 8px;
+
                 .button {
                     background: grey;
                 }
@@ -260,25 +367,29 @@ h1 {
 
         .flag {
             .label {
-                background: pink;
+                background: $fl-col;
                 font-family: 'Exo 2';
+                font-weight: 600;
+                font-size: 1.1em;
+                padding: 2px;
 
                 .rightCorner, .leftCorner {
                     border-color: transparent;
                     position: absolute;
                     border-style: solid;
-                    border-bottom-width: 4px;
+                    border-bottom-width: 6px;
                     border-top-width: 0;
+                    bottom: -6px;
                 }
 
                 .rightCorner {
                     left: 0;
-                    border-left-color: pink;
+                    border-left-color: $fl-col;
                 }
 
                 .leftCorner {
                     right: 0;
-                    border-right-color: pink;
+                    border-right-color: $fl-col;
                 }
             }
         }
@@ -291,7 +402,7 @@ h1 {
             top: -4px;
             left: -2px;
             z-index: 1;
-            background: pink;
+            background: $fl-col;
             border-radius: 0 2px 0 0;
         }
 
@@ -303,7 +414,7 @@ h1 {
             top: -4px;
             left: -4px;
             z-index: 2;
-            background: orange;
+            background: $fl-f-col;
             border-radius: 2px 2px 0 0;
         }
     }
@@ -311,9 +422,23 @@ h1 {
 
 .links {
     font-family: 'PT Sans';
+    margin-top: 25px;
+
+    a {
+        color: #d08d0f;
+        text-decoration: none;
+        background-color: #88fff382;
+        margin: 3px 1.5px 0;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 1.1em;
+    }
 }
 
 .footer {
     text-align: center;
     font-family: "Rubik";
+    font-size: 0.8em;
+    color: #0d8000;
+    margin-top: 30px;
 }

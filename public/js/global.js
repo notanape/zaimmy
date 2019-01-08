@@ -4,6 +4,10 @@ let $levelM, $moveM, $levelT, $moveT, $backM, $backT;
 let $offers, $flag, $changeTimeout;
 let $links;
 let $checkout;
+let $prop;
+let $veil, $up;
+
+let _im_changed = false;
 
 let $m_b = '20px';
 
@@ -75,7 +79,7 @@ let _offer = (title, info) => {
               ${_condition(info)}
             </div>
             <div class="forButton d-flex justify-content-end">
-              <div class="button" id="checkout">
+              <div class="button desc" id="checkout">
                 Оформити
               </div>
             </div>

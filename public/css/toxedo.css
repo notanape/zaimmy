@@ -2,10 +2,31 @@
   user-select: none; }
 
 body {
-  background-image: url("/pic/back-mob.png"); }
+  background-image: url("/pic/back-mob.png");
+  overflow-y: overlay; }
   @media (min-width: 670px) {
     body {
       background-image: url("/pic/back.png"); } }
+  body .veil {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 20; }
+  body .up {
+    position: fixed;
+    width: 90px;
+    height: 90px;
+    border-radius: 80px;
+    z-index: 19;
+    background: #f97541;
+    left: -45px;
+    bottom: -45px; }
+    body .up i {
+      position: absolute;
+      right: 25%;
+      top: 23%;
+      color: white; }
 
 @media (min-width: 576px) {
   .container-fluid {
@@ -14,6 +35,14 @@ body {
 h1 {
   margin: 0 !important;
   font-size: 1em !important; }
+
+.desc {
+  background: #7b8e77;
+  color: white;
+  padding: 5px 15px;
+  margin-left: -15px;
+  border-radius: 17px 0 17px 0;
+  font-size: 1.2em; }
 
 .button {
   cursor: pointer;
@@ -31,17 +60,22 @@ h1 {
     width: 40%; }
     .head .right .take img {
       position: absolute;
-      height: 106px; }
+      height: 106px;
+      right: 0px;
+      left: auto; }
       @media (min-width: 576px) {
         .head .right .take img {
-          height: 130px; } }
+          height: 130px;
+          right: auto; } }
     .head .right .buttonCont {
       z-index: 1; }
       .head .right .buttonCont .button {
         background: #7b8e77;
         color: white;
         padding: 5px 15px;
-        border-radius: 17px 0 17px 0; }
+        border-radius: 17px 0 17px 0;
+        border-top: 1px solid white;
+        border-left: 1px solid white; }
 
 .about {
   display: none;
@@ -60,12 +94,6 @@ h1 {
   @media (min-width: 576px) {
     .calculator {
       margin-top: 20px; } }
-  .calculator .desc {
-    background: #7b8e77;
-    color: white;
-    padding: 5px 15px;
-    margin-left: -15px;
-    border-radius: 17px 0 17px 0; }
   .calculator .inter {
     position: absolute;
     width: 35px;
@@ -125,48 +153,98 @@ h1 {
           cursor: pointer; }
 
 .offers {
-  background: aliceblue;
-  margin-top: 16px; }
+  background: white;
+  margin-top: 16px;
+  border-radius: 17px;
+  padding-bottom: 35px; }
   @media (min-width: 576px) {
     .offers {
       margin-top: 20px; } }
+  .offers .desc {
+    margin-left: 0; }
+  .offers .no-prop {
+    margin-top: 10px; }
+    .offers .no-prop .text {
+      text-align: center;
+      font-size: 1.3em;
+      letter-spacing: 2px;
+      line-height: 26px;
+      font-weight: 300;
+      color: #bf1127; }
   .offers .offer {
     width: 100%;
-    background: #bdf5db;
-    margin-top: 10px; }
+    background: #f9f9f9;
+    margin: 23px 10px 0 6px;
+    border: 1px solid #ddc2b0;
+    border-radius: 17px 0;
+    box-shadow: 4px 4px #dfc6b1; }
+    @media (min-width: 576px) {
+      .offers .offer {
+        margin: 30px 22px 0 18px; } }
+    .offers .offer .left {
+      border-radius: 17px 0;
+      background: white; }
+      .offers .offer .left .offerLogo {
+        text-align: center; }
     .offers .offer .right {
-      width: 100%; }
+      width: 100%;
+      padding-left: 8px; }
       .offers .offer .right .label .title {
-        font-family: 'Sawarabi Gothic'; }
+        font-family: 'Sawarabi Gothic';
+        color: #e2906f;
+        font-weight: 600;
+        font-size: 1.4em;
+        letter-spacing: 1px; }
       .offers .offer .right .info .condition {
         width: 100%; }
-        .offers .offer .right .info .condition .soul .labelStatus {
-          font-family: 'Spectral'; }
-        .offers .offer .right .info .condition .soul .labelPerc {
-          font-family: 'Exo 2'; }
-        .offers .offer .right .info .condition .soul .labelAmount {
-          font-family: 'Exo 2'; }
+        .offers .offer .right .info .condition .soul {
+          margin-top: 8px; }
+          .offers .offer .right .info .condition .soul .labelStatus {
+            font-family: 'Spectral';
+            font-weight: 600;
+            font-size: 1.1em; }
+          .offers .offer .right .info .condition .soul .labelPerc {
+            font-family: 'Exo 2'; }
+          .offers .offer .right .info .condition .soul .labelAmount {
+            font-family: 'Exo 2';
+            font-weight: 600;
+            font-size: 1.1em; }
+            @media (min-width: 576px) {
+              .offers .offer .right .info .condition .soul .labelAmount {
+                font-size: 1.3em; } }
       .offers .offer .right .info .condition#first {
         border-right: 1px dotted #ffc5c5; }
-      .offers .offer .right .forButton .button {
-        background: grey; }
+        .offers .offer .right .info .condition#first .inLabel {
+          color: #30c530; }
+      .offers .offer .right .info .condition#second .inLabel {
+        color: #d87c5a; }
+      .offers .offer .right .info .condition#ordinary .inLabel {
+        color: #c3af47; }
+      .offers .offer .right .forButton {
+        margin-top: 8px; }
+        .offers .offer .right .forButton .button {
+          background: grey; }
     .offers .offer .flag {
       position: absolute; }
     .offers .offer .flag .label {
-      background: pink;
-      font-family: 'Exo 2'; }
+      background: #ffd842;
+      font-family: 'Exo 2';
+      font-weight: 600;
+      font-size: 1.1em;
+      padding: 2px; }
       .offers .offer .flag .label .rightCorner, .offers .offer .flag .label .leftCorner {
         border-color: transparent;
         position: absolute;
         border-style: solid;
-        border-bottom-width: 4px;
-        border-top-width: 0; }
+        border-bottom-width: 6px;
+        border-top-width: 0;
+        bottom: -6px; }
       .offers .offer .flag .label .rightCorner {
         left: 0;
-        border-left-color: pink; }
+        border-left-color: #ffd842; }
       .offers .offer .flag .label .leftCorner {
         right: 0;
-        border-right-color: pink; }
+        border-right-color: #ffd842; }
     .offers .offer .flag::after {
       position: absolute;
       content: '';
@@ -175,7 +253,7 @@ h1 {
       top: -4px;
       left: -2px;
       z-index: 1;
-      background: pink;
+      background: #ffd842;
       border-radius: 0 2px 0 0; }
     .offers .offer .flag::before {
       position: absolute;
@@ -185,14 +263,26 @@ h1 {
       top: -4px;
       left: -4px;
       z-index: 2;
-      background: orange;
+      background: #ff9242;
       border-radius: 2px 2px 0 0; }
 
 .links {
-  font-family: 'PT Sans'; }
+  font-family: 'PT Sans';
+  margin-top: 25px; }
+  .links a {
+    color: #d08d0f;
+    text-decoration: none;
+    background-color: #88fff382;
+    margin: 3px 1.5px 0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 1.1em; }
 
 .footer {
   text-align: center;
-  font-family: "Rubik"; }
+  font-family: "Rubik";
+  font-size: 0.8em;
+  color: #0d8000;
+  margin-top: 30px; }
 
 /*# sourceMappingURL=toxedo.css.map */
