@@ -1,12 +1,18 @@
 $m-b: 20px;
+$m-b-mob: 16px;
 $b-col: #7b8e77;
+$i-col: #613544;
 
 * {
     user-select: none;
 }
 
-body{
-    background-image: url('/pic/back.png');
+body {
+    background-image: url("/pic/back-mob.png");
+
+    @media (min-width: 670px) {
+        background-image: url("/pic/back.png");
+    }
 }
 
 .container-fluid {
@@ -29,21 +35,33 @@ h1 {
     background: white;
     border-radius: 0 0 17px 17px;
 
-    .left{
-        .logo{
-            margin-left: 15px;
+    .left {
+        .logo {
+            margin: 5px 15px;
+
+            @media (min-width: 576px) {
+                margin: 5px 10px;
+            }
         }
     }
+
     .right {
         width: 40%;
 
-        .stars {
+        .take {
             img {
-                width: 15px;
+                position: absolute;
+                height: 106px;
+
+                @media (min-width: 576px) {
+                    height: 130px;
+                }
             }
         }
 
         .buttonCont {
+            z-index: 1;
+
             .button {
                 background: $b-col;
                 color: white;
@@ -67,19 +85,23 @@ h1 {
 }
 
 .calculator {
-   
-   margin-top:$m-b;
-   background: white;
-   padding: 0 15px 20px;
-   border-radius: 17px;
-    
-   .desc{
+    margin-top: $m-b-mob;
+
+    @media (min-width: 576px) {
+        margin-top: $m-b;
+    }
+
+    background: white;
+    padding: 0 15px 20px;
+    border-radius: 17px;
+
+    .desc {
         background: $b-col;
         color: white;
         padding: 5px 15px;
         margin-left: -15px;
         border-radius: 17px 0 17px 0;
-   } 
+    }
 
     .inter {
         position: absolute;
@@ -89,6 +111,7 @@ h1 {
         border: 1px solid #afafaf;
         cursor: pointer;
         border-radius: 3px;
+        color: $i-col;
     }
 
     .inter.plus {
@@ -147,6 +170,7 @@ h1 {
                     .background {
                         height: 100%;
                         width: 0%;
+
                         //background: linear-gradient(to right, rgba(72, 220, 180, 1) 0%, rgba(40, 251, 160, 1) 100%);
                         //500 hryvna background: linear-gradient(to right, #86c1e3 0%, #ffe753 100%);
                         background: linear-gradient(to right, #b58b99 0%, #e2c9b3 100%);
@@ -179,7 +203,11 @@ h1 {
 
 .offers {
     background: aliceblue;
-    margin-top: 20px;
+    margin-top: $m-b-mob;
+
+    @media (min-width: 576px) {
+        margin-top: $m-b;
+    }
 
     .offer {
         width: 100%;

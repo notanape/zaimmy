@@ -212,8 +212,8 @@ function calibrateFlags(flags) {
         adjustFlag(_flag);
         _flag.position({
             my: 'right top',
-            at: 'right top',
-            of: _flag.parent().find('.left')
+            at: 'left top',
+            of: _flag.parent().find('.right')
         });
     })
 }
