@@ -48,10 +48,11 @@ body {
   background: white;
   border-radius: 0 0 17px 17px; }
   .head .left .logo {
-    margin: 5px 15px; }
+    margin: 5px 0px;
+    z-index: 1; }
     @media (min-width: 576px) {
       .head .left .logo {
-        margin: 5px 10px; } }
+        margin: 5px 15px; } }
   .head .right {
     width: 40%; }
     .head .right .take img {
@@ -127,7 +128,7 @@ body {
         .calculator .body .sliderCalc .handler .level {
           background-color: #e8e8e8;
           border: 1px solid #bfbfbf;
-          height: 9px;
+          height: 11px;
           border-radius: 5px;
           margin: 0 17px 0 20px;
           cursor: pointer; }
@@ -186,13 +187,19 @@ body {
     .offers .offer .right {
       width: 100%;
       padding-left: 8px; }
-      .offers .offer .right .label .title h1 {
-        margin: 0 !important;
-        font-family: 'Didact Gothic';
-        color: #e2906f;
-        font-weight: 600;
-        font-size: 1.4em;
-        letter-spacing: 1px; }
+      .offers .offer .right .label {
+        overflow-x: hidden; }
+        .offers .offer .right .label .title h1 {
+          margin: 0 !important;
+          font-family: 'Didact Gothic';
+          color: #e2906f;
+          font-weight: 600;
+          font-size: 1.3em;
+          letter-spacing: 1px;
+          white-space: nowrap; }
+          @media (min-width: 576px) {
+            .offers .offer .right .label .title h1 {
+              font-size: 1.4em; } }
       .offers .offer .right .info .condition {
         width: 100%; }
         .offers .offer .right .info .condition .soul {

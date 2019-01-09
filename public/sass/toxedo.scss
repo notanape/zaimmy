@@ -73,10 +73,10 @@ body {
 
     .left {
         .logo {
-            margin: 5px 15px;
-
+            margin: 5px 0px;
+            z-index: 1;
             @media (min-width: 576px) {
-                margin: 5px 10px;
+                margin: 5px 15px;
             }
         }
     }
@@ -194,7 +194,7 @@ body {
                 .level {
                     background-color: #e8e8e8;
                     border: 1px solid #bfbfbf;
-                    height: 9px;
+                    height: 11px;
                     border-radius: 5px;
                     margin: 0 17px 0 20px;
                     cursor: pointer;
@@ -289,14 +289,20 @@ body {
             padding-left: 8px;
 
             .label {
+                overflow-x: hidden;
                 .title {
                     h1 {
                         margin: 0 !important;
                         font-family: 'Didact Gothic';
                         color: #e2906f;
                         font-weight: 600;
-                        font-size: 1.4em;
+                        font-size: 1.3em;                        
                         letter-spacing: 1px;
+                        white-space: nowrap;
+
+                         @media (min-width: 576px) {
+                            font-size: 1.4em;
+                        }
                     }
                 }
             }
