@@ -29,13 +29,13 @@ let _offer = (title, info) => {
             }
 
             return `<div class="condition" id="${type}">
-                    <div class="soul d-flex flex-column">
+                    <div class="soul d-flex flex-column justify-content-space-between">
                 <div class="labelStatus d-flex justify-content-center">
                   <div class="inLabel">${_title}</div>
                 </div>
-                <div class="labelPerc d-flex justify-content-center">
+                <div class="labelPerc d-flex justify-content-center flex-grow-1">
                   <div class="inLabel">
-                  <span class="percentage"></span> %
+                  <span class="percentage"></span>
                   </div>
                 </div>
                 <div class="labelAmount d-flex justify-content-center">
@@ -51,19 +51,14 @@ let _offer = (title, info) => {
             _c += _pat(k)
         return _c
     }
-    let _flag = 0;
+    
     let _types = Object.keys(info);
-
-    for (let i of _types) {
-        if (i == "ordinary" || i == "first") {
-            if (info[i].hasOwnProperty('time_multiplier'))
-                _flag = info[i]["time_multiplier"]
-            if (info[i].hasOwnProperty('amount_multiplier'))
-                _flag += info[i]["amount_multiplier"]
-            else if (!info[i].hasOwnProperty('time_multiplier') && !info[i].hasOwnProperty('amount_multiplier'))
-                _flag = info[i].percentage
-        }
-    }
+    let _flag = '';
+        if(_types.includes('first'))
+            _flag = (info['first'].APR / 365).toFixed(2) + '%'
+        else
+            _flag = (info['ordinary'].APR / 365).toFixed(2) + '%'
+    
     return `<div class="offer" id="${title}">
             <div class="soul d-flex">
           <div class="left d-flex align-items-center">
@@ -73,7 +68,7 @@ let _offer = (title, info) => {
           </div>
           <div class="right d-flex flex-column">
             <div class="label d-flex justify-content-begin">
-              <div class="title">${title}</div>
+              <div class="title"><h1>${title}</h1></div>
             </div>
             <div class="info d-flex justify-content-stretch">
               ${_condition(info)}
@@ -85,7 +80,7 @@ let _offer = (title, info) => {
             </div>
           </div>
           <div class="flag">
-            <div class="label"><span>${_flag.toFixed(2)}%</span>
+            <div class="label"><span>${_flag}</span>
             <div class="leftCorner"></div>
             <div class="rightCorner"></div>
           </div>

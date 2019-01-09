@@ -341,22 +341,20 @@ function calibrateOffers() {
             let _amm = $(this).find('.total');
             let _per = $(this).find('.percentage');
             let _keys = _conditions.get(_off)[_conN];
-            let _perc = 0;
+            let _perc = parseFloat((_conditions.get(_off)[_conN].APR / 365 * _tV).toFixed(2));
+            let _loyal = '';
+            if (_conN != 'first') {
+                _loyal = _conditions.get(_off).hasOwnProperty('extra') ? `<sup>*</sup><br>(До -${_conditions.get(_off)['extra']['loyal']}%)` : ''
+            }
             _amm.parent().css('opacity', '0');
             _per.parent().css('opacity', '0');
 
             setTimeout(() => {
-                if (_keys.hasOwnProperty('time_multiplier')) {
-                    _perc = _tV * _keys['time_multiplier'];
-                }
-                if (_keys.hasOwnProperty('amount_multiplier')) {
-                    _perc += _mV / 100 * _keys['amount_multiplier'];
-                } else if (!_keys.hasOwnProperty('time_multiplier') && !_keys.hasOwnProperty('amount_multiplier'))
-                    _perc = _keys.percentage;
                 _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
-                _per.text(_perc.toFixed(2));
+                _per.html(`${_perc} %`.concat(_loyal));
                 _amm.parent().css('opacity', '1');
-                _per.parent().css('opacity', '1');
+                _per.parent().css('opacity', '1');                
+                        calibrateFlags($flag)
             }, 200)
 
 

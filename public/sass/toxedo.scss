@@ -30,13 +30,13 @@ body {
 
     .up {
         position: fixed;
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
         border-radius: 80px;
         z-index: 19;
-        background: #f97541;
-        left: -45px;
-        bottom: -45px;
+        background: #f97541bd;
+        left: -60px;
+        bottom: -60px;
 
         i {
             position: absolute;
@@ -51,11 +51,6 @@ body {
     @media (min-width: 576px) {
         width: 670px !important;
     }
-}
-
-h1 {
-    margin: 0 !important;
-    font-size: 1em !important;
 }
 
 .desc {
@@ -285,6 +280,7 @@ h1 {
 
             .offerLogo {
                 text-align: center;
+                padding: 0 3px;
             }
         }
 
@@ -294,11 +290,14 @@ h1 {
 
             .label {
                 .title {
-                    font-family: 'Sawarabi Gothic';
-                    color: #e2906f;
-                    font-weight: 600;
-                    font-size: 1.4em;
-                    letter-spacing: 1px;
+                    h1 {
+                        margin: 0 !important;
+                        font-family: 'Didact Gothic';
+                        color: #e2906f;
+                        font-weight: 600;
+                        font-size: 1.4em;
+                        letter-spacing: 1px;
+                    }
                 }
             }
 
@@ -307,7 +306,7 @@ h1 {
                     width: 100%;
 
                     .soul {
-                        margin-top: 8px;
+                        height: 100%;
 
                         .labelStatus {
                             font-family: 'Spectral';
@@ -317,6 +316,10 @@ h1 {
 
                         .labelPerc {
                             font-family: 'Exo 2';
+
+                            .inLabel {
+                                text-align: center;
+                            }
                         }
 
                         .labelAmount {

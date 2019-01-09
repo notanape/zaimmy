@@ -15,13 +15,13 @@ body {
     z-index: 20; }
   body .up {
     position: fixed;
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     border-radius: 80px;
     z-index: 19;
-    background: #f97541;
-    left: -45px;
-    bottom: -45px; }
+    background: #f97541bd;
+    left: -60px;
+    bottom: -60px; }
     body .up i {
       position: absolute;
       right: 25%;
@@ -31,10 +31,6 @@ body {
 @media (min-width: 576px) {
   .container-fluid {
     width: 670px !important; } }
-
-h1 {
-  margin: 0 !important;
-  font-size: 1em !important; }
 
 .desc {
   background: #7b8e77;
@@ -185,12 +181,14 @@ h1 {
       border-radius: 17px 0;
       background: white; }
       .offers .offer .left .offerLogo {
-        text-align: center; }
+        text-align: center;
+        padding: 0 3px; }
     .offers .offer .right {
       width: 100%;
       padding-left: 8px; }
-      .offers .offer .right .label .title {
-        font-family: 'Sawarabi Gothic';
+      .offers .offer .right .label .title h1 {
+        margin: 0 !important;
+        font-family: 'Didact Gothic';
         color: #e2906f;
         font-weight: 600;
         font-size: 1.4em;
@@ -198,13 +196,15 @@ h1 {
       .offers .offer .right .info .condition {
         width: 100%; }
         .offers .offer .right .info .condition .soul {
-          margin-top: 8px; }
+          height: 100%; }
           .offers .offer .right .info .condition .soul .labelStatus {
             font-family: 'Spectral';
             font-weight: 600;
             font-size: 1.1em; }
           .offers .offer .right .info .condition .soul .labelPerc {
             font-family: 'Exo 2'; }
+            .offers .offer .right .info .condition .soul .labelPerc .inLabel {
+              text-align: center; }
           .offers .offer .right .info .condition .soul .labelAmount {
             font-family: 'Exo 2';
             font-weight: 600;

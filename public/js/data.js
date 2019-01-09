@@ -29,49 +29,122 @@ let _time_slider = {
 }
 
 let _conditions = new Map([
-    ['Demo partnerN1', {
-        ordinary: {
-            minAmount: 300,
-            maxAmount: 10000,
-            minTime: 7,
-            maxTime: 14,
-            percentage: 1.9,
-            time_multiplier: 0.28,
-            amount_multiplier: 0.01
-        }
-    }],
-    ['Demo partnerN2', {
+    ['Alexcredit', {
         first: {
             minAmount: 100,
-            maxAmount: 4000,
+            maxAmount: 3000,
             minTime: 5,
-            maxTime: 60,
-            percentage: 0.01
+            maxTime: 30,
+            APR:3.65
         },
         second: {
             minAmount: 100,
-            maxAmount: 13000,
+            maxAmount: 10000,
             minTime: 5,
-            maxTime: 60,
-            percentage: 3.2
+            maxTime: 30,
+            APR:620.5
+        },
+        extra:{
+            loyal:40
+        }
+    }],
+    ['Dinero', {
+        first: {
+            minAmount: 300,
+            maxAmount: 10000,
+            minTime: 7,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 300,
+            maxAmount: 15000,
+            minTime: 7,
+            maxTime: 30,
+            APR:176.4
         }
     }],
     ['Moneyveo', {
         first: {
             minAmount: 100,
-            maxAmount: 4000,
+            maxAmount: 5000,
             minTime: 1,
             maxTime: 30,
-            time_multiplier: 0.01,
-            amount_multiplier: 0.01
+            APR:3.65
         },
         second: {
-            minAmount: 100,
+            minAmount: 300,
             maxAmount: 15000,
             minTime: 1,
             maxTime: 30,
-            time_multiplier: 0.01,
-            amount_multiplier: 0.01
+            APR:620.5
+        }
+    }],
+    ['КредитКаса', {
+        first: {
+            minAmount: 400,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 27,
+            APR:3.65
+        },
+        second: {
+            minAmount: 300,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 27,
+            APR:730
+        }
+    }],
+    ['Быстрозайм', {
+        first: {
+            minAmount: 500,
+            maxAmount: 2000,
+            minTime: 7,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 10000,
+            minTime: 7,
+            maxTime: 65,
+            APR:511
+        }
+    }],
+    ['Ваша Готівочка', {
+        first: {
+            minAmount: 200,
+            maxAmount: 7000,
+            minTime: 1,
+            maxTime: 16,
+            APR:3.65
+        },
+        second: {
+            minAmount: 200,
+            maxAmount: 7000,
+            minTime: 1,
+            maxTime: 65,
+            APR:3.65
+        }
+    }],
+    ['MyCredit', {
+        first: {
+            minAmount: 100,
+            maxAmount: 4000,
+            minTime: 1,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 100,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 30,
+            APR:584
+        },
+        extra:{
+            loyal:20
         }
     }]
 ]);

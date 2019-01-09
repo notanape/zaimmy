@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sitemapindex xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_ru_ua.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_faq.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_news.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_promo_action_news.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_landing.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://moneyveo.ua/sitemap_article.xml</loc>
+    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
+  </sitemap>
+</sitemapindex>
