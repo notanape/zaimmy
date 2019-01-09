@@ -47,7 +47,7 @@ $(() => {
 
     $offers.find('.desc').bind('click', () => {
         $('html,body').animate({
-            scrollTop: $('.offers').find('.desc').position().top
+            scrollTop: $('.offers').find('.desc').position().top + $('.offers').find('.desc').height() + parseInt($('.offers').find('.desc').css('padding-top').replace('px', ''))*2
         }, 150)
     })
 
