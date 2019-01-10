@@ -20,6 +20,20 @@ $(() => {
     $plus = $('.plus');
     $minus = $('.minus')
 
+    $first = $('.additional').find('.first');
+    $check = $first.find('#check');
+    $limit = $('.additional').find('.limit');
+    $cap = $limit.find('#caption');
+    $down = $limit.find('#down');
+    $list = $('.additional').find('.list');
+    $ul = $('.additional').find('ul');    
+
+    $first.bind('click', checkFirst);
+
+    $limit.bind('click', () => {
+        listShow()
+    });
+    
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
 
@@ -38,7 +52,8 @@ $(() => {
     addOffers();
 
     $('img').bind('load', () => {
-        calibrate(), calibrateLogo(), calibrateFlags($flag), proposals(), unVeil()
+        calibrate(), calibrateLogo(), calibrateFlags($flag), proposals(), unVeil();
+        $list.css('width', $limit.width() + 16)
     })
 
     calibrateOffers();
@@ -47,7 +62,7 @@ $(() => {
 
     $offers.find('.desc').bind('click', () => {
         $('html,body').animate({
-            scrollTop: $('.offers').find('.desc').position().top + $('.offers').find('.desc').height() + parseInt($('.offers').find('.desc').css('padding-top').replace('px', ''))*2
+            scrollTop: $('.offers').find('.desc').position().top + $('.offers').find('.desc').height() + parseInt($('.offers').find('.desc').css('padding-top').replace('px', '')) * 2
         }, 150)
     })
 
@@ -65,7 +80,7 @@ $(() => {
 
     $(window).bind({
         'resize': () => {
-            calibrate(), calibrateLogo(), calibrateFlags($flag)
+            calibrate(), calibrateLogo(), calibrateFlags($flag), positionList();
         },
         'scroll': () => {
             let _w = $(window).scrollTop();

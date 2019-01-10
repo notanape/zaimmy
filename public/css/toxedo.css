@@ -36,7 +36,6 @@ body {
   background: #7b8e77;
   color: white;
   padding: 5px 15px;
-  margin-left: -15px;
   border-radius: 17px 0 17px 0;
   font-size: 1.2em; }
 
@@ -86,7 +85,6 @@ body {
 .calculator {
   margin-top: 16px;
   background: white;
-  padding: 0 15px 20px;
   border-radius: 17px; }
   @media (min-width: 576px) {
     .calculator {
@@ -105,7 +103,8 @@ body {
   .calculator .inter.minus {
     background: #b58b99; }
   .calculator .body {
-    width: 100%; }
+    width: 100%;
+    margin: 0 15px; }
     .calculator .body .sliderCalc#money .move {
       background-image: url("/pic/hryvna401.png"); }
     .calculator .body .sliderCalc#time .move {
@@ -148,6 +147,76 @@ body {
           height: 40px;
           width: 40px;
           cursor: pointer; }
+  .calculator .additional {
+    background: #f8f9fa;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0 0 17px 17px;
+    border-top: 2px dashed #80808063;
+    padding: 8px 0 7px 0; }
+    @media (min-width: 576px) {
+      .calculator .additional {
+        margin-top: 30px; } }
+    .calculator .additional .inAdd {
+      width: 300px;
+      cursor: pointer;
+      font-family: 'Didact Gothic';
+      width: 300px;
+      cursor: pointer;
+      font-family: 'Didact Gothic';
+      font-size: 1.3em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #21595f; }
+      .calculator .additional .inAdd .first #check {
+        border: 3px solid #c5a0a1;
+        border-radius: 5px;
+        padding: 2px;
+        font-size: 0.8em;
+        background: transparent; }
+        .calculator .additional .inAdd .first #check i {
+          color: #f8f9fa; }
+      .calculator .additional .inAdd .first .ch {
+        background: #c5a0a1 !important; }
+      .calculator .additional .inAdd .first #caption {
+        margin-left: 4px; }
+      .calculator .additional .inAdd .limit {
+        border: 3px solid grey;
+        padding: 0 0 0 10px;
+        border-radius: 20px;
+        background: #f8f9fa;
+        z-index: 4; }
+        .calculator .additional .inAdd .limit #down {
+          background: grey;
+          color: #f8f9fa;
+          padding: 0px 8px 6px 10px;
+          border-radius: 0 19px 20px 0;
+          margin: -2px -1px -2px 0; }
+        .calculator .additional .inAdd .limit #caption {
+          margin-right: 6px; }
+      .calculator .additional .inAdd .list {
+        position: absolute;
+        background: white;
+        border-right: 3px solid grey;
+        border-bottom: 3px solid grey;
+        border-left: 3px solid grey;
+        background: linear-gradient(140deg, #f4c408 30%, #f48808 62%);
+        border-radius: 0 0 17px 17px;
+        box-shadow: 0 0 1px 1px #f8f9fa;
+        font-family: Rubik;
+        font-size: 0.9em;
+        display: none;
+        z-index: 3; }
+        .calculator .additional .inAdd .list ul {
+          list-style: none;
+          padding: 0;
+          margin: 20px 0 0;
+          cursor: pointer; }
+          .calculator .additional .inAdd .list ul li {
+            border-bottom: 1px solid grey;
+            padding: 3px 6px; }
+          .calculator .additional .inAdd .list ul li:last-child {
+            border-bottom: none; }
 
 .offers {
   background: white;
@@ -188,7 +257,7 @@ body {
       width: 100%;
       padding-left: 8px; }
       .offers .offer .right .label {
-        overflow-x: hidden; }
+        overflow: hidden; }
         .offers .offer .right .label .title h1 {
           margin: 0 !important;
           font-family: 'Didact Gothic';

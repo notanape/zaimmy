@@ -323,6 +323,8 @@ function calibrateOffers() {
     let _map = {};
     let _mV = _money_slider.value;
     let _tV = _time_slider.value;
+    let _ch = $check.hasClass('ch');
+    let _lim = $cap.text() == 'Ліміт' ? 0 : parseInt($cap.text());
     _conditions.forEach((v, k) => {
         if (!_map.hasOwnProperty(k))
             _map[k] = [];
@@ -333,6 +335,21 @@ function calibrateOffers() {
             }
         }
     });
+    for (let _cond in _map) {
+        let _of = _map[_cond];
+        if (_ch) {
+            _of.forEach((d, i) => {
+                if (d == 'second')
+                    _of.splice(i, 1)
+            })
+        } else {
+            _of.forEach((d, i) => {
+                if (d == 'first')
+                    _of.splice(i, 1)
+            })
+        }
+    }
+
     for (let _off in _map) {
         let _con = _map[_off];
         let _company = $(`[id="${_off}"]`);
@@ -342,6 +359,7 @@ function calibrateOffers() {
             let _per = $(this).find('.percentage');
             let _keys = _conditions.get(_off)[_conN];
             let _perc = parseFloat((_conditions.get(_off)[_conN].APR / 365 * _tV).toFixed(2));
+            let _total = Math.floor(_mV + _mV / 100 * _perc).toString();
             let _loyal = '';
             if (_conN != 'first') {
                 _loyal = _conditions.get(_off).hasOwnProperty('extra') ? `<sup>*</sup><br>(До -${_conditions.get(_off)['extra']['loyal']}%)` : ''
@@ -349,12 +367,22 @@ function calibrateOffers() {
             _amm.parent().css('opacity', '0');
             _per.parent().css('opacity', '0');
 
+
+            if (_lim != 0) {
+                if (_total > _lim) {
+                    _con.forEach((d, i) => {
+                        if (d == _conN)
+                            _con.splice(i, 1)
+                    })
+                }
+            }
+
             setTimeout(() => {
-                _amm.text(Math.floor(_mV + _mV / 100 * _perc).toString());
+                _amm.text(_total);
                 _per.html(`${_perc} %`.concat(_loyal));
                 _amm.parent().css('opacity', '1');
-                _per.parent().css('opacity', '1');                
-                        calibrateFlags($flag)
+                _per.parent().css('opacity', '1');
+                calibrateFlags($flag)
             }, 200)
 
 
@@ -368,7 +396,7 @@ function calibrateOffers() {
                     },
                     complete: () => {
                         isEmpty();
-                        proposals()
+                        proposals();
                     }
                 })
         } else {
@@ -380,7 +408,7 @@ function calibrateOffers() {
                     },
                     start: () => {
                         isEmpty();
-                        proposals()
+                        proposals();
                     }
                 })
             let _c = _company.find('.condition')
@@ -388,21 +416,15 @@ function calibrateOffers() {
                 let _elem = $(i);
                 let _id = _elem.attr('id');
                 if (_con.includes(_id)) {
-                    if (_elem.css('display') == "none")
-                        _elem.slideDown({
-                            duration: 200,
-                            start: () => {
-                                isEmpty();
-                                proposals()
-                            }
-                        })
-                } else
-                if (_elem.css('display') != "none") {
-                    _elem.find('.total').text('');
-                    _elem.slideUp(200, () => {
+                    if (_elem.css('display') == "none") {
+                        _elem.css('display', 'block');
                         isEmpty();
-                        proposals()
-                    })
+                        proposals();
+                    }
+                } else if (_elem.css('display') != "none") {
+                    _elem.css('display', 'none');
+                    isEmpty();
+                    proposals();
                 }
             }
         }
@@ -464,4 +486,91 @@ function scrollToCalc() {
     $('html,body').animate({
         scrollTop: $('.calculator').find('.desc').position().top
     }, 150)
+}
+
+function checkFirst() {
+    if ($check.hasClass('ch'))
+        $check.removeClass('ch')
+    else
+        $check.addClass('ch')
+    $ul.html('<li>Нема</li>');
+    $cap.text('Ліміт');
+    calibrateOffers()
+}
+
+function positionList() {
+    $list.css('width', $limit.width() + 16)
+    $list.position({
+        my: 'center top',
+        at: 'center bottom-20',
+        of: $limit,
+        collision: 'none'
+    })
+}
+
+function listShow() {
+    let _d = $list.css('display');
+    let _act = false;
+    let _a = arguments;
+    if (_d == 'none' && !_act) {
+        _act = true;
+        createLimit();
+        $list.slideDown({
+            start: () => {
+                positionList();
+                if (_a.length > 0)
+                    _a[0]()
+            },
+            duration: 300
+        })
+    } else if (_d != 'none' && !_act) {
+
+        _act = true
+        $list.slideUp({
+            start: () => {
+
+                if (_a.length > 0)
+                    _a[0]()
+            },
+            duration: 300
+        })
+    }
+}
+
+function getLimit(e) {
+    let _li = $(e.target).closest('li');
+    let _ch = _li.text();
+    listShow(() => {
+        $cap.text(_ch == 'Нема' ? 'Ліміт' : _ch);
+        calibrateOffers();
+    })
+}
+
+function createLimit() {
+    $ul.html('<li>Нема</li>')
+    let _cur = [];
+    let _con = $('.offer').find('.condition');
+    for (let _of of _con) {
+        if ($(_of).closest('.offer').css('display') != 'none' && $(_of).css('display') != 'none') {
+            let _c = $(_of).find('.total').text();
+            if (!_cur.includes(_c))
+                _cur.push(_c)
+        }
+    }
+
+    let min = _cur.reduce((m, v) => Math.min(m, v), _cur[0])
+    let max = _cur.reduce((m, v) => Math.max(m, v), _cur[0])
+    let des = min / 100 < 10 ? 10 : 100;
+    max = Math.floor(max / des) * des + des;
+    min = Math.floor(min / des) * des;
+    let div = max - min;
+    let il = _cur.length >= 7 ? 7 : _cur.length >= 3 ? 5 : _cur.length >= 2 ? 3 : _cur.length;
+    let poi = div / il;
+
+    for (let i = 1; i <= il; i++)
+        $ul.append(`<li>${Math.floor((min + (i * poi)) / des) * des}</li>`)
+    $li = $list.find('li');
+    $li.bind('click', getLimit);
+
+
 }

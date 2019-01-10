@@ -6,10 +6,12 @@ let $links;
 let $checkout;
 let $prop;
 let $veil, $up;
+let $first,$check,$limit,$cap,$down,$list;
 
 let _im_changed = false;
 
 let $m_b = '20px';
+let $ch_col = '#c5a0a1';
 
 let _offer = (title, info) => {
     let _condition = info => {

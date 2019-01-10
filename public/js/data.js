@@ -125,7 +125,7 @@ let _conditions = new Map([
             maxAmount: 7000,
             minTime: 1,
             maxTime: 65,
-            APR:3.65
+            APR:730
         }
     }],
     ['MyCredit', {
