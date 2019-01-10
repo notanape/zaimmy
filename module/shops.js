@@ -2,17 +2,48 @@ let fs = require('fs');
 
 let shops = {
     'moneyveo': {
-        'srochnonakartu': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--dengi-srochno',
-        'plohoy': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bad-credit-history',
-        'dozp': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--dengi-do-zarplaty',
-        'bistrozaim': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bustryj-credit',
-        'onlinekredit': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--zaim-online',
-        'bistrodengi': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fru%2F--bistro-dengi',
-        'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Fregisternew',
+       'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Fregisternew',
         'loan-cash': 'https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Flogin'
     },
     'dinero': {
-        'loan-cash': ''
+        'loan-cash': 'https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Favtorizacija%2Favtorizacija-sushestvujushego-klienta',
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Fbystryj-zajm%2Fkontaktnye-dannye'
+    },
+    'alexcredit':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Fform',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Faccount%2FlogIn'
+    },
+    'кредиткаса':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fnew%2Fnewclient',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fviews%2Flogin'
+    },
+    'Быстрозайм':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister'
+    },
+    'ваша-готівочка':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1411?aid=65853&dlink=https%3A%2F%2Flk.vashagotivochka.ua%2Fru%2Flogin%2Fregistration',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1411?aid=65853&dlink=https%3A%2F%2Flk.vashagotivochka.ua%2Fru%2Flogin'
+    },
+    'mycredit':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1261?aid=65853&dlink=https%3A%2F%2Fmycredit.ua%2Fua%2Fregistration%2F',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1261?aid=65853&dlink=https%3A%2F%2Fmycredit.ua%2Fua%2Fregistration%2F'
+    },
+    'creditplus':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1844?aid=65853&dlink=https%3A%2F%2Fcreditplus.ua%2Fuser%2Fregister%2Fstep1%3Flang%3Duk',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1844?aid=65853&dlink=https%3A%2F%2Fcreditplus.ua%2Fuser%3Flang%3Duk'
+    },
+    'soscredit':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1338?aid=65853&dlink=https%3A%2F%2Fsoscredit.ua%2Fuk%2Fuser%2Fsignup',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1338?aid=65853&dlink=https%3A%2F%2Fsoscredit.ua%2Fuk%2Fauth%2Flogin'
+    },
+    'topcredit':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Fregistration',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Flogin'
+    },
+    '1':{
+    	'loan-cash-register':'',
+    	'loan-cash':''
     }
 }
 
@@ -45,7 +76,7 @@ module.exports = {
                         res.sendFile(`${path}/${param}`)
                 })
             } else if (shops.hasOwnProperty(_s[0])) {
-                res.redirect(shops[_s[0]][_s[1]])
+                res.redirect(301,shops[_s[0]][_s[1]])
             }
         }
     }

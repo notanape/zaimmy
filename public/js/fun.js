@@ -1,21 +1,3 @@
-function findBound(move, level) {
-    let _a = [];
-    let _mW = move.width() / 2;
-    let _lW = level.width();
-    let _lL = level.position().left;
-    let _lM = parseInt(level.css('margin-left').replace('px', ''));
-    let _p1 = level.closest('.handler').position().left;
-    let _p1M = parseInt(level.closest('.handler').css('margin-left').replace('px', ''));
-    let _p2 = level.closest('.sliderCalc').position().left;
-    let _p2M = parseInt(level.closest('.sliderCalc').css('margin-left').replace('px', ''));
-    let _p3M = parseInt($('.container-fluid').css('margin-left').replace('px', ''));
-    _a[0] = _money_slider.left = _time_slider.left = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) - _mW;
-    _a[1] = 0;
-    _a[2] = (_lL + _lM + _p1 + _p1M + _p2 + _p2M + _p3M) + _lW - _mW;
-    _a[3] = 0;
-    return _a;
-}
-
 function dragOptions(move, level) {
     let _opt = {
         axis: 'x',
@@ -228,7 +210,6 @@ function calibrateLogo() {
 function calibrateFlags(flags) {
     flags.each(function() {
         let _flag = $(this);
-        //recountFlag(_flag)
         adjustFlag(_flag);
         _flag.position({
             my: 'right top',
@@ -249,39 +230,16 @@ function adjustFlag(flag) {
     })
 }
 
-function recountFlag(flag) {
-    let _label = flag.find('.label').find('span');
-    let _off = flag.closest('.offer').attr('id');
-    let _perc = 0;
-    if (_conditions.get(_off).hasOwnProperty('first')) {
-        if (_conditions.get(_off).first.hasOwnProperty('multiplier'))
-            _perc = ((_time_slider.value * _conditions.get(_off).first.multiplier).toFixed(2)).toString()
-        else
-            _perc = _conditions.get(_off).first.percentage
-    } else if (_conditions.get(_off).hasOwnProperty('ordinary')) {
-        if (_conditions.get(_off).ordinary.hasOwnProperty('multiplier'))
-            _perc = ((_time_slider.value * _conditions.get(_off).ordinary.multiplier).toFixed(2)).toString()
-        else
-            _perc = _conditions.get(_off).ordinary.percentage
-    }
-    _label.text(`${_perc}%`)
-}
-
 function addOffers() {
     _conditions.forEach((v, k) => {
         let _offerD = $(_offer(k, v));
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
-        $checkout = $('.forButton>#checkout');
-        $checkout.bind('click', checkout);
         let _off = $offers.find('.offer');
         _off.each(function() {
             let _this = $(this);
             _this.find('.left').css('width', `${_this.height()}px`)
         })
-        _offerD.find('img').on('load', e => {
-            calibrateFlags($flag);
-        });
     })
 }
 
@@ -336,6 +294,9 @@ function sortOffers() {
     })
     $('.offer').remove();
     $offers.append(a);
+    $checkout = $('.forButton>#checkout');
+    console.log($checkout);
+    $checkout.bind('click', checkout);
     $flag = $offers.find('.flag');
     calibrateFlags($flag);
 }
@@ -410,36 +371,14 @@ function calibrateOffers() {
 
         })
         if (_con.length == 0) {
-            if (_company.css('display') != "none")
-            /*_company.slideUp({
-                duration: 200,
-                step: () => {
-                    calibrateFlags($flag)
-                },
-                complete: () => {
-                    isEmpty();
-                    proposals();
-                }
-            })*/
-            {
+            if (_company.css('display') != "none") {
                 _company.css('display', "none");
                 calibrateFlags($flag)
                 isEmpty();
                 proposals();
             }
         } else {
-            if (_company.css('display') == "none")
-            /*_company.slideDown({
-                duration: 200,
-                step: () => {
-                    calibrateFlags($flag)
-                },
-                start: () => {
-                    isEmpty();
-                    proposals();
-                }
-            })*/
-            {
+            if (_company.css('display') == "none") {
                 _company.css('display', "block");
                 calibrateFlags($flag)
                 isEmpty();
@@ -473,16 +412,12 @@ function checkout(e) {
     let _target = $(event.target);
     let _info = _target.closest('.forButton').prev();
     let _con = _info.find('.condition');
-    let _offer = _target.closest('.offer').attr('id').toLowerCase();
+    let _offer = _target.closest('.offer').attr('id').toLowerCase().replace(/\s/g,'-');
     let _loan = "loan-cash";
-    if (_con.filter('#ordinary').length != 0)
+    if (_con.filter('#ordinary').length != 0 || _con.filter('#first').css('display') != 'none')
         window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
-    else {
-        if (_con.filter('#first').css('display') == 'none')
-            window.open(`${location.origin}/${_offer}/${_loan}`, '_blank')
-        else if (_con.filter('#first').css('display') != 'none')
-            window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
-    }
+    else if (_con.filter('#first').css('display') == 'none')
+        window.open(`${location.origin}/${_offer}/${_loan}`, '_blank')
 }
 
 function unVeil() {
@@ -551,7 +486,6 @@ function listShow() {
     let _a = arguments;
     if (_d == 'none' && !_act) {
         _act = true;
-        //createLimit();
         $list.slideDown({
             start: () => {
                 positionList();
@@ -608,7 +542,6 @@ function createLimit() {
     min = Math.floor(min / des) * des;
     let div = max - min;
     let il = _limit.length >= 7 ? 7 : _limit.length >= 3 ? 4 : _limit.length >= 2 ? 3 : _limit.length;
-    //let il = _limit.length >= 2 ? 7 : _limit.length;
     let poi = div / il;
 
     for (let i = 1; i <= il; i++)
