@@ -516,7 +516,7 @@ function listShow() {
         _act = true;
         createLimit();
         $list.slideDown({
-            start: () => {
+            complete: () => {
                 positionList();
                 if (_a.length > 0)
                     _a[0]()
@@ -527,7 +527,7 @@ function listShow() {
 
         _act = true
         $list.slideUp({
-            start: () => {
+            complete: () => {
 
                 if (_a.length > 0)
                     _a[0]()
