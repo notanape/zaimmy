@@ -22,6 +22,9 @@ function dragOptions(move, level) {
         containment: level.closest('.handler'),
         stop: () => {
             calibrateOffers();
+        },
+        start: () => {
+            resetLimit();            
         }
     }
     return _opt
@@ -319,6 +322,18 @@ function proposals() {
     _prop.text(_tot)
 }
 
+function sortOffers(){
+    let a = $('.offer').sort((a,b)=>{
+    let totA = parseInt($(a).find('.total').text());
+    let totB = parseInt($(b).find('.total').text())
+    return totA-totB
+})
+    $('.offer').remove();
+    $offers.append(a);
+    $flag = $offers.find('.flag');
+    calibrateFlags($flag);
+}
+
 function calibrateOffers() {
     let _map = {};
     let _mV = _money_slider.value;
@@ -382,7 +397,8 @@ function calibrateOffers() {
                 _per.html(`${_perc} %`.concat(_loyal));
                 _amm.parent().css('opacity', '1');
                 _per.parent().css('opacity', '1');
-                calibrateFlags($flag)
+                calibrateFlags($flag);
+
             }, 200)
 
 
@@ -440,7 +456,11 @@ function calibrateOffers() {
                 }
             }
         }
-    }
+    }    
+    setTimeout(()=>{
+        unVeil();
+        createLimit();
+        sortOffers()}, 200)
 }
 
 function checkout(e) {
@@ -505,9 +525,7 @@ function checkFirst() {
         $check.removeClass('ch')
     else
         $check.addClass('ch')
-    listShow();
-    $ul.html('<li>Нема</li>');
-    $cap.text('Ліміт');
+    resetLimit();
     calibrateOffers()
 }
 
@@ -527,7 +545,7 @@ function listShow() {
     let _a = arguments;
     if (_d == 'none' && !_act) {
         _act = true;
-        createLimit();
+        //createLimit();
         $list.slideDown({
             start: () => {
                 positionList();
@@ -558,25 +576,34 @@ function getLimit(e) {
     })
 }
 
+function resetLimit() {
+    if ($list.css('display') != 'none')
+        $list.slideUp(300)
+    $ul.html('<li>Нема</li>');
+    $cap.text('Ліміт');
+    _limit = [];
+}
+
 function createLimit() {
     $ul.html('<li>Нема</li>')
-    let _cur = [];
     let _con = $('.offer').find('.condition');
     for (let _of of _con) {
         if ($(_of).closest('.offer').css('display') != 'none' && $(_of).css('display') != 'none') {
             let _c = $(_of).find('.total').text();
-            if (!_cur.includes(_c))
-                _cur.push(_c)
+            console.log(_c);
+            if (!_limit.includes(_c))
+                _limit.push(_c)
         }
     }
 
-    let min = _cur.reduce((m, v) => Math.min(m, v), _cur[0])
-    let max = _cur.reduce((m, v) => Math.max(m, v), _cur[0])
+    let min = _limit.reduce((m, v) => Math.min(m, v), _limit[0])
+    let max = _limit.reduce((m, v) => Math.max(m, v), _limit[0])
     let des = min / 100 < 10 ? 10 : 100;
     max = Math.floor(max / des) * des + des;
     min = Math.floor(min / des) * des;
     let div = max - min;
-    let il = _cur.length >= 7 ? 7 : _cur.length >= 3 ? 5 : _cur.length >= 2 ? 3 : _cur.length;
+    //let il = _limit.length >= 7 ? 7 : _limit.length >= 3 ? 5 : _limit.length >= 2 ? 4 : _limit.length;
+    let il = _limit.length >= 2 ? 7 : _limit.length;
     let poi = div / il;
 
     for (let i = 1; i <= il; i++)

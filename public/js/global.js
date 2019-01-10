@@ -7,6 +7,7 @@ let $checkout;
 let $prop;
 let $veil, $up;
 let $first,$check,$limit,$cap,$down,$list;
+let _limit = [];
 
 let _im_changed = false;
 
