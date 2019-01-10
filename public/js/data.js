@@ -146,5 +146,52 @@ let _conditions = new Map([
         extra:{
             loyal:20
         }
+    }],
+    ['CreditPlus', {
+        first: {
+            minAmount: 500,
+            maxAmount: 4000,
+            minTime: 3,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 10000,
+            minTime: 3,
+            maxTime: 30,
+            APR:657
+        },
+        extra:{
+            loyal:25
+        }
+    }],
+    ['SOSCredit', {
+        first: {
+            minAmount: 500,
+            maxAmount: 3000,
+            minTime: 1,
+            maxTime: 15,
+            APR:3.65
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 15000,
+            minTime: 1,
+            maxTime: 30,
+            APR:657
+        },
+        extra:{
+            loyal:50
+        }
+    }],
+    ['TopCredit', {
+        ordinary: {
+            minAmount: 100,
+            maxAmount: 15000,
+            minTime: 1,
+            maxTime: 65,
+            APR:693.5
+        }
     }]
 ]);

@@ -323,13 +323,13 @@ function proposals() {
 }
 
 function sortOffers(){
-    let a = $('.offer').sort((a,b)=>{
+    let a = $('.offer').sort((a,b)=>{         
     let totA = parseInt($(a).find('.total').text());
     let totB = parseInt($(b).find('.total').text())
     return totA-totB
 })
     $('.offer').remove();
-    $offers.append(a);
+    $offers.append(a);   
     $flag = $offers.find('.flag');
     calibrateFlags($flag);
 }
@@ -590,7 +590,6 @@ function createLimit() {
     for (let _of of _con) {
         if ($(_of).closest('.offer').css('display') != 'none' && $(_of).css('display') != 'none') {
             let _c = $(_of).find('.total').text();
-            console.log(_c);
             if (!_limit.includes(_c))
                 _limit.push(_c)
         }
