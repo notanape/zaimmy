@@ -389,28 +389,40 @@ function calibrateOffers() {
         })
         if (_con.length == 0) {
             if (_company.css('display') != "none")
-                _company.slideUp({
-                    duration: 200,
-                    step: () => {
-                        calibrateFlags($flag)
-                    },
-                    complete: () => {
-                        isEmpty();
-                        proposals();
-                    }
-                })
+            /*_company.slideUp({
+                duration: 200,
+                step: () => {
+                    calibrateFlags($flag)
+                },
+                complete: () => {
+                    isEmpty();
+                    proposals();
+                }
+            })*/
+            {
+                _company.css('display', "none");
+                calibrateFlags($flag)
+                isEmpty();
+                proposals();
+            }
         } else {
             if (_company.css('display') == "none")
-                _company.slideDown({
-                    duration: 200,
-                    step: () => {
-                        calibrateFlags($flag)
-                    },
-                    start: () => {
-                        isEmpty();
-                        proposals();
-                    }
-                })
+            /*_company.slideDown({
+                duration: 200,
+                step: () => {
+                    calibrateFlags($flag)
+                },
+                start: () => {
+                    isEmpty();
+                    proposals();
+                }
+            })*/
+            {
+                _company.css('display', "block");
+                calibrateFlags($flag)
+                isEmpty();
+                proposals();
+            }
             let _c = _company.find('.condition')
             for (let i of _c) {
                 let _elem = $(i);
@@ -493,6 +505,7 @@ function checkFirst() {
         $check.removeClass('ch')
     else
         $check.addClass('ch')
+    listShow();
     $ul.html('<li>Нема</li>');
     $cap.text('Ліміт');
     calibrateOffers()
@@ -516,7 +529,7 @@ function listShow() {
         _act = true;
         createLimit();
         $list.slideDown({
-            complete: () => {
+            start: () => {
                 positionList();
                 if (_a.length > 0)
                     _a[0]()
@@ -528,7 +541,6 @@ function listShow() {
         _act = true
         $list.slideUp({
             complete: () => {
-
                 if (_a.length > 0)
                     _a[0]()
             },
