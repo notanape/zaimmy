@@ -40,6 +40,9 @@ $(() => {
     $(_im).attr('src', 'pic/currency/take.png');
     $(_im_mob).attr('src', 'pic/currency/take-mob.png');
 
+    let o = 0;
+    console.log('total '+$('img').length);
+
     if ($(window).width() >= 576) {
         $('.take').append(_im);
         _im_changed = true
@@ -52,7 +55,8 @@ $(() => {
     addOffers();
 
     $('img').bind('load', () => {
-        calibrate(), calibrateLogo(), calibrateFlags($flag), proposals();
+        console.log('im '.concat(++o));
+        calibrate(), calibrateLogo(), calibrateFlags($flag), proposals(),unVeil();;
         $list.css('width', $limit.width() + 16)
     })
 

@@ -167,7 +167,8 @@ body {
       font-size: 1.3em;
       font-weight: 600;
       letter-spacing: 0.06em;
-      color: #21595f; }
+      color: #21595f;
+      padding: 0 10px; }
       .calculator .additional .inAdd .first #check {
         border: 3px solid #c5a0a1;
         border-radius: 5px;

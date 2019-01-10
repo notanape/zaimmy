@@ -24,7 +24,7 @@ function dragOptions(move, level) {
             calibrateOffers();
         },
         start: () => {
-            resetLimit();            
+            resetLimit();
         }
     }
     return _opt
@@ -322,14 +322,20 @@ function proposals() {
     _prop.text(_tot)
 }
 
-function sortOffers(){
-    let a = $('.offer').sort((a,b)=>{         
-    let totA = parseInt($(a).find('.total').text());
-    let totB = parseInt($(b).find('.total').text())
-    return totA-totB
-})
+function sortOffers() {
+    let a = $('.offer').sort((a, b) => {
+        let totA = parseInt($(a).find('.total').text());
+        let totB = parseInt($(b).find('.total').text());
+        for (let i of $(a).find('.condition'))
+            if ($(i).css('display') != 'none')
+                totA = parseInt($(i).find('.total').text())
+        for (let i of $(b).find('.condition'))
+            if ($(i).css('display') != 'none')
+                totB = parseInt($(i).find('.total').text())
+        return totA - totB
+    })
     $('.offer').remove();
-    $offers.append(a);   
+    $offers.append(a);
     $flag = $offers.find('.flag');
     calibrateFlags($flag);
 }
@@ -456,11 +462,11 @@ function calibrateOffers() {
                 }
             }
         }
-    }    
-    setTimeout(()=>{
-        unVeil();
+    }
+    setTimeout(() => {
         createLimit();
-        sortOffers()}, 200)
+        sortOffers()
+    }, 400)
 }
 
 function checkout(e) {
@@ -601,8 +607,8 @@ function createLimit() {
     max = Math.floor(max / des) * des + des;
     min = Math.floor(min / des) * des;
     let div = max - min;
-    //let il = _limit.length >= 7 ? 7 : _limit.length >= 3 ? 5 : _limit.length >= 2 ? 4 : _limit.length;
-    let il = _limit.length >= 2 ? 7 : _limit.length;
+    let il = _limit.length >= 7 ? 7 : _limit.length >= 3 ? 4 : _limit.length >= 2 ? 3 : _limit.length;
+    //let il = _limit.length >= 2 ? 7 : _limit.length;
     let poi = div / il;
 
     for (let i = 1; i <= il; i++)

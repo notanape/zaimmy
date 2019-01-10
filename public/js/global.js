@@ -21,7 +21,7 @@ let _offer = (title, info) => {
             let _title;
             switch (type) {
                 case "ordinary":
-                    _title = "Постійні умови"
+                    _title = "Стандарт"
                     break;
                 case "first":
                     _title = "Вперше"
