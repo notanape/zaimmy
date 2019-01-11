@@ -454,7 +454,7 @@ function unVeil() {
     }, {
         duration: 100,
         complete: () => {
-            $veil.addClass('d-none');
+            $veil.removeClass('d-flex').addClass('d-none');
         }
     })
 }

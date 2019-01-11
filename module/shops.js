@@ -17,7 +17,7 @@ let shops = {
     	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fnew%2Fnewclient',
     	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fviews%2Flogin'
     },
-    'Быстрозайм':{
+    'быстрозайм':{
     	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister',
     	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister'
     },
@@ -41,7 +41,7 @@ let shops = {
     	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Fregistration',
     	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Flogin'
     },
-    'ЄвроГроші':{
+    'єврогроші':{
     	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23signUp',
     	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23login'
     },
@@ -61,7 +61,7 @@ let shops = {
         'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fuk%2Fsite%2Fform%2Fstep%2F1',
         'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fsite%2Flogin'
     },
-    'ГлобалКредит':{
+    'глобалкредит':{
         'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fuk%2Fform%2Fregistration',
         'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fsite%2Flogin'
     }
