@@ -1,14 +1,9 @@
 let _im = new Image();
 let _im_mob = new Image();
 
-let _links_font = {
-    min: 0.6,
-    max: 1
-}
-
 let _money_info = {
     min: 100,
-    max: 15000,
+    max: 20000,
     step: 100
 }
 
@@ -192,6 +187,91 @@ let _conditions = new Map([
             minTime: 1,
             maxTime: 65,
             APR:693.5
+        }
+    }],
+    ['ЄвроГроші', {
+        ordinary: {
+            minAmount: 100,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 30,
+            APR:693.5
+        }
+    }],
+    ['CreditON', {
+        first: {
+            minAmount: 300,
+            maxAmount: 2000,
+            minTime: 1,
+            maxTime: 28,
+            APR:591.51
+        },
+        second: {
+            minAmount: 300,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 65,
+            APR:591.51
+        }
+    }],
+    ['MoneyBOOM', {
+        ordinary: {
+            minAmount: 250,
+            maxAmount: 4000,
+            minTime: 5,
+            maxTime: 30,
+            APR:638.75
+        }
+    }],
+    ['Credit365', {
+        first: {
+            minAmount: 500,
+            maxAmount: 5000,
+            minTime: 7,
+            maxTime: 30,
+            APR:255.5
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 20000,
+            minTime: 7,
+            maxTime: 30,
+            APR:357.7
+        },
+        extra:{
+            loyal:30
+        }
+    }],
+    ['Твої Гроші', {
+        first: {
+            minAmount: 300,
+            maxAmount: 5000,
+            minTime: 1,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 300,
+            maxAmount: 15000,
+            minTime: 1,
+            maxTime: 30,
+            APR:730
+        }
+    }],
+    ['ГлобалКредит', {
+        first: {
+            minAmount: 200,
+            maxAmount: 5000,
+            minTime: 1,
+            maxTime: 30,
+            APR:3.65
+        },
+        second: {
+            minAmount: 200,
+            maxAmount: 10000,
+            minTime: 1,
+            maxTime: 30,
+            APR:631.45
         }
     }]
 ]);

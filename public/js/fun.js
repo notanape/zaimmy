@@ -235,6 +235,7 @@ function addOffers() {
         let _offerD = $(_offer(k, v));
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
+        $promoB = $offers.find('.buttom#promocode');
         let _off = $offers.find('.offer');
         _off.each(function() {
             let _this = $(this);
@@ -306,7 +307,8 @@ function calibrateOffers() {
     let _mV = _money_slider.value;
     let _tV = _time_slider.value;
     let _ch = $check.hasClass('ch');
-    let _lim = $cap.text() == 'Ліміт' ? 0 : parseInt($cap.text());
+    let _prom = $pCheck.hasClass('ch');
+    //let _lim = $cap.text() == 'Ліміт' ? 0 : parseInt($cap.text());
     _conditions.forEach((v, k) => {
         if (!_map.hasOwnProperty(k))
             _map[k] = [];
@@ -320,13 +322,19 @@ function calibrateOffers() {
     for (let _cond in _map) {
         let _of = _map[_cond];
         if (_ch) {
+            if (_conditions.get(_cond).hasOwnProperty('extra'))
+                if (_conditions.get(_cond)['extra'].hasOwnProperty('promo'))
+                    _map[_cond].push('promo');
             _of.forEach((d, i) => {
                 if (d == 'second')
                     _of.splice(i, 1)
             })
-        } else {
+            if (_prom)
+                if (!_of.includes('promo'))
+                    _map[_cond] = [];
+        } else if (!_ch) {
             _of.forEach((d, i) => {
-                if (d == 'first')
+                if (d == 'first' || d == 'promo')
                     _of.splice(i, 1)
             })
         }
@@ -335,6 +343,16 @@ function calibrateOffers() {
     for (let _off in _map) {
         let _con = _map[_off];
         let _company = $(`[id="${_off}"]`);
+        let _p = _map[_off].includes('promo');
+        let _promoB = _company.find('.button#promocode');
+        let _checkout = _company.find('.button#checkout');
+        if (_p) {
+            _promoB.removeClass('d-none');
+            _checkout.addClass('d-none');
+        } else {
+            _promoB.addClass('d-none');
+            _checkout.removeClass('d-none');
+        }
         _company.find('.condition').each(function() {
             let _conN = $(this).attr('id');
             let _amm = $(this).find('.total');
@@ -350,7 +368,7 @@ function calibrateOffers() {
             _per.parent().css('opacity', '0');
 
 
-            if (_lim != 0) {
+            /* if (_lim != 0) {
                 if (_total > _lim) {
                     _con.forEach((d, i) => {
                         if (d == _conN)
@@ -358,7 +376,7 @@ function calibrateOffers() {
                     })
                 }
             }
-
+*/
             setTimeout(() => {
                 _amm.text(_total);
                 _per.html(`${_perc} %`.concat(_loyal));
@@ -403,7 +421,7 @@ function calibrateOffers() {
         }
     }
     setTimeout(() => {
-        createLimit();
+        // createLimit();
         sortOffers()
     }, 400)
 }
@@ -412,7 +430,7 @@ function checkout(e) {
     let _target = $(event.target);
     let _info = _target.closest('.forButton').prev();
     let _con = _info.find('.condition');
-    let _offer = _target.closest('.offer').attr('id').toLowerCase().replace(/\s/g,'-');
+    let _offer = _target.closest('.offer').attr('id').toLowerCase().replace(/\s/g, '-');
     let _loan = "loan-cash";
     if (_con.filter('#ordinary').length != 0 || _con.filter('#first').css('display') != 'none')
         window.open(`${location.origin}/${_offer}/${_loan}-register`, '_blank')
@@ -462,15 +480,37 @@ function scrollToCalc() {
 }
 
 function checkFirst() {
-    if ($check.hasClass('ch'))
-        $check.removeClass('ch')
-    else
-        $check.addClass('ch')
-    resetLimit();
+    if ($check.hasClass('ch')) {
+        $check.removeClass('ch');
+        $pCheck.removeClass('ch');
+        //promoVis();
+    } else {
+        $check.addClass('ch');
+        //promoVis()
+    }
+    // resetLimit();
     calibrateOffers()
 }
 
-function positionList() {
+function checkPromo() {
+    if ($pCheck.hasClass('ch'))
+        $pCheck.removeClass('ch');
+    else
+        $pCheck.addClass('ch');
+    calibrateOffers()
+}
+
+function promoVis() {
+    let _d = false;
+    let _op = $promo.css('opacity');
+    if (_op == 1) {
+        $promo.css('opacity', 0);
+        _d = true;
+    } else if (_op == 0 && !_d)
+        $promo.css('opacity', 1);
+}
+
+/*function positionList() {
     $list.css('width', $limit.width() + 16)
     $list.position({
         my: 'center top',
@@ -550,4 +590,4 @@ function createLimit() {
     $li.bind('click', getLimit);
 
 
-}
+}*/

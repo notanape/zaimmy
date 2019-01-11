@@ -22,17 +22,20 @@ $(() => {
 
     $first = $('.additional').find('.first');
     $check = $first.find('#check');
-    $limit = $('.additional').find('.limit');
+    $promo = $('.additional').find('.promo');
+    $pCheck = $promo.find('#check');
+    /*$limit = $('.additional').find('.limit');
     $cap = $limit.find('#caption');
     $down = $limit.find('#down');
     $list = $('.additional').find('.list');
-    $ul = $('.additional').find('ul');    
+    $ul = $('.additional').find('ul');  **/  
 
     $first.bind('click', checkFirst);
+    $promo.bind('click', checkPromo);
 
-    $limit.bind('click', () => {
+    /*$limit.bind('click', () => {
         listShow()
-    });
+    });*/
     
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
@@ -53,7 +56,7 @@ $(() => {
 
     $('img').bind('load', () => {
         calibrate(), calibrateLogo(), calibrateFlags($flag), proposals(),unVeil();;
-        $list.css('width', $limit.width() + 16)
+        //$list.css('width', $limit.width() + 16)
     })
 
     calibrateOffers();
@@ -80,7 +83,7 @@ $(() => {
 
     $(window).bind({
         'resize': () => {
-            calibrate(), calibrateLogo(), calibrateFlags($flag), positionList();
+            calibrate(), calibrateLogo(), calibrateFlags($flag)/*, positionList()*/;
         },
         'scroll': () => {
             let _w = $(window).scrollTop();

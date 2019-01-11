@@ -181,6 +181,20 @@ body {
         background: #c5a0a1 !important; }
       .calculator .additional .inAdd .first #caption {
         margin-left: 4px; }
+      .calculator .additional .inAdd .promo {
+        opacity: 0; }
+        .calculator .additional .inAdd .promo #check {
+          border: 3px solid #ffbb40;
+          border-radius: 5px;
+          padding: 2px;
+          font-size: 0.8em;
+          background: transparent; }
+          .calculator .additional .inAdd .promo #check i {
+            color: #f8f9fa; }
+        .calculator .additional .inAdd .promo .ch {
+          background: #ffbb40 !important; }
+        .calculator .additional .inAdd .promo #caption {
+          margin-left: 4px; }
       .calculator .additional .inAdd .limit {
         border: 3px solid grey;
         padding: 0 0 0 10px;
@@ -293,14 +307,14 @@ body {
         border-right: 1px dotted #ffc5c5; }
         .offers .offer .right .info .condition#first .inLabel {
           color: #30c530; }
-      .offers .offer .right .info .condition#second .inLabel {
-        color: #d87c5a; }
-      .offers .offer .right .info .condition#ordinary .inLabel {
+      .offers .offer .right .info .condition#ordinary .inLabel, .offers .offer .right .info .condition#second .inLabel {
         color: #c3af47; }
       .offers .offer .right .forButton {
         margin-top: 8px; }
         .offers .offer .right .forButton .button {
           background: grey; }
+        .offers .offer .right .forButton #promocode {
+          background: orange; }
     .offers .offer .flag {
       position: absolute; }
     .offers .offer .flag .label {

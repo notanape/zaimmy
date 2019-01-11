@@ -41,9 +41,29 @@ let shops = {
     	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Fregistration',
     	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Flogin'
     },
-    '1':{
-    	'loan-cash-register':'',
-    	'loan-cash':''
+    'ЄвроГроші':{
+    	'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23signUp',
+    	'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23login'
+    },
+    'crediton':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1729?aid=65853&dlink=https%3A%2F%2Fwww.crediton.ua%2Fuk%2Fcredit%2Fapp%2Fprofile',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1729?aid=65853&dlink=https%3A%2F%2Fwww.crediton.ua%2Fuk%2Fauth'
+    },
+    'moneyboom':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/381?aid=65853&dlink=https%3A%2F%2Fmy.moneyboom.ua%2Fregister',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/381?aid=65853&dlink=https%3A%2F%2Fmy.moneyboom.ua%2Flogin'
+    },
+    'credit365':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/163?aid=65853&dlink=https%3A%2F%2Fcredit365.ua%2Fuk%2Fregistration',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/163?aid=65853'
+    },
+    'твої-гроші':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fuk%2Fsite%2Fform%2Fstep%2F1',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fsite%2Flogin'
+    },
+    'ГлобалКредит':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fuk%2Fform%2Fregistration',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fsite%2Flogin'
     }
 }
 

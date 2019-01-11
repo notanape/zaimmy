@@ -1,13 +1,4 @@
-$m-b: 20px;
-$m-b-mob: 16px;
-$b-col: #7b8e77;
-$i-col: #613544;
-$fl-col: #ffd842;
-$fl-f-col: #ff9242;
-$or-col: #c3af47;
-$fi-col: #30c530;
-$se-col: #d87c5a;
-$ad-col: #f8f9fa;
+@import "var";
 
 * {
     user-select: none;
@@ -282,6 +273,29 @@ body {
                 }
             }
 
+            .promo {
+                opacity: 0;
+                #check {
+                    border: 3px solid $pr-col;
+                    border-radius: 5px;
+                    padding: 2px;
+                    font-size: 0.8em;
+                    background: transparent;
+
+                    i {
+                        color: $ad-col;
+                    }
+                }
+
+                .ch {
+                    background: $pr-col !important;
+                }
+
+                #caption {
+                    margin-left: 4px;
+                }
+            }
+
             .limit {
                 border: 3px solid grey;
                 padding: 0 0 0 10px;
@@ -451,13 +465,7 @@ body {
                     }
                 }
 
-                .condition#second {
-                    .inLabel {
-                        color: $se-col;
-                    }
-                }
-
-                .condition#ordinary {
+                .condition#ordinary, .condition#second {
                     .inLabel {
                         color: $or-col;
                     }
@@ -469,6 +477,10 @@ body {
 
                 .button {
                     background: grey;
+                }
+
+                #promocode {
+                    background: orange;
                 }
             }
         }

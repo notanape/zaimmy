@@ -7,6 +7,7 @@ let $checkout;
 let $prop;
 let $veil, $up;
 let $first,$check,$limit,$cap,$down,$list;
+let $promo, $pCheck, $promoB;
 let _limit = [];
 
 let _im_changed = false;
@@ -27,7 +28,7 @@ let _offer = (title, info) => {
                     _title = "Вперше"
                     break;
                 case "second":
-                    _title = "Повторно"
+                    _title = "Стандарт"
                     break;
             }
 
@@ -61,6 +62,7 @@ let _offer = (title, info) => {
             _flag = (info['first'].APR / 365).toFixed(2) + '%'
         else
             _flag = (info['ordinary'].APR / 365).toFixed(2) + '%'
+    let _extra = _types.includes('extra') ? info['extra'] : false; 
     
     return `<div class="offer" id="${title}">
             <div class="soul d-flex">
@@ -77,6 +79,10 @@ let _offer = (title, info) => {
               ${_condition(info)}
             </div>
             <div class="forButton d-flex justify-content-end">
+            <div class="button desc d-none" id="promocode">
+                Промо-код
+                <input hidden id="promo" type="text" value="${!_extra ? '' : _extra.hasOwnProperty('promo') ? _extra.promo : ''}">
+              </div>
               <div class="button desc" id="checkout">
                 Оформити
               </div>
