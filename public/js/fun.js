@@ -455,6 +455,7 @@ function unVeil() {
         duration: 100,
         complete: () => {
             $veil.removeClass('d-flex').addClass('d-none');
+            $('body').css('overflow':'auto')
         }
     })
 }
@@ -499,7 +500,7 @@ function checkFirst() {
         //promoVis()
     }
     // resetLimit();
-    calibrateOffers()
+    setTimeout(calibrateOffers,50)
 }
 
 function checkPromo() {
