@@ -55,7 +55,7 @@ $(() => {
     addOffers();
 
     $('img').bind('load', () => {
-        calibrate(), calibrateLogo(), calibrateFlags($flag), proposals(),unVeil();;
+        proposals(),calibrate(),calibrateLogo(), calibrateFlags($flag),unVeil();
         //$list.css('width', $limit.width() + 16)
     })
 
