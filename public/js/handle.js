@@ -39,9 +39,15 @@ $(() => {
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
+    _whole = _conditions.size + 2;
 
     $(_im).attr('src', 'pic/currency/take.png');
     $(_im_mob).attr('src', 'pic/currency/take-mob.png');
+
+    $(_im).add($(_im_mob)).bind('load', () => {
+        if (--_whole == 0)
+            unVeil();
+    })
 
     if ($(window).width() >= 576) {
         $('.take').append(_im);
@@ -54,16 +60,19 @@ $(() => {
 
     addOffers();
 
-    let _ims = $('img').length;
+    console.log(_whole)
+
+
+    /*let _ims = $('img').length;
 
     $('img').bind('load', () => {
         --_ims;
         console.log(_ims);
         if (_ims == 1) {
-            calibrate(), proposals(), calibrateLogo(), calibrateFlags($flag), unVeil();
+            , unVeil();
         }
         //$list.css('width', $limit.width() + 16)
-    })
+    })*/
 
     calibrateOffers();
 

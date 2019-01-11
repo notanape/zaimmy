@@ -9,6 +9,7 @@ let $veil, $up;
 let $first,$check,$limit,$cap,$down,$list;
 let $promo, $pCheck, $promoB;
 let _limit = [];
+let _whole = 0;
 
 let _im_changed = false;
 

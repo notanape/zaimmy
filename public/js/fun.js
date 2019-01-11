@@ -3,17 +3,18 @@ function dragOptions(move, level) {
         axis: 'x',
         containment: level.closest('.handler'),
         stop: () => {
-            calibrateOffers();
-        }/*,
-        start: () => {
-            resetLimit();
-        }*/
+                calibrateOffers();
+            }
+            /*,
+                    start: () => {
+                        resetLimit();
+                    }*/
     }
     return _opt
 }
 
-function sliderValue() {    
-        
+function sliderValue() {
+
     let _move = arguments[0];
     let _call = arguments[arguments.length - 1];
     let _level = _move.is($moveM) ? $levelM : $levelT;
@@ -143,7 +144,7 @@ function aboutUs(e) {
 
 }
 
-function calibrate() {    
+function calibrate() {
     let _moves = $moveM.add($moveT);
     _moves.each(function() {
         let _move = $(this);
@@ -234,6 +235,10 @@ function adjustFlag(flag) {
 function addOffers() {
     _conditions.forEach((v, k) => {
         let _offerD = $(_offer(k, v));
+        _offerD.find('.offerLogo>img').bind('load', () => {
+            if (--_whole == 0)
+                unVeil();
+        })
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
         $promoB = $offers.find('.buttom#promocode');
@@ -439,6 +444,9 @@ function checkout(e) {
 }
 
 function unVeil() {
+    proposals();
+    calibrateLogo();
+    calibrateFlags($flag);
     calibrate();
     $veil.animate({
         opacity: 0
