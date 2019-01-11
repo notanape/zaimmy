@@ -3,7 +3,10 @@ function dragOptions(move, level) {
         axis: 'x',
         containment: level.closest('.handler'),
         stop: () => {
-                calibrateOffers();
+                loading();
+                setTimeout(() => {
+                    calibrateOffers(loading)
+                }, 10)
             }
             /*,
                     start: () => {
@@ -69,7 +72,7 @@ function labelMove(move) {
     })
 }
 
-function plusMinus(e) {
+function plusMinus(e) {    
     e.stopImmediatePropagation();
     let _b = $(e.target).closest('.inter');
     let _move = _b.parent().find(`.sliderCalc#${_b.attr('id')}`).find('.move');
@@ -83,7 +86,10 @@ function plusMinus(e) {
             _slider.value -= _info.step;
     }
     sliderValue(_move, _slider.value, labelMove);
-    calibrateOffers();
+    loading();
+    setTimeout(() => {
+        calibrateOffers(loading)
+    }, 10)
 }
 
 function opac() {
@@ -306,9 +312,11 @@ function sortOffers() {
     $checkout.bind('click', checkout);
     $flag = $offers.find('.flag');
     calibrateFlags($flag);
+    if (arguments.length != 0)
+        arguments[0]();
 }
 
-function calibrateOffers() {
+function calibrateOffers() {    
     let _map = {};
     let _mV = _money_slider.value;
     let _tV = _time_slider.value;
@@ -382,7 +390,7 @@ function calibrateOffers() {
                     })
                 }
             }
-*/            
+*/
             _amm.text(_total);
             _per.html(`${_perc} %`.concat(_loyal));
             _amm.parent().css('opacity', '1');
@@ -427,8 +435,11 @@ function calibrateOffers() {
             }
         }
     }
-    
-        // createLimit();
+
+    // createLimit();
+    if (arguments.length != 0)
+        sortOffers(arguments[0])
+    else
         sortOffers()
 }
 
@@ -455,9 +466,41 @@ function unVeil() {
         duration: 100,
         complete: () => {
             $veil.removeClass('d-flex').addClass('d-none');
-            $('body').css('overflow':'auto')
+            $('body').css('overflow', 'auto');
         }
     })
+}
+
+function loading() {
+    let _loa = false;
+
+    $veil = $('.veil');
+    let _cl = $veil.hasClass('d-flex');
+    $veil.css('opacity', '0.6');
+    let _b = () => {
+        let ch = false;
+        let _bo = $('body');
+        let _ov = _bo.css('overflow');
+        let _v = '';
+        if (_ov == 'hidden' && !ch) {
+            _v = 'auto';
+            ch = true
+        } else if (_ov == 'auto' && !ch) {
+            _v = 'hidden';
+            ch = true
+        }
+        _bo.css('overflow', _v);
+    };
+    if (_cl && !_loa) {
+        _b();
+        $veil.addClass('d-none').removeClass('d-flex');
+        _loa = true;
+    } else if (!_cl && !_loa) {
+        $veil.css('top', $(window).scrollTop())
+        _b();
+        $veil.addClass('d-flex').removeClass('d-none');
+        _loa = true;
+    }
 }
 
 function showUp() {
@@ -500,7 +543,10 @@ function checkFirst() {
         //promoVis()
     }
     // resetLimit();
-    setTimeout(calibrateOffers,50)
+    loading();
+    setTimeout(() => {
+        calibrateOffers(loading)
+    }, 10)
 }
 
 function checkPromo() {
