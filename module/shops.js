@@ -73,13 +73,23 @@ module.exports = {
         return (req, res) => {
             let param = req.params[0];
             let _s = param.split('/');
-            if (_s.includes('show')) {
+            if (_s[0] == 'show') {
                 fs.readFile(`${path}/list.html`, (err, data) => {
                     let o = data.toString().replace('(list)', JSON.stringify(shops));
                     fs.writeFile(`${path}/l.html`, o, err => {
                         res.sendFile(`${path}/l.html`)
                     })
                 })
+                if(_s[1] == 'shops'){
+                    let o = {};
+                    for (let y in shops){
+                        if(!o.hasOwnProperty(y))
+                            o[y] = []
+                        for(let i in shops[y])
+                            o[y].push(i)
+                    }
+                    res.json(o);
+                }
             } else if (!shops.hasOwnProperty(_s[0])) {
                 let param = req.params[0];
                 fs.stat(`${path}/${param}`, (err, st) => {

@@ -114,6 +114,19 @@ body {
     .aboutUs {
         opacity: 0;
         font-family: 'Spectral';
+        padding: 10px 10px 0;
+        text-indent: 17px;
+        line-height: 25px;
+        font-size: 1em;
+        letter-spacing: 0.6px;
+
+        @media (min-width: 576px) {
+            font-size: 1.1em;
+        }
+
+        .span {
+            color: #f4c408;
+        }
     }
 }
 
@@ -275,6 +288,7 @@ body {
 
             .promo {
                 opacity: 0;
+
                 #check {
                     border: 3px solid $pr-col;
                     border-radius: 5px;

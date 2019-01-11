@@ -296,7 +296,6 @@ function sortOffers() {
     $('.offer').remove();
     $offers.append(a);
     $checkout = $('.forButton>#checkout');
-    console.log($checkout);
     $checkout.bind('click', checkout);
     $flag = $offers.find('.flag');
     calibrateFlags($flag);

@@ -1,27 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sitemapindex xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_ru_ua.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_faq.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_news.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_promo_action_news.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_landing.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://moneyveo.ua/sitemap_article.xml</loc>
-    <lastmod>2019-01-07T23:00:14+02:00</lastmod>
-  </sitemap>
-</sitemapindex>
+<urlset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+<loc>
+http://zaimmy.online/moneyveo/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/moneyveo/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/dinero/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/dinero/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/alexcredit/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/alexcredit/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/кредиткаса/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/кредиткаса/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/быстрозайм/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/быстрозайм/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/ваша-готівочка/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/ваша-готівочка/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/mycredit/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/mycredit/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/creditplus/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/creditplus/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/soscredit/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/soscredit/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/topcredit/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/topcredit/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/єврогроші/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/єврогроші/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/crediton/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/crediton/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/moneyboom/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/moneyboom/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/credit365/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/credit365/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/твої-гроші/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/твої-гроші/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/глобалкредит/loan-cash-register/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/глобалкредит/loan-cash/
+</loc>
+</url>
+<url>
+<loc>
+http://zaimmy.online/
+</loc>
+</url>
+</urlset>

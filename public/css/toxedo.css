@@ -80,7 +80,17 @@ body {
   border-radius: 0 0 17px 17px; }
   .about .aboutUs {
     opacity: 0;
-    font-family: 'Spectral'; }
+    font-family: 'Spectral';
+    padding: 10px 10px 0;
+    text-indent: 17px;
+    line-height: 25px;
+    font-size: 1em;
+    letter-spacing: 0.6px; }
+    @media (min-width: 576px) {
+      .about .aboutUs {
+        font-size: 1.1em; } }
+    .about .aboutUs .span {
+      color: #f4c408; }
 
 .calculator {
   margin-top: 16px;
