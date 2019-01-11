@@ -28,7 +28,7 @@ $(() => {
     $cap = $limit.find('#caption');
     $down = $limit.find('#down');
     $list = $('.additional').find('.list');
-    $ul = $('.additional').find('ul');  **/  
+    $ul = $('.additional').find('ul');  **/
 
     $first.bind('click', checkFirst);
     $promo.bind('click', checkPromo);
@@ -36,7 +36,7 @@ $(() => {
     /*$limit.bind('click', () => {
         listShow()
     });*/
-    
+
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
 
@@ -54,8 +54,14 @@ $(() => {
 
     addOffers();
 
+    let _ims = $('img').length;
+
     $('img').bind('load', () => {
-        proposals(),calibrate(),calibrateLogo(), calibrateFlags($flag),unVeil();
+        --_ims;
+        console.log(_ims);
+        if (_ims == 1) {
+            calibrate(), proposals(), calibrateLogo(), calibrateFlags($flag), unVeil();
+        }
         //$list.css('width', $limit.width() + 16)
     })
 
@@ -83,7 +89,7 @@ $(() => {
 
     $(window).bind({
         'resize': () => {
-            calibrate(), calibrateLogo(), calibrateFlags($flag)/*, positionList()*/;
+            calibrate(), calibrateLogo(), calibrateFlags($flag) /*, positionList()*/ ;
         },
         'scroll': () => {
             let _w = $(window).scrollTop();

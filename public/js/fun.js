@@ -12,7 +12,8 @@ function dragOptions(move, level) {
     return _opt
 }
 
-function sliderValue() {
+function sliderValue() {    
+        
     let _move = arguments[0];
     let _call = arguments[arguments.length - 1];
     let _level = _move.is($moveM) ? $levelM : $levelT;
@@ -142,14 +143,8 @@ function aboutUs(e) {
 
 }
 
-function calibrate() {
-    let _moves = $moveM.add($moveT);    
-    calibrateFlags($flag);
-    let _off = $offers.find('.offer');
-    _off.each(function() {
-        let _this = $(this);
-        _this.find('.offerLogo').css('width', `${_this.height()}px`)
-    })
+function calibrate() {    
+    let _moves = $moveM.add($moveT);
     _moves.each(function() {
         let _move = $(this);
         let _level = _move.prev();
@@ -157,6 +152,11 @@ function calibrate() {
         let _plus = $(`.inter.plus#${_move.closest('.sliderCalc').attr('id')}`);
         let _minus = $(`.inter.minus#${_move.closest('.sliderCalc').attr('id')}`);
         let _hand = _move.parent();
+        _move.position({
+            my: 'center',
+            at: 'left center',
+            of: _level
+        });
         _hand.css({
             marginLeft: `${_plus.width() + (_plus.css('border-left-width').replace('px','')) * 2 }px`,
             marginRight: `${_plus.width() + (_plus.css('border-left-width').replace('px','')) * 2 }px`
@@ -175,13 +175,14 @@ function calibrate() {
         })
         _move.draggable(dragOptions(_move, _level));
         sliderValue(_move, _slider.value, labelMove);
-        _move.position({
-            my: 'center',
-            at: 'left center',
-            of: _level
-        });
-        
+
     });
+    calibrateFlags($flag);
+    let _off = $offers.find('.offer');
+    _off.each(function() {
+        let _this = $(this);
+        _this.find('.offerLogo').css('width', `${_this.height()}px`)
+    })
 }
 
 
@@ -438,6 +439,7 @@ function checkout(e) {
 }
 
 function unVeil() {
+    calibrate();
     $veil.animate({
         opacity: 0
     }, {
