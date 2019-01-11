@@ -64,6 +64,10 @@ let shops = {
     'глобалкредит':{
         'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fuk%2Fform%2Fregistration',
         'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fsite%2Flogin'
+    },
+    'є-гроші':{
+        'loan-cash-register':'https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2Freg',
+        'loan-cash':'https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F'
     }
 }
 

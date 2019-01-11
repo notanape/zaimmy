@@ -57,7 +57,7 @@ let _conditions = new Map([
             maxAmount: 15000,
             minTime: 7,
             maxTime: 30,
-            APR:176.4
+            APR:310.25
         }
     }],
     /*['Moneyveo', {
@@ -273,6 +273,22 @@ let _conditions = new Map([
             minTime: 1,
             maxTime: 30,
             APR:631.45
+        }
+    }],
+    ['Є-Гроші', {
+        first: {
+            minAmount: 100,
+            maxAmount: 5000,
+            minTime: 1,
+            maxTime: 31,
+            APR:3.65
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 20000,
+            minTime: 1,
+            maxTime: 30,
+            APR:726.35
         }
     }]
 ]);

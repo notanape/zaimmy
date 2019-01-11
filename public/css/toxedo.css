@@ -89,7 +89,7 @@ body {
     @media (min-width: 576px) {
       .about .aboutUs {
         font-size: 1.1em; } }
-    .about .aboutUs .span {
+    .about .aboutUs span {
       color: #f4c408; }
 
 .calculator {

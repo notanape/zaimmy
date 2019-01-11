@@ -382,15 +382,12 @@ function calibrateOffers() {
                     })
                 }
             }
-*/
-            setTimeout(() => {
-                _amm.text(_total);
-                _per.html(`${_perc} %`.concat(_loyal));
-                _amm.parent().css('opacity', '1');
-                _per.parent().css('opacity', '1');
-                calibrateFlags($flag);
-
-            }, 200)
+*/            
+            _amm.text(_total);
+            _per.html(`${_perc} %`.concat(_loyal));
+            _amm.parent().css('opacity', '1');
+            _per.parent().css('opacity', '1');
+            calibrateFlags($flag);
 
 
         })
@@ -418,6 +415,10 @@ function calibrateOffers() {
                         isEmpty();
                         proposals();
                     }
+                    let _of = _c.closest('.offer').attr('id');
+                    let _per = (_conditions.get(_of)[_id].APR / 365).toFixed(2);
+                    let _flag = _c.closest('.soul').find('.flag').find('.label').find('span');
+                    _flag.text(_per + '%');
                 } else if (_elem.css('display') != "none") {
                     _elem.css('display', 'none');
                     isEmpty();
@@ -426,10 +427,9 @@ function calibrateOffers() {
             }
         }
     }
-    setTimeout(() => {
+    
         // createLimit();
         sortOffers()
-    }, 400)
 }
 
 function checkout(e) {
