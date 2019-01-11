@@ -1,5 +1,6 @@
 let _im = new Image();
 let _im_mob = new Image();
+let _load = new Image();
 
 let _money_info = {
     min: 100,
@@ -59,7 +60,7 @@ let _conditions = new Map([
             APR:176.4
         }
     }],
-    ['Moneyveo', {
+    /*['Moneyveo', {
         first: {
             minAmount: 100,
             maxAmount: 5000,
@@ -74,7 +75,7 @@ let _conditions = new Map([
             maxTime: 30,
             APR:620.5
         }
-    }],
+    }],*/
     ['КредитКаса', {
         first: {
             minAmount: 400,

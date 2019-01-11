@@ -69,7 +69,7 @@ let _offer = (title, info) => {
             <div class="soul d-flex">
           <div class="left d-flex align-items-center">
             <div class="offerLogo">
-              <img class="img-fluid" src="pic/partners/${title.replace(/\s/g,'_').toLowerCase()}.png" alt="${title}">
+              <img class="img-fluid" src="pic/partners/${title.replace(/\s/g,'_').toLowerCase()}.png" alt="${title}" onload="if (--_whole == 0) unVeil();">
             </div>
           </div>
           <div class="right d-flex flex-column">

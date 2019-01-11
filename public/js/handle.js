@@ -1,3 +1,4 @@
+
 $(() => {
 
     $aboutB = $('#aboutUs');
@@ -11,8 +12,8 @@ $(() => {
     $moveT = $sliderT.find('.move');
     $backM = $levelM.find('.background');
     $backT = $levelT.find('.background');
-    $prop = $('.no-prop');
     $veil = $('.veil');
+    $prop = $('.no-prop');
     $up = $('.up');
 
     $offers = $('.offers');
@@ -39,15 +40,29 @@ $(() => {
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
-    _whole = _conditions.size + 2;
 
-    $(_im).attr('src', 'pic/currency/take.png');
-    $(_im_mob).attr('src', 'pic/currency/take-mob.png');
+    _whole = _conditions.size + 3;
 
-    $(_im).add($(_im_mob)).bind('load', () => {
-        if (--_whole == 0)
-            unVeil();
-    })
+    $(_im).attr({
+        'src': 'pic/currency/take.png',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+    $(_im_mob).attr({
+        'src': 'pic/currency/take-mob.png',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+    $(_load).attr({
+        'src': 'pic/loading.gif',
+        'class': 'img-fluid',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+
+    $veil.find('div').append(_load)
+
+    /* $(_im).add($(_im_mob)).add($(_load)).bind('load', () => {
+         if (--_whole == 0)
+             unVeil();
+     })*/
 
     if ($(window).width() >= 576) {
         $('.take').append(_im);
@@ -59,9 +74,6 @@ $(() => {
     }
 
     addOffers();
-
-    console.log(_whole)
-
 
     /*let _ims = $('img').length;
 

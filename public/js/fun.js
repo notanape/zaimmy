@@ -235,10 +235,11 @@ function adjustFlag(flag) {
 function addOffers() {
     _conditions.forEach((v, k) => {
         let _offerD = $(_offer(k, v));
-        _offerD.find('.offerLogo>img').bind('load', () => {
+        /*_offerD.find('.offerLogo>img').bind('load', () => {
+            console.log('from offer');
             if (--_whole == 0)
                 unVeil();
-        })
+        })*/
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
         $promoB = $offers.find('.buttom#promocode');
