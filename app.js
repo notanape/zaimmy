@@ -16,9 +16,7 @@ app.use(favicon(path.join(__dirname, 'public', 'pic', 'icon.png')));
 app.set('public', path.join(__dirname, 'public'));
 app.set('port', '8765');
 
-app.get("/", (req, res) => {
-    res.sendFile(app.get('public') + '/index.html')
-})
+app.get("/", shop.index(app.get('public')))
 
 app.get("/*", shop.list(app.get('public')));
 
