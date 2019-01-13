@@ -444,15 +444,16 @@ function calibrateOffers() {
 }
 
 function checkout(e) {
+    loading();
     let _target = $(event.target);
     let _info = _target.closest('.forButton').prev();
     let _con = _info.find('.condition');
     let _offer = _target.closest('.offer').attr('id').toLowerCase().replace(/\s/g, '-');
     let _loan = "loan-cash";
     if (_con.filter('#ordinary').length != 0 || _con.filter('#first').css('display') != 'none')
-        window.open(`${location.origin}/${_offer}/${_loan}-register`, '_top')
+        window.open(`${location.origin}/${_offer}/${_loan}-register`, '_self')
     else if (_con.filter('#first').css('display') == 'none')
-        window.open(`${location.origin}/${_offer}/${_loan}`, '_top')
+        window.open(`${location.origin}/${_offer}/${_loan}`, '_self')
 }
 
 function unVeil() {

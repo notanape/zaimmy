@@ -84,17 +84,17 @@ module.exports = {
             let _ref = req.get('Referrer');
             mon.connect(toAccount, (err, dbase) => {
                 let dbc = dbase.db(db);
-                let coll = dbc.coll(col);
+                let coll = dbc.collection(col);
                 let date = new Date();
                 coll.insertOne({
                     'ip': _ip,
                     'ref': _ref,
                     'shop': 'index',
-                    'day': date.toLocaleDateString().substring(3),
+                    'day': date.toLocaleDateString(),
                     'time': date.toLocaleTimeString().substr(0, 5)
                 }, (err, result) => {
                     dbase.close();
-                    res.sendFile(app.get('public') + '/index.html')
+                    res.sendFile(path + '/index.html')
                 })
             })
         }
@@ -128,7 +128,7 @@ module.exports = {
                 let param = req.params[0];
                 mon.connect(toAccount, (err, dbase) => {
                     let dbc = dbase.db(db);
-                    let coll = dbc.coll(col);
+                    let coll = dbc.collection(col);
                     let date = new Date();
 
                 })
@@ -138,7 +138,7 @@ module.exports = {
                             'ip': _ip,
                             'ref': _ref,
                             'shop': `${path}/${param}`,
-                            'day': date.toLocaleDateString().substring(3),
+                            'day': date.toLocaleDateString(),
                             'time': date.toLocaleTimeString().substr(0, 5)
                         }, (err, result) => {
                             dbase.close();
@@ -157,13 +157,13 @@ module.exports = {
             } else if (shops.hasOwnProperty(_s[0])) {
                 mon.connect(toAccount, (err, dbase) => {
                     let dbc = dbase.db(db);
-                    let coll = dbc.coll(col);
+                    let coll = dbc.collection(col);
                     let date = new Date();
                     coll.insertOne({
                         'ip': _ip,
                         'ref': _ref,
                         'shop': _s[0],
-                        'day': date.toLocaleDateString().substring(3),
+                        'day': date.toLocaleDateString(),
                         'time': date.toLocaleTimeString().substr(0, 5)
                     }, (err, result) => {
                         dbase.close();
