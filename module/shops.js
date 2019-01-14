@@ -1,5 +1,6 @@
 let mon = require('mongodb').MongoClient;
 let fs = require('fs');
+let p = require('path');
 let toAccount = "mongodb://localhost:27017";
 let db = 'z';
 let col = 'fragile';
@@ -108,10 +109,10 @@ module.exports = {
             let _s = param.split('/');
 
             if (_s[0] == 'show') {
-                fs.readFile(`${path}/list.html`, (err, data) => {
+                fs.readFile(p.join(path,'list.html'), (err, data) => {
                     let o = data.toString().replace('(list)', JSON.stringify(shops));
-                    fs.writeFile(`${path}/l.html`, o, err => {
-                        res.sendFile(`${path}/l.html`)
+                    fs.writeFile(p.join(path,'l.html'), o, err => {
+                        res.sendFile(p.join(path,'l.html'))
                     })
                 })
                 if (_s[1] == 'shops') {
@@ -124,36 +125,52 @@ module.exports = {
                     }
                     res.json(o);
                 }
+            } else if (_s[0] == 'statistics') {
+                mon.connect(toAccount, (err, dbase) => {
+                    let dbc = dbase.db(db);
+                    let coll = dbc.collection(col);
+                    coll.find({}, {
+                        '_id': 0
+                    }).toArray((err, arr) => {
+                        dbase.close();
+                        fs.readFile(p.join(path,'js','statistics.js'), (err, data) => {
+                            data = data.toString().replace('/*(stat)*/', JSON.stringify(arr));
+                            fs.writeFile(p.join(path,'js','stats.js'),data,(err)=>{
+                                res.sendFile(p.join(path,'statistics.html'))
+                            })
+                        })
+                    })
+                })
             } else if (!shops.hasOwnProperty(_s[0])) {
                 let param = req.params[0];
                 mon.connect(toAccount, (err, dbase) => {
                     let dbc = dbase.db(db);
                     let coll = dbc.collection(col);
                     let date = new Date();
+                    fs.stat(p.join(path,param), (err, st) => {
+                        if (err) {
+                            coll.insertOne({
+                                'ip': _ip,
+                                'ref': _ref,
+                                'shop': `${path}/${param}`,
+                                'day': date.toLocaleDateString(),
+                                'time': date.toLocaleTimeString().substr(0, 5)
+                            }, (err, result) => {
+                                dbase.close();
+                                res.status(404).end()
+                            })
+                        }
+                        if (param.includes('.well-known')) {
+                            res.sendFile(p.join(path,param), {
+                                headers: {
+                                    'Content-Type': 'text/plain'
+                                }
+                            })
+                        } else
+                            res.sendFile(p.join(path,param))
+                    })
+                })
 
-                })
-                fs.stat(`${path}/${param}`, (err, st) => {
-                    if (err) {
-                        coll.insertOne({
-                            'ip': _ip,
-                            'ref': _ref,
-                            'shop': `${path}/${param}`,
-                            'day': date.toLocaleDateString(),
-                            'time': date.toLocaleTimeString().substr(0, 5)
-                        }, (err, result) => {
-                            dbase.close();
-                            res.status(404).end()
-                        })
-                    }
-                    if (param.includes('.well-known')) {
-                        res.sendFile(`${path}/${param}`, {
-                            headers: {
-                                'Content-Type': 'text/plain'
-                            }
-                        })
-                    } else
-                        res.sendFile(`${path}/${param}`)
-                })
             } else if (shops.hasOwnProperty(_s[0])) {
                 mon.connect(toAccount, (err, dbase) => {
                     let dbc = dbase.db(db);
@@ -162,7 +179,7 @@ module.exports = {
                     coll.insertOne({
                         'ip': _ip,
                         'ref': _ref,
-                        'shop': _s[0],
+                        'shop': p.join(_s[0],_s[1]),
                         'day': date.toLocaleDateString(),
                         'time': date.toLocaleTimeString().substr(0, 5)
                     }, (err, result) => {
