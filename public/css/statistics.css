@@ -15,7 +15,8 @@ table .caption, .caption#date {
   text-align: center; }
 
 .ip {
-  margin-top: 5px; }
+  margin-top: 5px;
+  width: fit-content; }
 
 .body#ip {
   box-shadow: 0px 1px 1px #aeaeae;
@@ -26,13 +27,14 @@ table .caption, .caption#date {
   border-radius: 17px; }
 
 .date {
-  margin-left: 6px; }
+  margin-left: 6px;
+  width: fit-content; }
 
 table {
   background: #faf8dc; }
   table tr td {
-    border-bottom: 1px dashed #bebebe;
-    padding: 3px 1px 8px; }
+    border-right: 1px dashed #bebebe;
+    padding: 1px 8px; }
     table tr td .caption {
       margin-bottom: 2px; }
     table tr td .td {
@@ -42,7 +44,7 @@ table {
       margin-bottom: 1px;
       border-radius: 15px;
       padding: 0 8px; }
-  table tr:last-child td {
-    border-bottom: 1px dashed transparent; }
+  table tr td:last-child {
+    border-right: 1px dashed transparent; }
 
 /*# sourceMappingURL=statistics.css.map */

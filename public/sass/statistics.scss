@@ -21,6 +21,7 @@ table .caption, .caption#date {
 
 .ip {
     margin-top: 5px;
+    width: fit-content;
 }
 
 .body#ip {
@@ -35,6 +36,7 @@ table .caption, .caption#date {
 
 .date {
     margin-left: 6px;
+    width: fit-content;
 }
 
 table {
@@ -42,8 +44,8 @@ table {
 
     tr {
         td {
-            border-bottom: 1px dashed #bebebe;
-            padding: 3px 1px 8px;
+            border-right: 1px dashed #bebebe;
+            padding: 1px 8px;
 
             .caption {
                 margin-bottom: 2px;
@@ -58,11 +60,10 @@ table {
                 padding: 0 8px;
             }
         }
-    }
 
-    tr:last-child {
-        td {
-            border-bottom: 1px dashed transparent;
+
+        td:last-child {
+            border-right: 1px dashed transparent;
         }
     }
 }
