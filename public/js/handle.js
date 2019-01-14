@@ -47,14 +47,17 @@ $(() => {
 
     $(_im).attr({
         'src': 'pic/currency/take.png',
+        'alt': 'Кредит онлайн',
         'onload': 'if (--_whole == 0) unVeil();'
     });
     $(_im_mob).attr({
         'src': 'pic/currency/take-mob.png',
+        'alt': 'Кредит онлайн',
         'onload': 'if (--_whole == 0) unVeil();'
     });
     $(_load).attr({
         'src': 'pic/loading.gif',
+        'alt': 'Гроші онлайн',
         'class': 'img-fluid',
         'onload': 'if (--_whole == 0) unVeil();'
     });
