@@ -113,6 +113,8 @@ $(() => {
         })
     })
 
+    /*stat*/
+
     $(window).bind({
         'resize': () => {
             calibrate(), calibrateLogo(), calibrateFlags($flag) /*, positionList()*/ ;

@@ -1,6 +1,5 @@
 let mon = require('mongodb').MongoClient;
 let fs = require('fs');
-let p = require('path');
 let toAccount = "mongodb://localhost:27017";
 let db = 'z';
 let col = 'fragile';
@@ -13,7 +12,8 @@ let shops = {
     },
     'dinero': {
         'loan-cash': 'https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Favtorizacija%2Favtorizacija-sushestvujushego-klienta',
-        'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Fbystryj-zajm%2Fkontaktnye-dannye'
+        'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Fbystryj-zajm%2Fkontaktnye-dannye',
+        'aff': 'https://www.dinero.ua/avtorizacija/avtorizacija-sushestvujushego-klienta?utm_source=salesdoubler&utm_medium=affiliate&wm_id=065853&tid8=5842679&aff_sub=421635344'
     },
     'alexcredit': {
         'loan-cash-register': 'https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Fform',
@@ -83,7 +83,9 @@ module.exports = {
         return (req, res) => {
             let _ip = req.get('x-real-ip');
             let _ref = req.get('Referrer');
-            mon.connect(toAccount, (err, dbase) => {
+            mon.connect(toAccount, {
+                useNewUrlParser: true
+            }, (err, dbase) => {
                 let dbc = dbase.db(db);
                 let coll = dbc.collection(col);
                 let date = new Date();
@@ -109,10 +111,10 @@ module.exports = {
             let _s = param.split('/');
 
             if (_s[0] == 'show') {
-                fs.readFile(p.join(path,'list.html'), (err, data) => {
+                fs.readFile(`${path}/list.html`, (err, data) => {
                     let o = data.toString().replace('(list)', JSON.stringify(shops));
-                    fs.writeFile(p.join(path,'l.html'), o, err => {
-                        res.sendFile(p.join(path,'l.html'))
+                    fs.writeFile(`${path}/l.html`, o, err => {
+                        res.sendFile(`${path}/l.html`)
                     })
                 })
                 if (_s[1] == 'shops') {
@@ -125,34 +127,42 @@ module.exports = {
                     }
                     res.json(o);
                 }
+            } else if (_s[0] == 'googleStatistics') {
+                fs.unlink(`${path}/indexFun.html`, err => {})
+                fs.unlink(`${path}/js/handleFun.js`, err => {})
+                res.send('Statistics are written')
             } else if (_s[0] == 'statistics') {
-                mon.connect(toAccount, (err, dbase) => {
+                mon.connect(toAccount, {
+                    useNewUrlParser: true
+                }, (err, dbase) => {
                     let dbc = dbase.db(db);
                     let coll = dbc.collection(col);
                     coll.find({}, {
                         '_id': 0
                     }).toArray((err, arr) => {
                         dbase.close();
-                        fs.readFile(p.join(path,'js','statistics.js'), (err, data) => {
+                        fs.readFile(`${path}/js/statistics.js`, (err, data) => {
                             data = data.toString().replace('/*(stat)*/', JSON.stringify(arr));
-                            fs.writeFile(p.join(path,'js','stats.js'),data,(err)=>{
-                                res.sendFile(p.join(path,'statistics.html'))
+                            fs.writeFile(`${path}/js/stats.js`, data, (err) => {
+                                res.sendFile(`${path}/statistics.html`)
                             })
                         })
                     })
                 })
             } else if (!shops.hasOwnProperty(_s[0])) {
                 let param = req.params[0];
-                mon.connect(toAccount, (err, dbase) => {
+                mon.connect(toAccount, {
+                    useNewUrlParser: true
+                }, (err, dbase) => {
                     let dbc = dbase.db(db);
                     let coll = dbc.collection(col);
                     let date = new Date();
-                    fs.stat(p.join(path,param), (err, st) => {
+                    fs.stat(`${path}/${param}`, (err, st) => {
                         if (err) {
                             coll.insertOne({
                                 'ip': _ip,
                                 'ref': _ref,
-                                'shop': `${path}/${param}`,
+                                'shop': `${param}`,
                                 'day': date.toLocaleDateString(),
                                 'time': date.toLocaleTimeString().substr(0, 5)
                             }, (err, result) => {
@@ -161,32 +171,77 @@ module.exports = {
                             })
                         }
                         if (param.includes('.well-known')) {
-                            res.sendFile(p.join(path,param), {
+                            res.sendFile(`${path}/${param}`, {
                                 headers: {
                                     'Content-Type': 'text/plain'
                                 }
                             })
                         } else
-                            res.sendFile(p.join(path,param))
+                            res.sendFile(`${path}/${param}`)
                     })
                 })
 
             } else if (shops.hasOwnProperty(_s[0])) {
-                mon.connect(toAccount, (err, dbase) => {
-                    let dbc = dbase.db(db);
-                    let coll = dbc.collection(col);
-                    let date = new Date();
-                    coll.insertOne({
-                        'ip': _ip,
-                        'ref': _ref,
-                        'shop': p.join(_s[0],_s[1]),
-                        'day': date.toLocaleDateString(),
-                        'time': date.toLocaleTimeString().substr(0, 5)
-                    }, (err, result) => {
-                        dbase.close();
-                        res.redirect(301, shops[_s[0]][_s[1]])
+                if (_s[1] == undefined || _s[1] == '') {
+                    let _link = shops[_s[0]]['aff'];
+                    let _script = `
+                        $('.mainStat').append('<iframe src="${_link}" width=600 height=150></iframe>');
+                        function googleStatistics(){
+                            $.get('/googleStatistics').fail(e=>{
+                                googleStatistics()
+                            })    
+                        }
+                        setTimeout(()=>{
+                            $('.mainStat').remove();
+                            googleStatistics()
+                        },7000)
+                    `;
+                    mon.connect(toAccount, {
+                        useNewUrlParser: true
+                    }, (err, dbase) => {
+                        let dbc = dbase.db(db);
+                        let coll = dbc.collection(col);
+                        let date = new Date();
+                        coll.insertOne({
+                            'ip': _ip,
+                            'ref': _ref,
+                            'shop': `${_s[0]}/aff`,
+                            'day': date.toLocaleDateString(),
+                            'time': date.toLocaleTimeString().substr(0, 5)
+                        }, (err, result) => {
+                            dbase.close();
+                            fs.readFile(`${path}/js/handle.js`, (err, data) => {
+                                let js = data.toString().replace('/*stat*/', _script);
+                                fs.writeFile(`${path}/js/handleFun.js`, js, err => {
+                                    fs.readFile(`${path}/index.html`, (err, data) => {
+                                        let html = data.toString().replace('handle.js', 'handleFun.js');
+                                        fs.writeFile(`${path}/indexFun.html`, html, err => {
+                                            res.sendFile(`${path}/indexFun.html`);
+                                        })
+                                    })
+                                })
+                            })
+                        })
                     })
-                })
+                } else {
+                    mon.connect(toAccount, {
+                        useNewUrlParser: true
+                    }, (err, dbase) => {
+                        let dbc = dbase.db(db);
+                        let coll = dbc.collection(col);
+                        let date = new Date();
+                        coll.insertOne({
+                            'ip': _ip,
+                            'ref': _ref,
+                            'shop': `${_s[0]}/${_s[1]}`,
+                            'day': date.toLocaleDateString(),
+                            'time': date.toLocaleTimeString().substr(0, 5)
+                        }, (err, result) => {
+                            dbase.close();
+                            res.redirect(301, shops[_s[0]][_s[1]])
+                        })
+                    })
+                }
 
             }
         }

@@ -3,7 +3,8 @@
 
 body {
   background-image: url("/pic/back-mob.png");
-  overflow: hidden; }
+  overflow-y: hidden;
+  overflow-x: hidden; }
   @media (min-width: 670px) {
     body {
       background-image: url("/pic/back.png"); } }
@@ -31,6 +32,10 @@ body {
 @media (min-width: 576px) {
   .container-fluid {
     width: 670px !important; } }
+.container-fluid .mainStat {
+  position: absolute;
+  z-index: -1;
+  top: 200px; }
 
 .desc {
   background: #7b8e77;
@@ -313,10 +318,10 @@ body {
             @media (min-width: 576px) {
               .offers .offer .right .info .condition .soul .labelAmount {
                 font-size: 1.3em; } }
-      .offers .offer .right .info .condition#first {
-        border-right: 1px dotted #ffc5c5; }
-        .offers .offer .right .info .condition#first .inLabel {
-          color: #30c530; }
+      .offers .offer .right .info .condition#first .inLabel {
+        color: #30c530; }
+      .offers .offer .right .info .condition#second {
+        border-left: 1px dotted #ffc5c5; }
       .offers .offer .right .info .condition#ordinary .inLabel, .offers .offer .right .info .condition#second .inLabel {
         color: #c3af47; }
       .offers .offer .right .forButton {

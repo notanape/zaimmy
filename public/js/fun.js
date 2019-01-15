@@ -467,7 +467,9 @@ function unVeil() {
         duration: 100,
         complete: () => {
             $veil.removeClass('d-flex').addClass('d-none');
-            $('body').css('overflow', 'auto');
+            $('body').css({
+                'overflow-y': 'auto',
+                'overflow-x':'hidden'});
         }
     })
 }
@@ -481,7 +483,7 @@ function loading() {
     let _b = () => {
         let ch = false;
         let _bo = $('body');
-        let _ov = _bo.css('overflow');
+        let _ov = _bo.css('overflow-y');
         let _v = '';
         if (_ov == 'hidden' && !ch) {
             _v = 'auto';
@@ -490,7 +492,7 @@ function loading() {
             _v = 'hidden';
             ch = true
         }
-        _bo.css('overflow', _v);
+        _bo.css('overflow-y', _v);
     };
     if (_cl && !_loa) {
         _b();

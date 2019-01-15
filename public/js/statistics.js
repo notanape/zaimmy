@@ -87,11 +87,12 @@ function createObj() {
                     </div>`;
     let tr = `
                 <td class="d-flex flex-column">
-                    <div class="caption">(day) &#8226; (time)</div>
-                     <div class="td ref">(ref)</div>
-                     <div class="td link">(link)</div>
-                   </td>
+                    (detect)
+                </td>
               `;
+    let detect = `<div class="caption">(day) &#8226; (time)</div>
+                <div class="td ref">(ref)</div>
+                <div class="td link">(link)</div>`
     let obj = '';
     for (let i of _map) {
         let _ip = ip.replace('(ip)', i[0]);
@@ -99,12 +100,16 @@ function createObj() {
         for (let m of i[1]) {
             let _date = date.replace('(mon)', m[0]);
             let _trs = '';
-            for (let d of m[1])
+            for (let d of m[1]) {
+                let _day = '';
                 for (let t of d[1])
                     for (let r of t[1]) {
-                        let _tr = tr.replace('(day)', d[0]).replace('(time)', t[0]).replace('(ref)', r[0] == null ? 'direct' : r[0].replace(/http[s]*:\/\//g,'')).replace('(link)', r[1]);
-                        _trs += _tr;
+                        let _tr = detect.replace('(day)', d[0]).replace('(time)', t[0]).replace('(ref)', r[0] == null ? 'direct' : r[0].replace(/http[s]*:\/\//g, '')).replace('(link)', r[1]);
+                        _day += _tr;
                     }
+                let _d = tr.replace('(detect)', _day);
+                _trs += _d;
+            }
             _date = _date.replace('(tr)', _trs);
             _dates += _date;
         }
@@ -196,4 +201,5 @@ $(() => {
     _map.sort(sortIp);
 
     $('.box').append(createObj())
+
 })
