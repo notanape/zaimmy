@@ -38,6 +38,8 @@ $(() => {
         listShow()
     });*/
 
+    $(window).scrollTop(0);
+
     $veil.css('top', $(window).scrollTop())
 
     let _moves = $moveM.add($moveT);
