@@ -13,10 +13,7 @@
 
 .caption#date {
     background: #ffc375;
-}
-
-table .caption, .caption#date {
-    text-align: center;
+    padding-left: 15px;
 }
 
 .ip {
@@ -60,7 +57,6 @@ table {
                 padding: 0 8px;
             }
         }
-
 
         td:last-child {
             border-right: 1px dashed transparent;

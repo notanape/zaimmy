@@ -9,10 +9,8 @@
   padding: 2px 10px; }
 
 .caption#date {
-  background: #ffc375; }
-
-table .caption, .caption#date {
-  text-align: center; }
+  background: #ffc375;
+  padding-left: 15px; }
 
 .ip {
   margin-top: 5px;

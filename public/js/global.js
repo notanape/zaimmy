@@ -10,6 +10,7 @@ let $first,$check,$limit,$cap,$down,$list;
 let $promo, $pCheck, $promoB;
 let _limit = [];
 let _whole = 0;
+let _sorted = false;
 
 let _im_changed = false;
 
@@ -69,7 +70,7 @@ let _offer = (title, info) => {
             <div class="soul d-flex">
           <div class="left d-flex align-items-center">
             <div class="offerLogo">
-              <img class="img-fluid" src="pic/partners/${title.replace(/\s/g,'_').toLowerCase()}.png" alt="${title}" onload="if (--_whole == 0) unVeil();">
+              <img class="img-fluid" src="pic/partners/${title.replace(/\s/g,'-').toLowerCase()}.png" alt="${title}" onload="if (--_whole == 0) unVeil();">
             </div>
           </div>
           <div class="right d-flex flex-column">

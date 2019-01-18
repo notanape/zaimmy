@@ -72,7 +72,7 @@ function labelMove(move) {
     })
 }
 
-function plusMinus(e) {    
+function plusMinus(e) {
     e.stopImmediatePropagation();
     let _b = $(e.target).closest('.inter');
     let _move = _b.parent().find(`.sliderCalc#${_b.attr('id')}`).find('.move');
@@ -86,9 +86,9 @@ function plusMinus(e) {
             _slider.value -= _info.step;
     }
     sliderValue(_move, _slider.value, labelMove);
-    loading();
+    //loading();
     setTimeout(() => {
-        calibrateOffers(loading)
+        calibrateOffers()
     }, 10)
 }
 
@@ -311,12 +311,21 @@ function sortOffers() {
     $checkout = $('.forButton>#checkout');
     $checkout.bind('click', checkout);
     $flag = $offers.find('.flag');
+    let loc = decodeURI(location.pathname.split('/')[1]);
+    let _off = $('.offer');
+    for (let o = 0; o < _off.length; o++) {
+        let _id = $(_off[o]).attr('id').replace(/\s/g, '-').toLowerCase();
+        if (_id == loc) {
+            $(_off[o]).insertBefore($($('.offer')[0]));
+            break;
+        }
+    }
     calibrateFlags($flag);
     if (arguments.length != 0)
         arguments[0]();
 }
 
-function calibrateOffers() {    
+function calibrateOffers() {
     let _map = {};
     let _mV = _money_slider.value;
     let _tV = _time_slider.value;
@@ -437,10 +446,15 @@ function calibrateOffers() {
     }
 
     // createLimit();
-    if (arguments.length != 0)
-        sortOffers(arguments[0])
-    else
-        sortOffers()
+
+    if (!_sorted) {
+        if (arguments.length != 0)
+            sortOffers(arguments[0])
+        else
+            sortOffers()
+        _sorted = true
+    } else
+        arguments[0]()
 }
 
 function checkout(e) {
@@ -469,7 +483,8 @@ function unVeil() {
             $veil.removeClass('d-flex').addClass('d-none');
             $('body').css({
                 'overflow-y': 'auto',
-                'overflow-x':'hidden'});
+                'overflow-x': 'hidden'
+            });
         }
     })
 }
@@ -545,7 +560,8 @@ function checkFirst() {
         $check.addClass('ch');
         //promoVis()
     }
-    // resetLimit();
+    // resetLimit();    
+    _search = false;
     loading();
     setTimeout(() => {
         calibrateOffers(loading)
