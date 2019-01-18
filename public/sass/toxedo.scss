@@ -44,7 +44,7 @@ body {
 
 .container-fluid {
     @media (min-width: 576px) {
-        width: 670px !important;
+        width: 780px !important;
     }
 
     .mainStat {
@@ -475,6 +475,10 @@ body {
 
                             @media (min-width: 576px) {
                                 font-size: 1.3em;
+                            }
+
+                            .inLabel {
+                                letter-spacing: 1px;
                             }
                         }
                     }

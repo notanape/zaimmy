@@ -31,7 +31,7 @@ body {
 
 @media (min-width: 576px) {
   .container-fluid {
-    width: 670px !important; } }
+    width: 780px !important; } }
 .container-fluid .mainStat {
   position: absolute;
   z-index: -1;
@@ -318,6 +318,8 @@ body {
             @media (min-width: 576px) {
               .offers .offer .right .info .condition .soul .labelAmount {
                 font-size: 1.3em; } }
+            .offers .offer .right .info .condition .soul .labelAmount .inLabel {
+              letter-spacing: 1px; }
       .offers .offer .right .info .condition#first .inLabel {
         color: #30c530; }
       .offers .offer .right .info .condition#second {

