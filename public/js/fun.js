@@ -561,7 +561,7 @@ function checkFirst() {
         //promoVis()
     }
     // resetLimit();    
-    _search = false;
+    _sorted = false;
     loading();
     setTimeout(() => {
         calibrateOffers(loading)
