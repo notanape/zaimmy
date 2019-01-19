@@ -285,9 +285,10 @@ module.exports = {
                             })    
                         };
                         googleStatistics()
-                            location.href = '${_link}';
+                        location.href = '${_link}';
+                            
                     })
-                    `
+                    `    
                     if (_exc) {
                         if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
                             fs.writeFile(`${path}/js/handleFun.js`, _script, err => {
