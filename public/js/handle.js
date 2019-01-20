@@ -62,6 +62,8 @@ $(() => {
 
     calibrateOffers();
 
+    calibrateFlags($flag);
+
     $aboutB.bind('click', aboutUs);
 
     $offers.find('.desc').bind('click', () => {

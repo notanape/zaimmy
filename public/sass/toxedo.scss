@@ -485,13 +485,15 @@ body {
                 }
 
                 .condition#first {
+
+                   // border-right: 1px dotted #ffc5c5;
+
                     .inLabel {
                         color: $fi-col;
                     }
                 }
 
                 .condition#second {
-                    border-left: 1px dotted #ffc5c5;
                 }
 
                 .condition#ordinary, .condition#second {

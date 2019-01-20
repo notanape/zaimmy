@@ -3,11 +3,11 @@ function dragOptions(move, level) {
         axis: 'x',
         containment: level.closest('.handler'),
         stop: () => {
-                loading();
-                setTimeout(() => {
-                    calibrateOffers(loading)
-                }, 10)
-            }
+            loading();
+            setTimeout(() => {
+                calibrateOffers(loading)
+            }, 10)
+        }
     }
     return _opt
 }
@@ -237,13 +237,13 @@ function addOffers() {
     _conditions.forEach((v, k) => {
         let _offerD = $(_offer(k, v));
         $offers.append(_offerD);
-        $flag = $offers.find('.flag');
         $promoB = $offers.find('.buttom#promocode');
         let _off = $offers.find('.offer');
         _off.each(function() {
             let _this = $(this);
-            _this.find('.left').css('width', `${_this.height()}px`)
+            _this.find('.left').css('width', `${_this.height()}px`);
         })
+        $flag = $offers.find('.flag');
     })
 }
 
@@ -300,7 +300,6 @@ function sortOffers() {
     $offers.append(a);
     $checkout = $('.forButton>#checkout');
     $checkout.bind('click', checkout);
-    $flag = $offers.find('.flag');
     let loc = decodeURI(location.pathname.split('/')[1]);
     let _off = $('.offer');
     for (let o = 0; o < _off.length; o++) {
@@ -310,6 +309,7 @@ function sortOffers() {
             break;
         }
     }
+    $flag = $offers.find('.flag');
     calibrateFlags($flag);
     if (arguments.length != 0)
         arguments[0]();
@@ -383,21 +383,18 @@ function calibrateOffers() {
             _per.html(`${_perc} %`.concat(_loyal));
             _amm.parent().css('opacity', '1');
             _per.parent().css('opacity', '1');
-            calibrateFlags($flag);
 
 
         })
         if (_con.length == 0) {
             if (_company.css('display') != "none") {
                 _company.css('display', "none");
-                calibrateFlags($flag)
                 isEmpty();
                 proposals();
             }
         } else {
             if (_company.css('display') == "none") {
                 _company.css('display', "block");
-                calibrateFlags($flag)
                 isEmpty();
                 proposals();
             }
@@ -423,6 +420,8 @@ function calibrateOffers() {
             }
         }
     }
+
+    calibrateFlags($flag);
 
     if (!_sorted) {
         if (arguments.length != 0)
@@ -450,7 +449,6 @@ function checkout(e) {
 function unVeil() {
     proposals();
     calibrateLogo();
-    calibrateFlags($flag);
     calibrate();
     $veil.animate({
         opacity: 0
@@ -462,6 +460,8 @@ function unVeil() {
                 'overflow-y': 'auto',
                 'overflow-x': 'hidden'
             });
+
+            calibrateFlags($flag);
         }
     })
 }
@@ -536,7 +536,7 @@ function checkFirst() {
     } else {
         $check.addClass('ch');
         //promoVis()
-    }   
+    }
     _sorted = false;
     loading();
     setTimeout(() => {

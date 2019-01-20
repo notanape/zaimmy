@@ -290,5 +290,21 @@ let _conditions = new Map([
             maxTime: 30,
             APR:726.35
         }
-    }]
+    }]/*,
+    ['Microcredit', {
+        first: {
+            minAmount: 500,
+            maxAmount: 8000,
+            minTime: 1,
+            maxTime: 30,
+            APR:620.5
+        },
+        second: {
+            minAmount: 500,
+            maxAmount: 20000,
+            minTime: 1,
+            maxTime: 30,
+            APR:620.5
+        }
+    }]*/
 ]);

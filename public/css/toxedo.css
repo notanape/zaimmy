@@ -322,8 +322,6 @@ body {
               letter-spacing: 1px; }
       .offers .offer .right .info .condition#first .inLabel {
         color: #30c530; }
-      .offers .offer .right .info .condition#second {
-        border-left: 1px dotted #ffc5c5; }
       .offers .offer .right .info .condition#ordinary .inLabel, .offers .offer .right .info .condition#second .inLabel {
         color: #c3af47; }
       .offers .offer .right .forButton {
