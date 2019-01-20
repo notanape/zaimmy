@@ -1,6 +1,6 @@
 let _im = new Image();
 let _im_mob = new Image();
-let _load = new Image();
+//let _load = new Image();
 
 let _money_info = {
     min: 100,

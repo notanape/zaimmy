@@ -1,14 +1,7 @@
 
 $(() => {
 
-    _whole = _conditions.size + 3;
-
-    $(_load).attr({
-        'src': 'pic/loading.gif',
-        'alt': 'Гроші онлайн',
-        'class': 'img-fluid',
-        'onload': 'if (--_whole == 0) unVeil();'
-    });
+    _whole = _conditions.size + 2;
 
     $(_im).attr({
         'src': 'pic/currency/take.png',
@@ -45,18 +38,9 @@ $(() => {
     $check = $first.find('#check');
     $promo = $('.additional').find('.promo');
     $pCheck = $promo.find('#check');
-    /*$limit = $('.additional').find('.limit');
-    $cap = $limit.find('#caption');
-    $down = $limit.find('#down');
-    $list = $('.additional').find('.list');
-    $ul = $('.additional').find('ul');  **/
 
     $first.bind('click', checkFirst);
     $promo.bind('click', checkPromo);
-
-    /*$limit.bind('click', () => {
-        listShow()
-    });*/
 
     $(window).scrollTop(0);
 
@@ -65,14 +49,6 @@ $(() => {
     let _moves = $moveM.add($moveT);
     let _levels = $levelM.add($levelT);
    
-
-    $veil.find('div').append(_load)
-
-    /* $(_im).add($(_im_mob)).add($(_load)).bind('load', () => {
-         if (--_whole == 0)
-             unVeil();
-     })*/
-
     if ($(window).width() >= 576) {
         $('.take').append(_im);
         _im_changed = true
@@ -83,17 +59,6 @@ $(() => {
     }
 
     addOffers();
-
-    /*let _ims = $('img').length;
-
-    $('img').bind('load', () => {
-        --_ims;
-        console.log(_ims);
-        if (_ims == 1) {
-            , unVeil();
-        }
-        //$list.css('width', $limit.width() + 16)
-    })*/
 
     calibrateOffers();
 
@@ -121,7 +86,7 @@ $(() => {
 
     $(window).bind({
         'resize': () => {
-            calibrate(), calibrateLogo(), calibrateFlags($flag) /*, positionList()*/ ;
+            calibrate(), calibrateLogo(), calibrateFlags($flag);
         },
         'scroll': () => {
             let _w = $(window).scrollTop();

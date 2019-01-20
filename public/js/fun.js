@@ -8,10 +8,6 @@ function dragOptions(move, level) {
                     calibrateOffers(loading)
                 }, 10)
             }
-            /*,
-                    start: () => {
-                        resetLimit();
-                    }*/
     }
     return _opt
 }
@@ -86,7 +82,6 @@ function plusMinus(e) {
             _slider.value -= _info.step;
     }
     sliderValue(_move, _slider.value, labelMove);
-    //loading();
     setTimeout(() => {
         calibrateOffers()
     }, 10)
@@ -241,11 +236,6 @@ function adjustFlag(flag) {
 function addOffers() {
     _conditions.forEach((v, k) => {
         let _offerD = $(_offer(k, v));
-        /*_offerD.find('.offerLogo>img').bind('load', () => {
-            console.log('from offer');
-            if (--_whole == 0)
-                unVeil();
-        })*/
         $offers.append(_offerD);
         $flag = $offers.find('.flag');
         $promoB = $offers.find('.buttom#promocode');
@@ -331,7 +321,6 @@ function calibrateOffers() {
     let _tV = _time_slider.value;
     let _ch = $check.hasClass('ch');
     let _prom = $pCheck.hasClass('ch');
-    //let _lim = $cap.text() == 'Ліміт' ? 0 : parseInt($cap.text());
     _conditions.forEach((v, k) => {
         if (!_map.hasOwnProperty(k))
             _map[k] = [];
@@ -390,16 +379,6 @@ function calibrateOffers() {
             _amm.parent().css('opacity', '0');
             _per.parent().css('opacity', '0');
 
-
-            /* if (_lim != 0) {
-                if (_total > _lim) {
-                    _con.forEach((d, i) => {
-                        if (d == _conN)
-                            _con.splice(i, 1)
-                    })
-                }
-            }
-*/
             _amm.text(_total);
             _per.html(`${_perc} %`.concat(_loyal));
             _amm.parent().css('opacity', '1');
@@ -444,8 +423,6 @@ function calibrateOffers() {
             }
         }
     }
-
-    // createLimit();
 
     if (!_sorted) {
         if (arguments.length != 0)
@@ -559,8 +536,7 @@ function checkFirst() {
     } else {
         $check.addClass('ch');
         //promoVis()
-    }
-    // resetLimit();    
+    }   
     _sorted = false;
     loading();
     setTimeout(() => {
@@ -585,85 +561,3 @@ function promoVis() {
     } else if (_op == 0 && !_d)
         $promo.css('opacity', 1);
 }
-
-/*function positionList() {
-    $list.css('width', $limit.width() + 16)
-    $list.position({
-        my: 'center top',
-        at: 'center bottom-20',
-        of: $limit,
-        collision: 'none'
-    })
-}
-
-function listShow() {
-    let _d = $list.css('display');
-    let _act = false;
-    let _a = arguments;
-    if (_d == 'none' && !_act) {
-        _act = true;
-        $list.slideDown({
-            start: () => {
-                positionList();
-                if (_a.length > 0)
-                    _a[0]()
-            },
-            duration: 300
-        })
-    } else if (_d != 'none' && !_act) {
-
-        _act = true
-        $list.slideUp({
-            complete: () => {
-                if (_a.length > 0)
-                    _a[0]()
-            },
-            duration: 300
-        })
-    }
-}
-
-function getLimit(e) {
-    let _li = $(e.target).closest('li');
-    let _ch = _li.text();
-    listShow(() => {
-        $cap.text(_ch == 'Нема' ? 'Ліміт' : _ch);
-        calibrateOffers();
-    })
-}
-
-function resetLimit() {
-    if ($list.css('display') != 'none')
-        $list.slideUp(300)
-    $ul.html('<li>Нема</li>');
-    $cap.text('Ліміт');
-    _limit = [];
-}
-
-function createLimit() {
-    $ul.html('<li>Нема</li>')
-    let _con = $('.offer').find('.condition');
-    for (let _of of _con) {
-        if ($(_of).closest('.offer').css('display') != 'none' && $(_of).css('display') != 'none') {
-            let _c = $(_of).find('.total').text();
-            if (!_limit.includes(_c))
-                _limit.push(_c)
-        }
-    }
-
-    let min = _limit.reduce((m, v) => Math.min(m, v), _limit[0])
-    let max = _limit.reduce((m, v) => Math.max(m, v), _limit[0])
-    let des = min / 100 < 10 ? 10 : 100;
-    max = Math.floor(max / des) * des + des;
-    min = Math.floor(min / des) * des;
-    let div = max - min;
-    let il = _limit.length >= 7 ? 7 : _limit.length >= 3 ? 4 : _limit.length >= 2 ? 3 : _limit.length;
-    let poi = div / il;
-
-    for (let i = 1; i <= il; i++)
-        $ul.append(`<li>${Math.floor((min + (i * poi)) / des) * des}</li>`)
-    $li = $list.find('li');
-    $li.bind('click', getLimit);
-
-
-}*/
