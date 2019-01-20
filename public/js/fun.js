@@ -454,6 +454,10 @@ function unVeil() {
         opacity: 0
     }, {
         duration: 100,
+        start:()=>{
+
+            calibrateFlags($flag);
+        },
         complete: () => {
             $veil.removeClass('d-flex').addClass('d-none');
             $('body').css({
@@ -461,7 +465,6 @@ function unVeil() {
                 'overflow-x': 'hidden'
             });
 
-            calibrateFlags($flag);
         }
     })
 }
