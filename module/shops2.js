@@ -18,109 +18,109 @@ let shops = {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Fregisternew",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/250?aid=65853&dlink=https%3A%2F%2Fmoneyveo.ua%2Fuk%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/250?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/250?aid=65853"
     },
     "dinero": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Fbystryj-zajm%2Fkontaktnye-dannye",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Favtorizacija%2Favtorizacija-sushestvujushego-klienta",
         "aff": "https://go.salesdoubler.net/in/offer/1571?aid=65853&dlink=https%3A%2F%2Fwww.dinero.ua%2Favtorizacija%2Favtorizacija-sushestvujushego-klienta",
-        "direct": "https://go.salesdoubler.net/in/offer/1571?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1571?aid=65853"
     },
     "alexcredit": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Fform",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Faccount%2FlogIn",
         "aff": "https://go.salesdoubler.net/in/offer/1509?aid=65853&dlink=https%3A%2F%2Falexcredit.ua%2Faccount%2FlogIn",
-        "direct": "https://go.salesdoubler.net/in/offer/1509?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1509?aid=65853"
     },
     "кредиткаса": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fnew%2Fnewclient",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fviews%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/1704?aid=65853&dlink=https%3A%2F%2Fcreditkasa.com.ua%2Fviews%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/1704?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1704?aid=65853"
     },
     "быстрозайм": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister",
         "aff": "https://go.salesdoubler.net/in/offer/852?aid=65853&dlink=https%3A%2F%2Fbistrozaim.ua%2Fregister",
-        "direct": "https://go.salesdoubler.net/in/offer/852?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/852?aid=65853"
     },
     "ваша-готівочка": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1411?aid=65853&dlink=https%3A%2F%2Flk.vashagotivochka.ua%2Fru%2Flogin%2Fregistration",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1411?aid=65853&dlink=https%3A%2F%2Flk.vashagotivochka.ua%2Fru%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/1411?aid=65853&dlink=https%3A%2F%2Flk.vashagotivochka.ua%2Fru%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/1411?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1411?aid=65853"
     },
     "mycredit": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1261?aid=65853&dlink=https%3A%2F%2Fmycredit.ua%2Fua%2Fregistration%2F",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1261?aid=65853&dlink=https%3A%2F%2Fmycredit.ua%2Fua%2Fregistration%2F",
         "aff": "https://go.salesdoubler.net/in/offer/1261?aid=65853&dlink=https%3A%2F%2Fmycredit.ua%2Fua%2Fregistration%2F",
-        "direct": "https://go.salesdoubler.net/in/offer/1261?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1261?aid=65853"
     },
     "creditplus": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1844?aid=65853&dlink=https%3A%2F%2Fcreditplus.ua%2Fuser%2Fregister%2Fstep1%3Flang%3Duk",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1844?aid=65853&dlink=https%3A%2F%2Fcreditplus.ua%2Fuser%3Flang%3Duk",
         "aff": "https://go.salesdoubler.net/in/offer/1844?aid=65853&dlink=https%3A%2F%2Fcreditplus.ua%2Fuser%3Flang%3Duk",
-        "direct": "https://go.salesdoubler.net/in/offer/1844?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1844?aid=65853"
     },
     "soscredit": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1338?aid=65853&dlink=https%3A%2F%2Fsoscredit.ua%2Fuk%2Fuser%2Fsignup",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1338?aid=65853&dlink=https%3A%2F%2Fsoscredit.ua%2Fuk%2Fauth%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/1338?aid=65853&dlink=https%3A%2F%2Fsoscredit.ua%2Fuk%2Fauth%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/1338?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1338?aid=65853"
     },
     "topcredit": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Fregistration",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/1069?aid=65853&dlink=https%3A%2F%2Fsecure.topcredit.ua%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/1069?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1069?aid=65853"
     },
     "єврогроші": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23signUp",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23login",
         "aff": "https://go.salesdoubler.net/in/offer/1276?aid=65853&dlink=https%3A%2F%2Fmy.eurogroshi.com.ua%2F%23login",
-        "direct": "https://go.salesdoubler.net/in/offer/1276?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1276?aid=65853"
     },
     "crediton": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1729?aid=65853&dlink=https%3A%2F%2Fwww.crediton.ua%2Fuk%2Fcredit%2Fapp%2Fprofile",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1729?aid=65853&dlink=https%3A%2F%2Fwww.crediton.ua%2Fuk%2Fauth",
         "aff": "https://go.salesdoubler.net/in/offer/1729?aid=65853&dlink=https%3A%2F%2Fwww.crediton.ua%2Fuk%2Fauth",
-        "direct": "https://go.salesdoubler.net/in/offer/1729?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1729?aid=65853"
     },
     "moneyboom": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/381?aid=65853&dlink=https%3A%2F%2Fmy.moneyboom.ua%2Fregister",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/381?aid=65853&dlink=https%3A%2F%2Fmy.moneyboom.ua%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/381?aid=65853&dlink=https%3A%2F%2Fmy.moneyboom.ua%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/381?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/381?aid=65853"
     },
     "credit365": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/163?aid=65853&dlink=https%3A%2F%2Fcredit365.ua%2Fuk%2Fregistration",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/163?aid=65853",
         "aff": "https://go.salesdoubler.net/in/offer/163?aid=65853",
-        "direct": "https://go.salesdoubler.net/in/offer/163?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/163?aid=65853"
     },
     "твої-гроші": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fuk%2Fsite%2Fform%2Fstep%2F1",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fsite%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/302?aid=65853&dlink=https%3A%2F%2Fcabinet.tvoigroshi.com.ua%2Fsite%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/302?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/302?aid=65853"
     },
     "глобалкредит": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fuk%2Fform%2Fregistration",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fsite%2Flogin",
         "aff": "https://go.salesdoubler.net/in/offer/1200?aid=65853&dlink=https%3A%2F%2Fcabinet.globalcredit.ua%2Fsite%2Flogin",
-        "direct": "https://go.salesdoubler.net/in/offer/1200?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1200?aid=65853"
     },
     "є-гроші": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2Freg",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
         "aff": "https://go.salesdoubler.net/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
-        "direct": "https://go.salesdoubler.net/in/offer/1741?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853"
     }/*,
     "microcredit": {
         "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2Freg",
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
         "aff": "https://go.salesdoubler.net/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
-        "direct": "https://go.salesdoubler.net/in/offer/1741?aid=65853"
+        "direct": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853"
     }*/
 }
 
@@ -151,7 +151,7 @@ module.exports = {
             let _ref = req.get('Referrer') == undefined ? '' : req.get('Referrer');
             let _exc = _ip == undefined ? true : isExc(_ip);
             if (_exc)
-                res.sendFile(path + '/index.html')
+                res.status(404).sendFile(path + '/indexEr.html')
             else
                 mon.connect(toAccount, {
                     useNewUrlParser: true
@@ -167,7 +167,7 @@ module.exports = {
                         'time': date.toLocaleTimeString().substr(0, 5)
                     }, (err, result) => {
                         dbase.close();
-                        res.sendFile(path + '/index.html')
+                        res.status(404).sendFile(path + '/indexEr.html')
                     })
                 })
         }
