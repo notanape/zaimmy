@@ -113,14 +113,13 @@ let shops = {
         "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
         "aff": "https://go.salesdoubler.net/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
         "direct": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853"
-    }
-    /*,
-        "microcredit": {
-            "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2Freg",
-            "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
+    },
+     "microcredit": {
+            "loan-cash-register": "https://rdr.salesdoubler.com.ua/in/offer/1233?aid=65853&dlink=https%3A%2F%2Fonline.microcredit.ua%2Fget-credit",
+            "loan-cash": "https://rdr.salesdoubler.com.ua/in/offer/1233?aid=65853&dlink=https%3A%2F%2Fonline.microcredit.ua%2Flogin",
             "aff": "https://go.salesdoubler.net/in/offer/1741?aid=65853&dlink=https%3A%2F%2Fe-groshi.com%2Fonline%2F",
-            "direct": "https://rdr.salesdoubler.com.ua/in/offer/1741?aid=65853"
-        }*/
+            "direct": "https://rdr.salesdoubler.com.ua/in/offer/1233?aid=65853"
+        }
 }
 
 function isExc(ip) {
