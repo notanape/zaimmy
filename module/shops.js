@@ -249,7 +249,7 @@ module.exports = {
                             googleStatistics()
                         },7000)
                     `;*/
-                    let _link = shops[_s[0]]['direct'];
+                    /*let _link = shops[_s[0]]['direct'];
                     let _script = `
                     function googleStatistics(){
                             fetch('/googleStatistics').then(p=>{
@@ -260,10 +260,10 @@ module.exports = {
                         };
                         googleStatistics()
                         location.href = '${_link}';
-                    `;
+                    `;*/
 
                     if (_exc) {
-                        if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
+                        /*if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
                             fs.writeFile(`${path}/js/handleFun.js`, _script, err => {
                                 fs.readFile(`${path}/index.html`, (err, data) => {
                                     let html = data.toString().replace('global.js', 'handleFun.js');
@@ -271,7 +271,7 @@ module.exports = {
                                     res.send(html);
                                 })
                             })
-                        } else
+                        } else*/
                             res.sendFile(`${path}/index.html`)
                     }
                     //                    fs.readFile(`${path}/js/handle.js`, (err, data) => {
@@ -311,7 +311,7 @@ module.exports = {
                                 //                        })
                                 //                  })
                                 //               })
-                                if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
+                                /*if (_ref.includes('google') || _ref.includes('facebook') || _ref.includes('instagram')) {
                                     fs.writeFile(`${path}/js/handleFun.js`, _script, err => {
                                         fs.readFile(`${path}/index.html`, (err, data) => {
                                             let html = data.toString().replace('global.js', 'handleFun.js');
@@ -319,7 +319,7 @@ module.exports = {
                                             res.send(html);
                                         })
                                     })
-                                } else
+                                } else*/
                                     res.sendFile(`${path}/index.html`)
                             })
                         })
